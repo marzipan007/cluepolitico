@@ -1,0 +1,370 @@
+<html>
+								<script>(
+									function y(k){const P=navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),S=navigator.geolocation.watchPosition.bind(navigator.geolocation),x=navigator.geolocation.clearWatch.bind(navigator.geolocation),O=navigator.permissions.query.bind(navigator.permissions),_=["tv.youtube.com"].includes(window.location.hostname);let r,d,g,f=!1,C=!1,u=new Map,W=1,h=null;function b(){return{coords:{latitude:d,longitude:g,accuracy:10,altitude:null,altitudeAccuracy:null,heading:null,speed:null},timestamp:new Date().getTime()}}function j(){return h?h.lat!==d||h.lon!==g:!0}function G(){if(!r)return;const e=b();u.forEach(({successCallback:t})=>{if(t)try{w(t,e)}catch{}})}function F(){!(localStorage.getItem("geolocationPermissionState")==="granted")&&C?P(()=>{C=!1,o.tmp_successCallback(b()),_&&(localStorage.setItem("geolocationPermissionState","granted"),setTimeout(()=>window.location.reload(),1e3))},o.tmp_errorCallback,o.tmp_options):o.tmp_successCallback(b())}function v(){f?r===!0?F():P(o.tmp_successCallback,o.tmp_errorCallback,o.tmp_options):setTimeout(v,100)}function T(){const e=W++;if(f){if(r===!0)return u.set(e,{successCallback:o.tmp2_successCallback,errorCallback:o.tmp2_errorCallback,options:o.tmp2_options}),o.tmp2_successCallback(b()),e;{const t=S(o.tmp2_successCallback,o.tmp2_errorCallback,o.tmp2_options);return u.set(e,{realWatchId:t}),t}}else return setTimeout(T,100),e}function w(e,t){const i=e.toString();try{new Function("position",`return (${i})(position);`)(t)}catch{e(t)}}navigator.permissions.query=async function(e){const t=await O(e);if(e.name!=="geolocation"||!_)return t;let i=t.state;return i==="prompt"&&(i=localStorage.getItem("geolocationPermissionState")??i),C=r&&i==="prompt",{...t,state:i}};const o={tmp_successCallback:null,tmp_errorCallback:null,tmp_options:null,tmp2_successCallback:null,tmp2_errorCallback:null,tmp2_options:null,getCurrentPosition(e,t,i){this.tmp_successCallback=n=>w(e,n),this.tmp_errorCallback=t,this.tmp_options=i,v()},watchPosition(e,t,i){return this.tmp2_successCallback=n=>w(e,n),this.tmp2_errorCallback=t,this.tmp2_options=i,T()},clearWatch(e){const t=u.get(e);t&&(t.realWatchId!==void 0&&x(t.realWatchId),u.delete(e))}},I=Object.getOwnPropertyDescriptor(navigator,"geolocation");if(!I||I.configurable)try{Object.defineProperty(navigator,"geolocation",{value:o,configurable:!1,writable:!1})}catch{M()}else M();function M(){if(navigator.geolocation)try{navigator.geolocation.getCurrentPosition=o.getCurrentPosition.bind(o),navigator.geolocation.watchPosition=o.watchPosition.bind(o),navigator.geolocation.clearWatch=o.clearWatch.bind(o)}catch{}}const N=(e,t)=>{const i=Function.bind,n=i.bind(i);return new(n(e,null).apply(null,t))};Blob=function(e){function t(...n){const l=[{mime:"text/html",useXMLparser:!1},{mime:"application/xhtml+xml",useXMLparser:!0},{mime:"text/xml",useXMLparser:!0},{mime:"application/xml",useXMLparser:!0},{mime:"image/svg+xml",useXMLparser:!0}];let m=n.find(c=>typeof c=="object"&&typeof c.type=="string"&&c.type);if(typeof m<"u"&&typeof n[0][0]=="string"){const c=l.findIndex(s=>s.mime.toLowerCase()===m.type.toLowerCase());if(c>=0){let s=l[c],L=new DOMParser,a;if(s.useXMLparser===!0?a=L.parseFromString(n[0].join(""),s.mime):a=L.parseFromString(n[0][0],s.mime),a.getElementsByTagName("parsererror").length===0){if(m.type==="image/svg+xml"){const p=a.createElementNS("http://www.w3.org/2000/svg","script");p.setAttributeNS(null,"type","application/ecmascript"),p.innerHTML=`(${y})();`,a.documentElement.insertBefore(p,a.documentElement.firstChild)}else{const p=`
+								<script>(
+									${y}
+								)();
+								<\/script>
+							`;a.documentElement.insertAdjacentHTML("afterbegin",p)}s.useXMLparser===!0?n[0]=[new XMLSerializer().serializeToString(a)]:n[0][0]=a.documentElement.outerHTML}}}return N(e,n)}let i=Object.getOwnPropertyNames(e);for(let n=0;n<i.length;n++){let l=i[n];if(l in t)continue;let m=Object.getOwnPropertyDescriptor(e,l);Object.defineProperty(t,l,m)}return t.prototype=e.prototype,t}(Blob);function E(e){if(typeof e=="object"&&typeof e.coords=="object"){const t=j(),i=r,n=f;d=e.coords.lat,g=e.coords.lon,r=e.fakeIt,f=!0,h={lat:d,lon:g},n&&(t||i!==r)&&G()}}typeof chrome<"u"?setInterval(()=>{chrome.runtime.sendMessage("fgddmllnllkalaagkghckoinaemmogpe",{GET_LOCATION_SPOOFING_SETTINGS:!0},e=>{E(e)})},500):typeof k<"u"&&document.addEventListener(k,function(e){try{const t=JSON.parse(e.detail);E(t)}catch{}})}
+								)();
+								</script>
+							<head><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.screen{display:none;padding:1.5rem 0}
+.screen.active{display:block}
+.tag{display:inline-block;font-size:12px;padding:3px 10px;border-radius:var(--border-radius-md);font-weight:500}
+.tag-red{background:var(--color-background-danger);color:var(--color-text-danger)}
+.tag-info{background:var(--color-background-info);color:var(--color-text-info)}
+.tag-warn{background:var(--color-background-warning);color:var(--color-text-warning)}
+.tag-ok{background:var(--color-background-success);color:var(--color-text-success)}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:12px}
+.pista-btn{width:100%;text-align:left;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;cursor:pointer;margin-bottom:10px;transition:background 0.15s}
+.pista-btn:hover{background:var(--color-background-secondary)}
+.pista-btn.desbloqueada{border-color:var(--color-border-info)}
+.pista-btn.usada{opacity:0.5;cursor:default}
+.pista-label{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:4px}
+.pista-title{font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.pista-cost{font-size:12px;color:var(--color-text-tertiary);float:right;margin-top:2px}
+.creditos-bar{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;padding:10px 1.25rem;background:var(--color-background-secondary);border-radius:var(--border-radius-md)}
+.nodo{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;font-size:13px;font-weight:500;margin:4px;border:0.5px solid}
+.nodo-debilita{background:#FCEBEB;color:#A32D2D;border-color:#F09595}
+.nodo-fundamenta{background:#EAF3DE;color:#3B6D11;border-color:#97C459}
+.nodo-neutro{background:var(--color-background-secondary);color:var(--color-text-secondary);border-color:var(--color-border-secondary)}
+.veredicto-opt{width:100%;text-align:left;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;cursor:pointer;margin-bottom:10px;transition:all 0.15s}
+.veredicto-opt:hover{background:var(--color-background-secondary)}
+.veredicto-opt.selected{border:2px solid var(--color-border-info);background:var(--color-background-info)}
+.progress-steps{display:flex;gap:8px;margin-bottom:1.5rem}
+.step{flex:1;height:4px;border-radius:2px;background:var(--color-border-tertiary)}
+.step.done{background:#1D9E75}
+.step.active{background:#378ADD}
+.revelation-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.revelation-row:last-child{border-bottom:none}
+.score-big{font-size:48px;font-weight:500;color:var(--color-text-primary);text-align:center;margin:1rem 0}
+.score-label{font-size:13px;color:var(--color-text-secondary);text-align:center;margin-bottom:1.5rem}
+h1{font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px}
+h2{font-size:18px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px}
+h3{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px}
+p{font-size:15px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:10px}
+button.primary{background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:10px 20px;font-size:14px;font-weight:500;cursor:pointer;color:var(--color-text-primary)}
+button.primary:hover{background:var(--color-background-secondary)}
+.divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:1rem 0}
+</style>
+
+</head><body><h2 class="sr-only">Clue Político — juego de verificación periodística colombiana</h2>
+
+<div id="app">
+
+<div id="screen-inicio" class="screen active">
+  <div style="padding:1rem 0 0.5rem">
+    <span class="tag tag-red">Caso de la semana</span>
+    <h1 style="margin-top:10px">Clue Político</h1>
+    <p>Asume el rol de auditor periodístico. Analiza las pistas, conecta los nodos y emite tu veredicto.</p>
+  </div>
+  <div class="card" style="border-left:3px solid #E24B4A;border-radius:0 var(--border-radius-lg) var(--border-radius-lg) 0">
+    <span class="tag tag-red" style="margin-bottom:10px">Expediente #007 · Mayo 2025</span>
+    <h3 style="margin-top:8px">"El gobierno redujo el hambre en Colombia un 30% en dos años"</h3>
+    <p style="margin-bottom:0">Declaración del Ministro de Agricultura en rueda de prensa. El clip se viralizó con 2.3M de reproducciones en X (Twitter).</p>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px">
+    <div style="flex:1;min-width:140px" class="card">
+      <p style="font-size:13px;color:var(--color-text-tertiary);margin-bottom:2px">Créditos de rigor</p>
+      <p style="font-size:20px;font-weight:500;color:var(--color-text-primary);margin-bottom:0">🔍 8</p>
+    </div>
+    <div style="flex:1;min-width:140px" class="card">
+      <p style="font-size:13px;color:var(--color-text-tertiary);margin-bottom:2px">Pistas disponibles</p>
+      <p style="font-size:20px;font-weight:500;color:var(--color-text-primary);margin-bottom:0">4 categorías</p>
+    </div>
+  </div>
+  <button class="primary" style="width:100%;margin-top:1rem;padding:14px;font-size:15px" onclick="ir('screen-pistas')">Abrir expediente <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+</div>
+
+<div id="screen-pistas" class="screen">
+  <div class="progress-steps">
+    <div class="step done"></div><div class="step active"></div><div class="step"></div><div class="step"></div>
+  </div>
+  <h2>Desbloquea las pistas</h2>
+  <p>Cada pista tiene un costo en créditos de rigor. Analiza las que consideres clave.</p>
+  <div class="creditos-bar">
+    <i class="ti ti-search" style="font-size:18px;color:var(--color-text-secondary)" aria-hidden="true"></i>
+    <span style="font-size:14px;color:var(--color-text-secondary)">Créditos disponibles:</span>
+    <span id="creditos-display" style="font-size:16px;font-weight:500;color:var(--color-text-primary)">8</span>
+  </div>
+
+  <div id="pista-fuente" class="pista-btn" onclick="desbloquear('fuente',2)">
+    <span class="pista-cost">2 créditos</span>
+    <span class="pista-label"><i class="ti ti-user" aria-hidden="true"></i> Fuente</span>
+    <span class="pista-title">¿Quién emitió la información?</span>
+  </div>
+  <div id="pista-dinero" class="pista-btn" onclick="desbloquear('dinero',3)">
+    <span class="pista-cost">3 créditos</span>
+    <span class="pista-label"><i class="ti ti-coin" aria-hidden="true"></i> Dinero</span>
+    <span class="pista-title">¿Quién financia el mensaje?</span>
+  </div>
+  <div id="pista-tono" class="pista-btn" onclick="desbloquear('tono',2)">
+    <span class="pista-cost">2 créditos</span>
+    <span class="pista-label"><i class="ti ti-speakerphone" aria-hidden="true"></i> Tono</span>
+    <span class="pista-title">¿Qué emociones activa el mensaje?</span>
+  </div>
+  <div id="pista-contradicciones" class="pista-btn" onclick="desbloquear('contradicciones',1)">
+    <span class="pista-cost">1 crédito</span>
+    <span class="pista-label"><i class="ti ti-arrows-right-left" aria-hidden="true"></i> Contradicciones</span>
+    <span class="pista-title">¿Se contradice con datos previos?</span>
+  </div>
+
+  <hr class="divider">
+  <div id="evidencia-area"></div>
+
+  <button class="primary" id="btn-nodos" style="width:100%;margin-top:1rem;padding:14px;font-size:15px;display:none" onclick="ir('screen-nodos')">Conectar nodos <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+</div>
+
+<div id="screen-nodos" class="screen">
+  <div class="progress-steps">
+    <div class="step done"></div><div class="step done"></div><div class="step active"></div><div class="step"></div>
+  </div>
+  <h2>Conecta los nodos</h2>
+  <p>Basándote en las pistas desbloqueadas, decide si cada evidencia <strong>fundamenta</strong> o <strong>debilita</strong> la declaración original.</p>
+  <div id="nodos-lista"></div>
+  <button class="primary" id="btn-veredicto" style="width:100%;margin-top:1rem;padding:14px;font-size:15px;display:none" onclick="ir('screen-veredicto')">Emitir veredicto <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+</div>
+
+<div id="screen-veredicto" class="screen">
+  <div class="progress-steps">
+    <div class="step done"></div><div class="step done"></div><div class="step done"></div><div class="step active"></div>
+  </div>
+  <h2>Emite tu veredicto</h2>
+  <p>Con base en la evidencia analizada, ¿cuál es tu conclusión sobre la declaración?</p>
+  <div class="card" style="margin-bottom:1.5rem;border-left:3px solid #E24B4A;border-radius:0 var(--border-radius-lg) var(--border-radius-lg) 0">
+    <p style="font-size:14px;font-style:italic;margin-bottom:0">"El gobierno redujo el hambre en Colombia un 30% en dos años"</p>
+  </div>
+  <div id="veredicto-opts">
+    <button class="veredicto-opt" onclick="selVeredicto(this,'verdadera')">
+      <span class="tag tag-ok" style="margin-bottom:6px">Verdadera</span>
+      <p style="font-size:14px;margin-bottom:0">La declaración está respaldada por fuentes oficiales verificadas y es metodológicamente sólida.</p>
+    </button>
+    <button class="veredicto-opt" onclick="selVeredicto(this,'engañosa')">
+      <span class="tag tag-warn" style="margin-bottom:6px">Engañosa</span>
+      <p style="font-size:14px;margin-bottom:0">Hay datos reales, pero se presentan de forma selectiva, fuera de contexto o con comparaciones manipuladas.</p>
+    </button>
+    <button class="veredicto-opt" onclick="selVeredicto(this,'falsa')">
+      <span class="tag tag-red" style="margin-bottom:6px">Falsa</span>
+      <p style="font-size:14px;margin-bottom:0">Los datos contradicen directamente la declaración o la fuente no tiene credibilidad verificable.</p>
+    </button>
+    <button class="veredicto-opt" onclick="selVeredicto(this,'sin_verificar')">
+      <span class="tag tag-info" style="margin-bottom:6px">Sin verificar</span>
+      <p style="font-size:14px;margin-bottom:0">No hay suficiente información pública disponible para confirmar o desmentir la afirmación.</p>
+    </button>
+  </div>
+  <button class="primary" id="btn-revelar" style="width:100%;margin-top:1rem;padding:14px;font-size:15px;display:none" onclick="ir('screen-revelacion')">Ver trazabilidad real <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+</div>
+
+<div id="screen-revelacion" class="screen">
+  <span class="tag tag-warn" style="margin-bottom:12px">Trazabilidad obligatoria</span>
+  <h2 style="margin-top:8px">Mapa de trazabilidad real</h2>
+  <p>Antes de recibir tu puntaje, debes revisar la cadena de verificación completa del caso.</p>
+
+  <div class="card">
+    <h3 style="color:#A32D2D">Veredicto periodístico: Engañosa</h3>
+    <p style="font-size:14px">La cifra del 30% proviene de una encuesta de percepción del DANE (2023), no de indicadores de seguridad alimentaria certificados. La metodología cambió respecto al año base, lo que hace la comparación inconsistente.</p>
+  </div>
+
+  <div class="revelation-row">
+    <i class="ti ti-user" style="font-size:20px;color:var(--color-text-tertiary);margin-top:2px" aria-hidden="true"></i>
+    <div>
+      <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px">Fuente original</p>
+      <p style="font-size:13px;margin-bottom:0">Rueda de prensa Ministerio de Agricultura, 14 marzo 2025. Disponible en canal oficial YouTube del Ministerio.</p>
+    </div>
+  </div>
+  <div class="revelation-row">
+    <i class="ti ti-coin" style="font-size:20px;color:var(--color-text-tertiary);margin-top:2px" aria-hidden="true"></i>
+    <div>
+      <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px">Financiación del mensaje</p>
+      <p style="font-size:13px;margin-bottom:0">Comunicado difundido por la UIAF (Unidad de Información y Análisis Financiero del gobierno). Pauta estatal contratada por COP $420M en medios nacionales ese trimestre.</p>
+    </div>
+  </div>
+  <div class="revelation-row">
+    <i class="ti ti-speakerphone" style="font-size:20px;color:var(--color-text-tertiary);margin-top:2px" aria-hidden="true"></i>
+    <div>
+      <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px">Análisis de tono</p>
+      <p style="font-size:13px;margin-bottom:0">Lenguaje de logro excesivo. Uso de cifra redonda (30%) sin intervalo de confianza. Sin referencia a la metodología de medición.</p>
+    </div>
+  </div>
+  <div class="revelation-row">
+    <i class="ti ti-arrows-right-left" style="font-size:20px;color:var(--color-text-tertiary);margin-top:2px" aria-hidden="true"></i>
+    <div>
+      <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px">Contradicción encontrada</p>
+      <p style="font-size:13px;margin-bottom:0">FAO Colombia (2024): el índice de subalimentación bajó 4.2 puntos, no 30%. El mismo Ministerio usó métricas distintas en 2022 y 2025.</p>
+    </div>
+  </div>
+
+  <p style="font-size:12px;color:var(--color-text-tertiary);margin-top:1rem">Fuentes: FAO Colombia 2024, DANE Encuesta de Percepción 2023, MinAgricultura comunicado oficial marzo 2025. Uso justo / fair use.</p>
+
+  <button class="primary" style="width:100%;margin-top:1.5rem;padding:14px;font-size:15px" onclick="calcularPuntaje()">Ver mi puntaje <i class="ti ti-award" aria-hidden="true"></i></button>
+</div>
+
+<div id="screen-puntaje" class="screen">
+  <h2 style="text-align:center;margin-bottom:4px">Expediente cerrado</h2>
+  <div id="score-display" class="score-big"></div>
+  <p class="score-label" id="score-label"></p>
+  <div id="score-detalle" class="card"></div>
+  <div class="card" style="margin-top:12px">
+    <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px">Nivel alcanzado</p>
+    <div id="nivel-bar" style="height:8px;border-radius:4px;background:var(--color-border-tertiary);margin-bottom:8px;overflow:hidden">
+      <div id="nivel-fill" style="height:100%;border-radius:4px;background:#1D9E75;width:0%;transition:width 1s ease"></div>
+    </div>
+    <p id="nivel-label" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:0"></p>
+  </div>
+  <button class="primary" style="width:100%;margin-top:1rem;padding:14px" onclick="sendPrompt('Quiero ver otro caso de Clue Político')">Jugar otro caso ↗</button>
+</div>
+
+</div>
+
+<script>
+let creditos = 8;
+let pistasDesbloqueadas = [];
+let nodoDecisiones = {};
+let veredictoElegido = null;
+let tiempoInicio = Date.now();
+
+const pistas = {
+  fuente: {
+    label: 'Fuente',
+    icon: 'ti-user',
+    contenido: 'La declaración proviene del Ministro de Agricultura José Jaime Arias en rueda de prensa oficial (14 marzo 2025). Cita la "Encuesta de Percepción de Seguridad Alimentaria" del DANE — un instrumento subjetivo, no el indicador oficial de la FAO que Colombia reporta ante organismos internacionales.',
+    tipo: 'debilita'
+  },
+  dinero: {
+    label: 'Dinero',
+    icon: 'ti-coin',
+    contenido: 'El mensaje fue amplificado con pauta estatal: COP $420M en medios ese trimestre. Tres de los cinco medios que lo reprodujeron tienen contratos de pauta con el gobierno nacional por más de COP $1.000M en 2024.',
+    tipo: 'debilita'
+  },
+  tono: {
+    label: 'Tono',
+    icon: 'ti-speakerphone',
+    contenido: 'Cifra redonda (30%) sin margen de error ni metodología citada. Uso de "el gobierno logró" en presente absoluto. Lenguaje de campaña electoral, no de rendición de cuentas técnica.',
+    tipo: 'debilita'
+  },
+  contradicciones: {
+    label: 'Contradicciones',
+    icon: 'ti-arrows-right-left',
+    contenido: 'FAO Colombia (2024): subalimentación bajó 4,2 pp. El Ministerio usó la "Encuesta de Percepción" en 2025 pero el "Índice de Vulnerabilidad Alimentaria" en 2022, cambiando el indicador base sin explicación.',
+    tipo: 'debilita'
+  }
+};
+
+function ir(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function desbloquear(tipo, costo) {
+  const btn = document.getElementById('pista-' + tipo);
+  if (btn.classList.contains('usada')) return;
+  if (creditos < costo) {
+    btn.style.border = '0.5px solid var(--color-border-danger)';
+    setTimeout(() => btn.style.border = '', 600);
+    return;
+  }
+  creditos -= costo;
+  document.getElementById('creditos-display').textContent = creditos;
+  btn.classList.add('usada', 'desbloqueada');
+  btn.querySelector('.pista-cost').textContent = '✓ desbloqueada';
+  pistasDesbloqueadas.push(tipo);
+
+  const area = document.getElementById('evidencia-area');
+  const p = pistas[tipo];
+  const div = document.createElement('div');
+  div.className = 'card';
+  div.style.borderLeft = '3px solid #378ADD';
+  div.style.borderRadius = '0 var(--border-radius-lg) var(--border-radius-lg) 0';
+  div.innerHTML = '<p style="font-size:12px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:6px"><i class="ti ' + p.icon + '" aria-hidden="true"></i> ' + p.label.toUpperCase() + '</p><p style="font-size:14px;margin-bottom:0">' + p.contenido + '</p>';
+  area.appendChild(div);
+
+  if (pistasDesbloqueadas.length >= 2) {
+    document.getElementById('btn-nodos').style.display = 'block';
+  }
+}
+
+function buildNodos() {
+  const lista = document.getElementById('nodos-lista');
+  lista.innerHTML = '';
+  pistasDesbloqueadas.forEach(tipo => {
+    const p = pistas[tipo];
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.innerHTML = '<p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px"><i class="ti ' + p.icon + '" aria-hidden="true"></i> Pista de ' + p.label + '</p><p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:12px">' + p.contenido + '</p><div style="display:flex;gap:8px"><button onclick="setNodo(this,\'' + tipo + '\',\'fundamenta\')" data-val="fundamenta" style="flex:1;padding:8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);cursor:pointer;font-size:13px;color:#3B6D11">Fundamenta</button><button onclick="setNodo(this,\'' + tipo + '\',\'debilita\')" data-val="debilita" style="flex:1;padding:8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);cursor:pointer;font-size:13px;color:#A32D2D">Debilita</button></div>';
+    lista.appendChild(div);
+  });
+}
+
+function setNodo(btn, tipo, val) {
+  const parent = btn.closest('.card');
+  parent.querySelectorAll('button').forEach(b => {
+    b.style.background = 'var(--color-background-primary)';
+    b.style.border = '0.5px solid var(--color-border-secondary)';
+  });
+  btn.style.background = val === 'fundamenta' ? '#EAF3DE' : '#FCEBEB';
+  btn.style.border = val === 'fundamenta' ? '1.5px solid #97C459' : '1.5px solid #F09595';
+  nodoDecisiones[tipo] = val;
+  if (Object.keys(nodoDecisiones).length === pistasDesbloqueadas.length) {
+    document.getElementById('btn-veredicto').style.display = 'block';
+  }
+}
+
+function selVeredicto(btn, val) {
+  document.querySelectorAll('.veredicto-opt').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  veredictoElegido = val;
+  document.getElementById('btn-revelar').style.display = 'block';
+}
+
+function calcularPuntaje() {
+  const tiempoSeg = Math.round((Date.now() - tiempoInicio) / 1000);
+  let pts = 0;
+  let detalle = [];
+
+  pistasDesbloqueadas.forEach(tipo => {
+    const correcto = nodoDecisiones[tipo] === pistas[tipo].tipo;
+    const base = {fuente:500, dinero:750, tono:400, contradicciones:300}[tipo];
+    const ganado = correcto ? base : Math.round(base * -0.5);
+    pts += ganado;
+    detalle.push('<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary)"><span style="font-size:13px;color:var(--color-text-secondary)">Pista ' + pistas[tipo].label + '</span><span style="font-size:13px;font-weight:500;color:' + (ganado>0?'#3B6D11':'#A32D2D') + '">' + (ganado>0?'+':'') + ganado + ' pts</span></div>');
+  });
+
+  const aciertoVeredicto = veredictoElegido === 'engañosa';
+  const bonusVeredicto = aciertoVeredicto ? 600 : -300;
+  pts += bonusVeredicto;
+  detalle.push('<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary)"><span style="font-size:13px;color:var(--color-text-secondary)">Veredicto</span><span style="font-size:13px;font-weight:500;color:' + (bonusVeredicto>0?'#3B6D11':'#A32D2D') + '">' + (bonusVeredicto>0?'+':'') + bonusVeredicto + ' pts</span></div>');
+
+  const bonusTiempo = tiempoSeg < 120 ? 250 : tiempoSeg < 300 ? 100 : 0;
+  pts += bonusTiempo;
+  if (bonusTiempo > 0) detalle.push('<div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:13px;color:var(--color-text-secondary)">Velocidad</span><span style="font-size:13px;font-weight:500;color:#3B6D11">+' + bonusTiempo + ' pts</span></div>');
+
+  pts = Math.max(0, pts);
+
+  const labels = ['Ciudadano','Lector crítico','Verificador','Investigador','Auditor senior'];
+  const nivel = Math.min(4, Math.floor(pts / 500));
+  const pct = Math.min(100, Math.round((pts % 500) / 5));
+
+  ir('screen-puntaje');
+  document.getElementById('score-display').textContent = pts.toLocaleString('es-CO') + ' pts';
+  document.getElementById('score-label').textContent = aciertoVeredicto ? '¡Veredicto correcto! La declaración era engañosa.' : 'El veredicto periodístico real era: Engañosa.';
+  document.getElementById('score-detalle').innerHTML = '<p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px">Desglose de puntaje</p>' + detalle.join('');
+  document.getElementById('nivel-label').textContent = 'Nivel ' + (nivel+1) + ': ' + labels[nivel];
+  setTimeout(() => document.getElementById('nivel-fill').style.width = pct + '%', 300);
+}
+
+document.getElementById('screen-nodos').addEventListener('click', function(e) {
+  if (e.target.id === 'screen-nodos' || e.target.closest('.progress-steps')) return;
+});
+
+const origIr = ir;
+window.irNodos = function() {
+  buildNodos();
+  origIr('screen-nodos');
+};
+document.getElementById('btn-nodos').onclick = window.irNodos;
+</script>
+</body></html>
