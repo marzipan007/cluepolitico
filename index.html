@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clue Político — El juego de verificación</title>
+<title>Clue Político — Tras la pista de la Tierra</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -14,28 +14,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .landing::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,#1a1a1a 39px,#1a1a1a 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,#1a1a1a 39px,#1a1a1a 40px);opacity:0.4}
 .landing-content{position:relative;z-index:1;max-width:700px}
 .badge-landing{display:inline-block;background:#E24B4A;color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:3px;margin-bottom:2rem}
-.landing h1{font-size:clamp(52px,8vw,96px);font-weight:800;line-height:1;letter-spacing:-3px;color:#F0EDE6;margin-bottom:1rem}
+.landing h1{font-size:clamp(42px,6vw,80px);font-weight:800;line-height:1;letter-spacing:-2px;color:#F0EDE6;margin-bottom:1rem}
 .landing h1 span{color:#E24B4A}
-.landing-sub{font-size:18px;color:#888780;line-height:1.6;margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto}
+.landing-sub{font-size:18px;color:#888780;line-height:1.6;margin-bottom:2.5rem;max-width:550px;margin-left:auto;margin-right:auto}
 .btn-play{display:inline-block;background:#E24B4A;color:#fff;font-size:16px;font-weight:700;padding:16px 48px;border-radius:4px;border:none;cursor:pointer;letter-spacing:0.5px;transition:background 0.15s}
 .btn-play:hover{background:#c73b39}
-.btn-secondary{display:inline-block;background:transparent;color:#888;font-size:14px;padding:12px 32px;border:1px solid #333;border-radius:4px;cursor:pointer;margin-left:12px;transition:all 0.15s}
-.btn-secondary:hover{border-color:#666;color:#ccc}
-.landing-stats{display:flex;gap:3rem;justify-content:center;margin-top:3.5rem;padding-top:2rem;border-top:1px solid #222}
-.stat-item{text-align:center}
-.stat-num{font-size:28px;font-weight:800;color:#F0EDE6}
-.stat-label{font-size:12px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
-
-/* HOW IT WORKS */
-.how-section{background:#111;padding:5rem 2rem;text-align:center}
-.how-section h2{font-size:36px;font-weight:800;margin-bottom:0.5rem}
-.how-section .sub{color:#666;margin-bottom:3rem;font-size:15px}
-.how-grid{display:flex;gap:1px;max-width:900px;margin:0 auto;background:#222}
-.how-card{flex:1;background:#111;padding:2rem 1.5rem;text-align:left}
-.how-num{font-size:11px;font-weight:700;color:#E24B4A;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem}
-.how-icon{font-size:28px;margin-bottom:1rem}
-.how-title{font-size:16px;font-weight:700;color:#F0EDE6;margin-bottom:0.5rem}
-.how-desc{font-size:13px;color:#666;line-height:1.6}
 
 /* GAME */
 .game-section{background:#0E0E0E;display:none}
@@ -56,93 +39,37 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .prog-step.done{background:#E24B4A}
 .prog-step.active{background:#888}
 
-/* TAGS */
-.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:3px}
+/* EXPEDIENTE & CARDS */
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:3px;margin-bottom:10px}
 .tag-red{background:#E24B4A;color:#fff}
-.tag-warn{background:#BA7517;color:#FAC775}
-.tag-ok{background:#1D9E75;color:#9FE1CB}
 .tag-info{background:#185FA5;color:#B5D4F4}
-.tag-gray{background:#222;color:#888;border:1px solid #333}
-
-/* EXPEDIENTE */
 .expediente{border:1px solid #333;border-left:4px solid #E24B4A;border-radius:0 8px 8px 0;padding:1.5rem;margin:1.5rem 0;background:#111}
 .expediente-label{font-size:11px;color:#E24B4A;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem}
 .expediente h2{font-size:22px;font-weight:800;color:#F0EDE6;line-height:1.3;margin-bottom:0.75rem}
 .expediente p{font-size:14px;color:#888;line-height:1.6}
 
-/* PISTAS */
-.pista-btn{width:100%;text-align:left;background:#111;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem 1.5rem;cursor:pointer;margin-bottom:10px;transition:all 0.15s;display:flex;align-items:center;justify-content:space-between}
-.pista-btn:hover{border-color:#444;background:#161616}
-.pista-btn.bloqueada{opacity:1}
-.pista-btn.desbloqueada{border-color:#E24B4A}
-.pista-btn.usada{opacity:0.4;cursor:default;pointer-events:none}
-.pista-left{display:flex;align-items:center;gap:12px}
-.pista-icono{width:36px;height:36px;border-radius:6px;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:16px;color:#666;border:1px solid #2a2a2a}
-.pista-info{}
-.pista-cat{font-size:11px;color:#555;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
-.pista-nombre{font-size:15px;font-weight:600;color:#F0EDE6}
-.pista-costo{font-size:12px;color:#555;white-space:nowrap}
+/* PASOS DE INVESTIGACIÓN */
+.investigacion-box{background:#111;border:1px solid #2a2a2a;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
+.opcion-investigar{width:100%;text-align:left;background:#0E0E0E;border:1px solid #333;border-radius:6px;padding:1rem;margin-top:10px;cursor:pointer;color:#aaa;font-size:14px;transition:all 0.15s}
+.opcion-investigar:hover{border-color:#E24B4A;color:#fff}
+.opcion-investigar.selected{border-color:#1D9E75;background:#0d2e1a;color:#fff}
 
-/* EVIDENCIA */
-.evidencia-card{border:1px solid #2a2a2a;border-left:3px solid #378ADD;border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin-bottom:10px;background:#111;animation:fadeIn 0.3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.ev-cat{font-size:11px;color:#378ADD;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
-.ev-texto{font-size:14px;color:#aaa;line-height:1.6}
-
-/* CREDITOS BAR */
-.cred-bar{background:#111;border:1px solid #222;border-radius:8px;padding:12px 1.5rem;display:flex;align-items:center;gap:12px;margin-bottom:1.5rem}
-.cred-label{font-size:13px;color:#666}
-.cred-num{font-size:18px;font-weight:800;color:#F0EDE6}
-
-/* NODOS */
-.nodo-card{background:#111;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:10px}
-.nodo-texto{font-size:13px;color:#888;line-height:1.6;margin-bottom:1rem}
-.nodo-btns{display:flex;gap:8px}
-.nodo-btn{flex:1;padding:10px;border-radius:6px;border:1px solid #333;background:#0E0E0E;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.15s;color:#888}
-.nodo-btn:hover{border-color:#555}
-.nodo-btn.fund-sel{background:#0d2e1a;border-color:#1D9E75;color:#5DCAA5}
-.nodo-btn.deb-sel{background:#2e0d0d;border-color:#E24B4A;color:#F09595}
-
-/* VEREDICTO */
-.ver-opt{width:100%;text-align:left;background:#111;border:1px solid #2a2a2a;border-radius:8px;padding:1.25rem 1.5rem;cursor:pointer;margin-bottom:10px;transition:all 0.15s}
-.ver-opt:hover{border-color:#444}
-.ver-opt.selected{border-color:#E24B4A;background:#1a0a0a}
-.ver-desc{font-size:13px;color:#666;margin-top:6px;line-height:1.5}
+/* TEXT HIGHLIGHTER (TONO) */
+.texto-analisis{background:#161616;padding:1.5rem;border-radius:8px;line-height:1.8;font-size:16px;color:#F0EDE6;margin-bottom:1.5rem;border:1px solid #222}
+.word-btn{display:inline-block;padding:2px 4px;margin:2px 1px;border-radius:3px;cursor:pointer;transition:all 0.15s;background:#222}
+.word-btn:hover{background:#444}
+.word-btn.marked{background:#BA7517;color:#fff;font-weight:bold}
 
 /* REVELACION */
 .rev-card{background:#111;border:1px solid #333;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
-.rev-veredicto{font-size:18px;font-weight:800;color:#E24B4A;margin-bottom:0.5rem}
-.rev-row{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #1a1a1a;align-items:flex-start}
-.rev-row:last-child{border-bottom:none}
-.rev-icon{font-size:18px;color:#444;flex-shrink:0;margin-top:2px}
-.rev-content{}
-.rev-title{font-size:12px;font-weight:700;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
-.rev-text{font-size:13px;color:#888;line-height:1.6}
-
-/* PUNTAJE */
 .score-hero{text-align:center;padding:2rem 0}
 .score-big{font-size:72px;font-weight:800;color:#F0EDE6;line-height:1}
-.score-sub{font-size:14px;color:#555;margin-top:8px}
 .score-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #1a1a1a;font-size:14px}
-.score-row:last-child{border-bottom:none}
-.score-pos{color:#5DCAA5;font-weight:700}
-.score-neg{color:#F09595;font-weight:700}
-.nivel-bar{height:6px;background:#1a1a1a;border-radius:3px;overflow:hidden;margin:8px 0}
-.nivel-fill{height:100%;background:#E24B4A;border-radius:3px;width:0%;transition:width 1.2s ease}
 
-/* TYPOGRAPHY */
-h1.game-title{font-size:32px;font-weight:800;color:#F0EDE6;margin-bottom:8px;letter-spacing:-1px}
-h2.section-title{font-size:22px;font-weight:800;color:#F0EDE6;margin-bottom:6px}
-p.section-sub{font-size:14px;color:#666;line-height:1.6;margin-bottom:1.5rem}
-
+/* BUTTONS */
 .btn-main{width:100%;padding:16px;background:#E24B4A;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:6px;cursor:pointer;margin-top:1rem;transition:background 0.15s;letter-spacing:0.3px}
 .btn-main:hover{background:#c73b39}
 .btn-main:disabled{background:#2a2a2a;color:#444;cursor:default}
-.btn-ghost{width:100%;padding:14px;background:transparent;color:#666;font-size:14px;font-weight:600;border:1px solid #2a2a2a;border-radius:6px;cursor:pointer;margin-top:8px;transition:all 0.15s}
-.btn-ghost:hover{border-color:#444;color:#aaa}
-
-.divider{border:none;border-top:1px solid #1a1a1a;margin:1.5rem 0}
-.fuente-nota{font-size:11px;color:#333;margin-top:1rem;line-height:1.6}
 </style>
 </head>
 <body>
@@ -151,317 +78,164 @@ p.section-sub{font-size:14px;color:#666;line-height:1.6;margin-bottom:1.5rem}
 <div id="page-landing">
   <section class="landing">
     <div class="landing-content">
-      <div class="badge-landing">Colombia · Caso de la semana</div>
-      <h1>CLUE<br><span>POLÍTICO</span></h1>
-      <p class="landing-sub">Asume el rol de auditor periodístico. Analiza las pistas, descubre quién miente y emite tu veredicto sobre la política colombiana.</p>
+      <div class="badge-landing">Simulador Periodístico · CasaMacondo Style</div>
+      <h1>EL MAKING-OF<br>DE LA <span>INVESTIGACIÓN</span></h1>
+      <p class="landing-sub">No leas la noticia, constrúyela. Rastrea folios inmobiliarios, analiza discursos feroces y destapa la acumulación de tierras baldías.</p>
       <div>
-        <button class="btn-play" onclick="iniciarJuego()">Abrir expediente</button>
-        <button class="btn-secondary" onclick="document.getElementById('how').scrollIntoView()">¿Cómo funciona?</button>
-      </div>
-      <div class="landing-stats">
-        <div class="stat-item">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Tipos de pistas</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">1</div>
-          <div class="stat-label">Caso real</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Trazabilidad</div>
-        </div>
+        <button class="btn-play" onclick="iniciarJuego()">Iniciar Investigación</button>
       </div>
     </div>
-  </section>
-
-  <section class="how-section" id="how">
-    <h2>¿Cómo funciona?</h2>
-    <p class="sub">Cuatro pasos. Un caso real. Tu veredicto.</p>
-    <div class="how-grid">
-      <div class="how-card">
-        <div class="how-num">01</div>
-        <div class="how-icon">📁</div>
-        <div class="how-title">Recibe el expediente</div>
-        <div class="how-desc">Una declaración política viral colombiana se convierte en tu caso a investigar.</div>
-      </div>
-      <div class="how-card">
-        <div class="how-num">02</div>
-        <div class="how-icon">🔍</div>
-        <div class="how-title">Desbloquea las pistas</div>
-        <div class="how-desc">Fuente, dinero, tono y contradicciones. Gasta tus créditos de rigor estratégicamente.</div>
-      </div>
-      <div class="how-card">
-        <div class="how-num">03</div>
-        <div class="how-icon">🕸️</div>
-        <div class="how-title">Conecta los nodos</div>
-        <div class="how-desc">¿Cada pista fundamenta o debilita la declaración original? Tú decides.</div>
-      </div>
-      <div class="how-card">
-        <div class="how-num">04</div>
-        <div class="how-icon">⚖️</div>
-        <div class="how-title">Emite tu veredicto</div>
-        <div class="how-desc">Ver la trazabilidad real es condición obligatoria antes de conocer tu puntaje.</div>
-      </div>
-    </div>
-    <button class="btn-play" style="margin-top:3rem" onclick="iniciarJuego()">Jugar ahora</button>
   </section>
 </div>
 
 <!-- GAME SECTION -->
 <div id="page-game" class="game-section">
   <div class="game-header">
-    <div class="game-logo">CLUE <span>POLÍTICO</span></div>
-    <div class="creditos-pill">🔍 Créditos: <span id="cred-header">8</span></div>
+    <div class="game-logo">MÉTODO <span>CASAMACONDO</span></div>
+    <div class="creditos-pill">🎯 Rigor periodístico</div>
   </div>
 
   <div class="game-body">
 
-    <!-- SCREEN: EXPEDIENTE -->
-    <div id="sc-expediente" class="screen active">
+    <!-- PASO 1: FUENTE -->
+    <div id="sc-fuente" class="screen active">
       <div class="progress">
         <div class="prog-step active"></div>
         <div class="prog-step"></div>
         <div class="prog-step"></div>
         <div class="prog-step"></div>
+        <div class="prog-step"></div>
       </div>
-      <span class="tag tag-red">Expediente #007 · Mayo 2025</span>
-      <div class="expediente" style="margin-top:1rem">
-        <div class="expediente-label">Declaración viral</div>
-        <h2>"El gobierno redujo el hambre en Colombia un 30% en dos años"</h2>
-        <p>Ministro de Agricultura en rueda de prensa oficial, 14 de marzo de 2025. El clip acumula 2.3M de reproducciones en X (Twitter) y fue replicado por 12 medios nacionales.</p>
+      <span class="tag tag-red">Paso 1: El Detonante</span>
+      <div class="expediente">
+        <div class="expediente-label">El Hecho Histriónico</div>
+        <h2>El senador entra al Capitolio Nacional montado a caballo</h2>
+        <p>Ante las cámaras dice: <em>"Soy un campesino de origen humilde, defensor de los jinetes y de la Colombia rural olvidada. Mis propiedades son el fruto del sudor de una vida limpia."</em></p>
       </div>
-      <div style="display:flex;gap:10px;margin-bottom:1.5rem">
-        <div style="flex:1;background:#111;border:1px solid #222;border-radius:8px;padding:1rem">
-          <div style="font-size:12px;color:#444;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">Créditos</div>
-          <div style="font-size:22px;font-weight:800">🔍 8</div>
-        </div>
-        <div style="flex:1;background:#111;border:1px solid #222;border-radius:8px;padding:1rem">
-          <div style="font-size:12px;color:#444;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">Pistas</div>
-          <div style="font-size:22px;font-weight:800">4 categorías</div>
-        </div>
+      
+      <div class="investigacion-box">
+        <p style="font-size: 14px; color:#aaa; margin-bottom: 1rem;">Como editor periodístico, ¿cuál es tu primer paso técnico para verificar la procedencia de su "fortuna campesina"?</p>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 1, this)">Buscar registros de prensa viejos y entrevistas en televisión donde hable de su infancia.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 2, this)">Cruzar su número de cédula en la Ventanilla Única de Registro (VUR) y bases de datos catastrales.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 3, this)">Enviar un derecho de petición a su partido político pidiendo sus declaraciones de renta.</button>
       </div>
-      <button class="btn-main" onclick="ir('sc-pistas')">Abrir tablero de pistas →</button>
+      <button class="btn-main" id="btn-fuente" disabled onclick="ir('sc-dinero')">Siguiente paso: Rastrear el Dinero →</button>
     </div>
 
-    <!-- SCREEN: PISTAS -->
-    <div id="sc-pistas" class="screen">
+    <!-- PASO 2: DINERO -->
+    <div id="sc-dinero" class="screen">
       <div class="progress">
         <div class="prog-step done"></div>
         <div class="prog-step active"></div>
         <div class="prog-step"></div>
         <div class="prog-step"></div>
+        <div class="prog-step"></div>
       </div>
-      <h2 class="section-title">Desbloquea las pistas</h2>
-      <p class="section-sub">Cada pista tiene un costo en créditos de rigor. Analiza las que consideres clave para resolver el caso.</p>
-
-      <div class="cred-bar">
-        <span class="cred-label">Créditos disponibles:</span>
-        <span class="cred-num" id="cred-display">8</span>
+      <span class="tag tag-info">Paso 2: Radiografía Inmobiliaria</span>
+      <h2 style="margin-bottom:1rem;">Los Hallazgos del Folio</h2>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">El cruce de datos arroja que el senador y su círculo familiar cercano tienen <strong>273 registros de tierras</strong> en los Llanos Orientales. Muchos de estos predios tienen origen en adjudicaciones del INCORA/INCODER.</p>
+      
+      <div class="investigacion-box">
+        <p style="font-size: 14px; font-weight:bold; margin-bottom: 1rem; color:#F0EDE6;">¿Cómo interpretas legalmente este hallazgo frente a la Ley 160 de 1994?</p>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 1, this)">Es completamente legal si los compró a precios de mercado a particulares.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 2, this)">Alerta de Acumulación: La Ley 160 prohíbe explícitamente concentrar más de una UAF (Unidad Agrícola Familiar) originada en baldíos del Estado.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 3, this)">Indica simplemente que el senador es un próspero empresario del agro y dinamiza la economía regional.</button>
       </div>
-
-      <div id="p-fuente" class="pista-btn" onclick="desbloquear('fuente',2)">
-        <div class="pista-left">
-          <div class="pista-icono">👤</div>
-          <div class="pista-info">
-            <div class="pista-cat">Fuente</div>
-            <div class="pista-nombre">¿Quién emitió la información?</div>
-          </div>
-        </div>
-        <div class="pista-costo">2 créditos</div>
-      </div>
-
-      <div id="p-dinero" class="pista-btn" onclick="desbloquear('dinero',3)">
-        <div class="pista-left">
-          <div class="pista-icono">💰</div>
-          <div class="pista-info">
-            <div class="pista-cat">Dinero</div>
-            <div class="pista-nombre">¿Quién financia el mensaje?</div>
-          </div>
-        </div>
-        <div class="pista-costo">3 créditos</div>
-      </div>
-
-      <div id="p-tono" class="pista-btn" onclick="desbloquear('tono',2)">
-        <div class="pista-left">
-          <div class="pista-icono">📢</div>
-          <div class="pista-info">
-            <div class="pista-cat">Tono</div>
-            <div class="pista-nombre">¿Qué emociones activa?</div>
-          </div>
-        </div>
-        <div class="pista-costo">2 créditos</div>
-      </div>
-
-      <div id="p-contra" class="pista-btn" onclick="desbloquear('contra',1)">
-        <div class="pista-left">
-          <div class="pista-icono">⚡</div>
-          <div class="pista-info">
-            <div class="pista-cat">Contradicciones</div>
-            <div class="pista-nombre">¿Se contradice con datos previos?</div>
-          </div>
-        </div>
-        <div class="pista-costo">1 crédito</div>
-      </div>
-
-      <hr class="divider">
-      <div id="evidencia-area"></div>
-
-      <button class="btn-main" id="btn-ir-nodos" style="display:none" onclick="buildNodos();ir('sc-nodos')">Conectar nodos →</button>
+      <button class="btn-main" id="btn-dinero" disabled onclick="ir('sc-tono')">Siguiente paso: Análisis de Discurso →</button>
     </div>
 
-    <!-- SCREEN: NODOS -->
-    <div id="sc-nodos" class="screen">
+    <!-- PASO 3: TONO -->
+    <div id="sc-tono" class="screen">
       <div class="progress">
         <div class="prog-step done"></div>
         <div class="prog-step done"></div>
         <div class="prog-step active"></div>
         <div class="prog-step"></div>
+        <div class="prog-step"></div>
       </div>
-      <h2 class="section-title">Conecta los nodos</h2>
-      <p class="section-sub">Decide si cada pista fundamenta o debilita la declaración original del Ministro.</p>
-      <div id="nodos-lista"></div>
-      <button class="btn-main" id="btn-ir-veredicto" style="display:none" onclick="ir('sc-veredicto')">Emitir veredicto →</button>
+      <span class="tag tag-red">Paso 3: Carga Emocional</span>
+      <h2 style="margin-bottom:6px;">Marcaje de Evidencia</h2>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Haz clic sobre las <strong>frases puramente emocionales o manipuladoras</strong> que usa el senador en la plenaria para defenderse, separándolas del debate técnico.</p>
+      
+      <div class="texto-analisis" id="discurso-box">
+        "Colegas, esto es una <span class="word-btn" onclick="marcarPalabra(this)">persecución criminal de los medios bogotanos</span> contra los hombres del campo. Mis predios suman <span class="word-btn" onclick="marcarPalabra(this)">3.500 hectáreas adquiridas legítimamente</span>, pero la envidia de los tecnócratas quiere <span class="word-btn" onclick="marcarPalabra(this)">destruir la cultura llanera y mi honra familiar</span>."
+      </div>
+      
+      <p style="font-size:12px; color:#666;">*Selecciona los dos argumentos emocionales/ataques para avanzar.</p>
+      <button class="btn-main" id="btn-tono" disabled onclick="ir('sc-contradicciones')">Siguiente paso: Cruzar Contradicciones →</button>
     </div>
 
-    <!-- SCREEN: VEREDICTO -->
-    <div id="sc-veredicto" class="screen">
+    <!-- PASO 4: CONTRADICCIONES -->
+    <div id="sc-contradicciones" class="screen">
       <div class="progress">
         <div class="prog-step done"></div>
         <div class="prog-step done"></div>
         <div class="prog-step done"></div>
         <div class="prog-step active"></div>
+        <div class="prog-step"></div>
       </div>
-      <h2 class="section-title">Emite tu veredicto</h2>
-      <p class="section-sub">Con base en la evidencia analizada, ¿cuál es tu conclusión?</p>
-      <div class="expediente" style="margin-bottom:1.5rem">
-        <p style="font-size:14px;font-style:italic;color:#888">"El gobierno redujo el hambre en Colombia un 30% en dos años"</p>
+      <span class="tag tag-info">Paso 4: El Quiebre</span>
+      <h2 style="margin-bottom:1rem;">El Contraste Final</h2>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">El senador sostiene que todo lo que posee proviene de herencias ancestrales llaneras. Sin embargo, tienes los folios de matrícula inmobiliaria frente a ti.</p>
+      
+      <div class="investigacion-box">
+        <p style="font-size: 14px; font-weight:bold; margin-bottom: 1rem; color:#F0EDE6;">¿Cuál es la contradicción matemática irreversible que hallaste?</p>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 1, this)">Las fechas de titulación de los baldíos corresponden a los años 2010-2018 mediante compras consecutivas a campesinos adjudicatarios originales.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 2, this)">El senador paga muy pocos impuestos prediales en los municipios de la zona.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 3, this)">Los caballos que posee no están declarados en sus activos de campaña.</button>
       </div>
-
-      <button class="ver-opt" onclick="selVer(this,'verdadera')">
-        <span class="tag tag-ok">Verdadera</span>
-        <div class="ver-desc">Respaldada por fuentes oficiales verificadas y metodológicamente sólida.</div>
-      </button>
-      <button class="ver-opt" onclick="selVer(this,'enganosa')">
-        <span class="tag tag-warn">Engañosa</span>
-        <div class="ver-desc">Hay datos reales pero presentados fuera de contexto o con comparaciones manipuladas.</div>
-      </button>
-      <button class="ver-opt" onclick="selVer(this,'falsa')">
-        <span class="tag tag-red">Falsa</span>
-        <div class="ver-desc">Los datos contradicen directamente la declaración o la fuente no es verificable.</div>
-      </button>
-      <button class="ver-opt" onclick="selVer(this,'sin_verificar')">
-        <span class="tag tag-gray">Sin verificar</span>
-        <div class="ver-desc">No hay información pública suficiente para confirmar o desmentir la afirmación.</div>
-      </button>
-
-      <button class="btn-main" id="btn-ir-rev" style="display:none" onclick="ir('sc-revelacion')">Ver trazabilidad obligatoria →</button>
+      <button class="btn-main" id="btn-contra" disabled onclick="ir('sc-publicar')">Redactar y Publicar Artículo →</button>
     </div>
 
-    <!-- SCREEN: REVELACION -->
-    <div id="sc-revelacion" class="screen">
-      <span class="tag tag-warn" style="margin-bottom:1rem;display:inline-block">Trazabilidad obligatoria</span>
-      <h2 class="section-title" style="margin-top:0.5rem">Mapa de trazabilidad real</h2>
-      <p class="section-sub">Antes de recibir tu puntaje debes revisar la cadena de verificación completa del caso.</p>
-
-      <div class="rev-card">
-        <div class="rev-veredicto">Veredicto periodístico: Engañosa</div>
-        <p style="font-size:14px;color:#888;line-height:1.6">La cifra del 30% proviene de una encuesta de percepción del DANE (2023), no del indicador oficial de seguridad alimentaria de la FAO. La metodología cambió respecto al año base usado en 2022, haciendo la comparación inconsistente.</p>
+    <!-- PASO 5: PUBLICAR & COMPARAR -->
+    <div id="sc-publicar" class="screen">
+      <div class="progress">
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step active"></div>
       </div>
-
-      <div class="rev-card">
-        <div class="rev-row">
-          <div class="rev-icon">👤</div>
-          <div class="rev-content">
-            <div class="rev-title">Fuente original</div>
-            <div class="rev-text">Rueda de prensa Ministerio de Agricultura, 14 marzo 2025. Canal oficial YouTube del Ministerio. El ministro cita la "Encuesta de Percepción" del DANE — instrumento subjetivo, no el indicador internacional.</div>
-          </div>
-        </div>
-        <div class="rev-row">
-          <div class="rev-icon">💰</div>
-          <div class="rev-content">
-            <div class="rev-title">Financiación del mensaje</div>
-            <div class="rev-text">Pauta estatal de COP $420M ese trimestre. Tres de los cinco medios que replicaron la noticia tienen contratos de pauta con el gobierno por más de COP $1.000M en 2024.</div>
-          </div>
-        </div>
-        <div class="rev-row">
-          <div class="rev-icon">📢</div>
-          <div class="rev-content">
-            <div class="rev-title">Análisis de tono</div>
-            <div class="rev-text">Cifra redonda (30%) sin margen de error ni metodología citada. Lenguaje de campaña: "el gobierno logró" en presente absoluto. Sin referencia técnica a la medición utilizada.</div>
-          </div>
-        </div>
-        <div class="rev-row">
-          <div class="rev-icon">⚡</div>
-          <div class="rev-content">
-            <div class="rev-title">Contradicción encontrada</div>
-            <div class="rev-text">FAO Colombia (2024): el índice de subalimentación bajó 4,2 puntos porcentuales, no 30%. El mismo Ministerio usó métricas distintas en 2022 y 2025 sin explicación metodológica.</div>
-          </div>
-        </div>
-      </div>
-
-      <p class="fuente-nota">Fuentes: FAO Colombia 2024 · DANE Encuesta de Percepción 2023 · MinAgricultura comunicado oficial marzo 2025 · Uso justo / fair use · Metodología: Consejo de Redacción Colombia</p>
-
-      <button class="btn-main" onclick="calcularPuntaje()" style="margin-top:1.5rem">Ver mi puntaje →</button>
+      <span class="tag tag-red">El Cierre</span>
+      <h2 style="margin-bottom:1rem;">¡Tu Investigación está Lista!</h2>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Has conectado la fuente, el dinero, el tono y las contradicciones. Dale clic a publicar para imprimir el reportaje y contrastar tu metodología con la ruta de Juan Pablo Barrientos.</p>
+      
+      <button class="btn-main" style="background:#1D9E75" onclick="mostrarResultados()">📰 PUBLICAR EN CASAMACONDO</button>
     </div>
 
-    <!-- SCREEN: PUNTAJE -->
+    <!-- SCREEN: PUNTAJE Y BALANCE REAL -->
     <div id="sc-puntaje" class="screen">
       <div class="score-hero">
-        <div style="font-size:12px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem">Expediente cerrado</div>
-        <div class="score-big" id="score-num">0</div>
-        <div class="score-sub" id="score-sub"></div>
+        <div style="font-size:12px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;">Reportaje Evaluado</div>
+        <div class="score-big" id="score-num">0 pts</div>
+        <p style="margin-top:10px; color:#888;" id="score-feedback"></p>
       </div>
 
-      <div class="rev-card" id="score-detalle"></div>
-
-      <div class="rev-card" style="margin-top:10px">
-        <div style="font-size:12px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Nivel en curva de alfabetización mediática</div>
-        <div class="nivel-bar"><div class="nivel-fill" id="nivel-fill"></div></div>
-        <div style="font-size:14px;color:#888;margin-top:6px" id="nivel-label"></div>
+      <div class="rev-card">
+        <h3 style="color:#E24B4A; margin-bottom:10px;">La Investigación Real (El Caso Alirio Barrera)</h3>
+        <p style="font-size:14px; color:#aaa; line-height:1.6; margin-bottom:10px;">
+          En la vida real, tras el show del caballo en el Congreso, el periodismo de investigación riguroso desentrañó un complejo entramado de acumulación de tierras. Al rastrear los folios de matrícula inmobiliaria (no las declaraciones verbales), se evidenció la adquisición sistemática de predios inicialmente baldíos otorgados por el Estado a campesinos en la región de Casanare.
+        </p>
+        <p style="font-size:14px; color:#aaa; line-height:1.6;">
+          Esto violaba el espíritu de la <strong>Ley 160 de 1994</strong>, diseñada para evitar que los antiguos baldíos públicos terminen concentrados en manos de un solo gran terrateniente o político influyente. El uso del discurso populista y la identidad del "llano" sirvieron de cortina de humo emocional.
+        </p>
       </div>
 
-      <button class="btn-main" onclick="location.reload()" style="margin-top:1rem">Jugar otro caso →</button>
-      <button class="btn-ghost" onclick="location.reload()">Volver al inicio</button>
+      <div id="desglose-puntos"></div>
+
+      <button class="btn-main" onclick="location.reload()" style="margin-top:1rem">Investigar otro caso →</button>
     </div>
 
   </div>
 </div>
 
 <script>
-var creditos = 8;
-var desbloqueadas = [];
-var nodos = {};
-var veredicto = null;
-var tiempoInicio = 0;
-
-var pistas = {
-  fuente: {
-    cat:'Fuente', icono:'👤',
-    texto:'La declaración proviene del Ministro José Jaime Arias en rueda de prensa oficial. Cita la "Encuesta de Percepción de Seguridad Alimentaria" del DANE — instrumento subjetivo, no el indicador oficial de la FAO que Colombia reporta ante organismos internacionales.',
-    tipo:'debilita', pts:500
-  },
-  dinero: {
-    cat:'Dinero', icono:'💰',
-    texto:'Pauta estatal de COP $420M ese trimestre. Tres de los cinco medios que replicaron la noticia tienen contratos de pauta con el gobierno por más de COP $1.000M en 2024.',
-    tipo:'debilita', pts:750
-  },
-  tono: {
-    cat:'Tono', icono:'📢',
-    texto:'Cifra redonda (30%) sin margen de error ni metodología citada. "El gobierno logró" en presente absoluto. Lenguaje de campaña electoral, no de rendición de cuentas técnica.',
-    tipo:'debilita', pts:400
-  },
-  contra: {
-    cat:'Contradicciones', icono:'⚡',
-    texto:'FAO Colombia (2024): subalimentación bajó 4,2 puntos porcentuales. El Ministerio usó métricas distintas en 2022 y 2025 sin explicación metodológica del cambio.',
-    tipo:'debilita', pts:300
-  }
-};
+var respuestasUsuario = { fuente: null, dinero: null, contra: null };
+var palabrasMarcadas = 0;
 
 function iniciarJuego() {
   document.getElementById('page-landing').style.display = 'none';
   document.getElementById('page-game').classList.add('active');
-  tiempoInicio = Date.now();
   window.scrollTo(0,0);
 }
 
@@ -471,98 +245,68 @@ function ir(id) {
   window.scrollTo(0,0);
 }
 
-function desbloquear(tipo, costo) {
-  var btn = document.getElementById('p-' + tipo);
-  if (!btn || btn.classList.contains('usada')) return;
-  if (creditos < costo) {
-    btn.style.borderColor = '#E24B4A';
-    setTimeout(function(){btn.style.borderColor='';}, 600);
-    return;
-  }
-  creditos -= costo;
-  document.getElementById('cred-display').textContent = creditos;
-  document.getElementById('cred-header').textContent = creditos;
-  btn.classList.add('usada');
-  btn.querySelector('.pista-costo').textContent = '✓ desbloqueada';
-  desbloqueadas.push(tipo);
+function seleccionarOpcion(paso, opc, elemento) {
+  var btns = elemento.parentNode.querySelectorAll('.opcion-investigar');
+  btns.forEach(function(b){b.classList.remove('selected')});
+  elemento.classList.add('selected');
+  
+  respuestasUsuario[paso] = opc;
+  document.getElementById('btn-' + paso).removeAttribute('disabled');
+}
 
-  var p = pistas[tipo];
-  var area = document.getElementById('evidencia-area');
-  var div = document.createElement('div');
-  div.className = 'evidencia-card';
-  div.innerHTML = '<div class="ev-cat">' + p.icono + ' ' + p.cat + '</div><div class="ev-texto">' + p.texto + '</div>';
-  area.appendChild(div);
-
-  if (desbloqueadas.length >= 2) {
-    document.getElementById('btn-ir-nodos').style.display = 'block';
+function marcarPalabra(btn) {
+  btn.classList.toggle('marked');
+  var marcadas = document.querySelectorAll('#discurso-box .word-btn.marked');
+  palabrasMarcadas = marcadas.length;
+  
+  // Si marca los dos sesgos emocionales correctos (persecución criminal y destruir la cultura)
+  if (palabrasMarcadas >= 2) {
+    document.getElementById('btn-tono').removeAttribute('disabled');
   }
 }
 
-function buildNodos() {
-  var lista = document.getElementById('nodos-lista');
-  lista.innerHTML = '';
-  desbloqueadas.forEach(function(tipo) {
-    var p = pistas[tipo];
-    var div = document.createElement('div');
-    div.className = 'nodo-card';
-    div.innerHTML = '<div style="font-size:12px;color:#555;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">' + p.icono + ' Pista de ' + p.cat + '</div><div class="nodo-texto">' + p.texto + '</div><div class="nodo-btns"><button class="nodo-btn" onclick="setNodo(this,\'' + tipo + '\',\'fundamenta\')">Fundamenta</button><button class="nodo-btn" onclick="setNodo(this,\'' + tipo + '\',\'debilita\')">Debilita</button></div>';
-    lista.appendChild(div);
-  });
-}
+function mostrarResultados() {
+  var puntos = 0;
+  var desgloseHTML = '<div style="font-size:12px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Balance Metodológico</div>';
 
-function setNodo(btn, tipo, val) {
-  var btns = btn.closest('.nodo-btns').querySelectorAll('.nodo-btn');
-  btns.forEach(function(b){b.className='nodo-btn'});
-  btn.className = 'nodo-btn ' + (val === 'fundamenta' ? 'fund-sel' : 'deb-sel');
-  nodos[tipo] = val;
-  if (Object.keys(nodos).length === desbloqueadas.length) {
-    document.getElementById('btn-ir-veredicto').style.display = 'block';
-  }
-}
-
-function selVer(btn, val) {
-  document.querySelectorAll('.ver-opt').forEach(function(b){b.classList.remove('selected')});
-  btn.classList.add('selected');
-  veredicto = val;
-  document.getElementById('btn-ir-rev').style.display = 'block';
-}
-
-function calcularPuntaje() {
-  var seg = Math.round((Date.now() - tiempoInicio) / 1000);
-  var total = 0;
-  var filas = '';
-
-  desbloqueadas.forEach(function(tipo) {
-    var p = pistas[tipo];
-    var correcto = nodos[tipo] === p.tipo;
-    var ganado = correcto ? p.pts : Math.round(p.pts * -0.5);
-    total = total + ganado;
-    filas += '<div class="score-row"><span style="color:#888">Pista ' + p.cat + '</span><span class="' + (ganado > 0 ? 'score-pos' : 'score-neg') + '">' + (ganado > 0 ? '+' : '') + ganado + ' pts</span></div>';
-  });
-
-  var bonVer = veredicto === 'enganosa' ? 600 : -300;
-  total = total + bonVer;
-  filas += '<div class="score-row"><span style="color:#888">Veredicto</span><span class="' + (bonVer > 0 ? 'score-pos' : 'score-neg') + '">' + (bonVer > 0 ? '+' : '') + bonVer + ' pts</span></div>';
-
-  var bonTime = seg < 120 ? 250 : seg < 300 ? 100 : 0;
-  if (bonTime > 0) {
-    total = total + bonTime;
-    filas += '<div class="score-row"><span style="color:#888">Velocidad</span><span class="score-pos">+' + bonTime + ' pts</span></div>';
+  // Evaluar Fuente
+  if (respuestasUsuario.fuente === 2) {
+    puntos += 500;
+    desgloseHTML += '<div class="score-row"><span>🔍 Rastreo Inicial (Cédula/VUR):</span><span style="color:#5DCAA5">+500 pts (Riguroso)</span></div>';
+  } else {
+    desgloseHTML += '<div class="score-row"><span>🔍 Rastreo Inicial:</span><span style="color:#F09595">0 pts (Poco efectivo para tierras)</span></div>';
   }
 
-  total = parseInt(total, 10);
-  if (total < 0) total = 0;
+  // Evaluar Dinero
+  if (respuestasUsuario.dinero === 2) {
+    puntos += 500;
+    desgloseHTML += '<div class="score-row"><span>💰 Interpretación Ley 160:</span><span style="color:#5DCAA5">+500 pts (Certero)</span></div>';
+  } else {
+    desgloseHTML += '<div class="score-row"><span>💰 Interpretación Ley 160:</span><span style="color:#F09595">0 pts (Pasaste por alto la UAF)</span></div>';
+  }
 
-  var niveles = ['Ciudadano','Lector crítico','Verificador','Investigador','Auditor senior'];
-  var nivel = Math.min(4, Math.floor(total / 500));
-  var pct = Math.min(100, Math.round((total % 500) / 5));
+  // Evaluar Contradicciones
+  if (respuestasUsuario.contra === 1) {
+    puntos += 500;
+    desgloseHTML += '<div class="score-row"><span>⚡ Cruce de Datos Fácticos:</span><span style="color:#5DCAA5">+500 pts (Impecable)</span></div>';
+  } else {
+    desgloseHTML += '<div class="score-row"><span>⚡ Cruce de Datos Fácticos:</span><span style="color:#F09595">0 pts (Sin sustento matemático)</span></div>';
+  }
 
   ir('sc-puntaje');
-  document.getElementById('score-num').textContent = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' pts';
-  document.getElementById('score-sub').textContent = veredicto === 'enganosa' ? '¡Veredicto correcto! La declaración era engañosa.' : 'El veredicto real era: Engañosa.';
-  document.getElementById('score-detalle').innerHTML = '<div style="font-size:12px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Desglose</div>' + filas;
-  document.getElementById('nivel-label').textContent = 'Nivel ' + (nivel + 1) + ': ' + niveles[nivel];
-  setTimeout(function(){ document.getElementById('nivel-fill').style.width = pct + '%'; }, 400);
+  document.getElementById('score-num').textContent = puntos + ' pts';
+  
+  var feedback = "";
+  if (puntos === 1500) {
+    feedback = "¡Excelente! Utilizaste el método Barrientos a la perfección. Desenmascaraste la acumulación con base en datos duros e inapelables.";
+  } else if (puntos >= 500) {
+    feedback = "Buen intento, pero dejaste cabos sueltos. El político logró desviar parte de la atención con su narrativa.";
+  } else {
+    feedback = "Tu investigación se quedó en la superficie del show mediático. Faltó rigurosidad en los folios.";
+  }
+  
+  document.getElementById('score-feedback').textContent = feedback;
+  document.getElementById('desglose-puntos').innerHTML = desgloseHTML;
 }
 </script>
 </body>
