@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clue Político — Tras la pista de la Tierra</title>
+<title>Clue Político</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -78,7 +78,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div id="page-landing">
   <section class="landing">
     <div class="landing-content">
-      <div class="badge-landing">Simulador Periodístico · CasaMacondo Style</div>
+      <div class="badge-landing">Simulador Periodístico</div>
       <h1>EL MAKING-OF<br>DE LA <span>INVESTIGACIÓN</span></h1>
       <p class="landing-sub">No leas la noticia, constrúyela. Rastrea folios inmobiliarios, analiza discursos feroces y destapa la acumulación de tierras baldías.</p>
       <div>
@@ -91,7 +91,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <!-- GAME SECTION -->
 <div id="page-game" class="game-section">
   <div class="game-header">
-    <div class="game-logo">MÉTODO <span>CASAMACONDO</span></div>
     <div class="creditos-pill">🎯 Rigor periodístico</div>
   </div>
 
@@ -198,9 +197,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
       <span class="tag tag-red">El Cierre</span>
       <h2 style="margin-bottom:1rem;">¡Tu Investigación está Lista!</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Has conectado la fuente, el dinero, el tono y las contradicciones. Dale clic a publicar para imprimir el reportaje y contrastar tu metodología con la ruta de Juan Pablo Barrientos.</p>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Has conectado la fuente, el dinero, el tono y las contradicciones. Dale clic a publicar para imprimir el reportaje y contrastar tu metodología. </p>
       
-      <button class="btn-main" style="background:#1D9E75" onclick="mostrarResultados()">📰 PUBLICAR EN CASAMACONDO</button>
+      <button class="btn-main" style="background:#1D9E75" onclick="mostrarResultados()">📰 PUBLICAR</button>
     </div>
 
     <!-- SCREEN: PUNTAJE Y BALANCE REAL -->
@@ -298,7 +297,7 @@ function mostrarResultados() {
   
   var feedback = "";
   if (puntos === 1500) {
-    feedback = "¡Excelente! Utilizaste el método Barrientos a la perfección. Desenmascaraste la acumulación con base en datos duros e inapelables.";
+    feedback = "¡Excelente! Utilizaste el rigor periodístico a la perfección. Desenmascaraste la acumulación con base en datos duros e inapelables.";
   } else if (puntos >= 500) {
     feedback = "Buen intento, pero dejaste cabos sueltos. El político logró desviar parte de la atención con su narrativa.";
   } else {
