@@ -60,16 +60,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .word-btn:hover{background:#444}
 .word-btn.marked{background:#BA7517;color:#fff;font-weight:bold}
 
-/* REVELACION */
+/* REVELACION & FUENTES */
 .rev-card{background:#111;border:1px solid #333;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
+.fuentes-card{background:#161616;border:1px solid #222;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
+.fuentes-list{list-style:none;margin-top:0.75rem}
+.fuentes-list li{font-size:13px;color:#aaa;margin-bottom:8px;padding-left:12px;position:relative}
+.fuentes-list li::before{content:'•';position:absolute;left:0;color:#E24B4A}
 .score-hero{text-align:center;padding:2rem 0}
 .score-big{font-size:72px;font-weight:800;color:#F0EDE6;line-height:1}
 .score-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #1a1a1a;font-size:14px}
 
-/* BUTTONS */
-.btn-main{width:100%;padding:16px;background:#E24B4A;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:6px;cursor:pointer;margin-top:1rem;transition:background 0.15s;letter-spacing:0.3px}
+/* BUTTONS & LINKS */
+.btn-main{width:100%;padding:16px;background:#E24B4A;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:6px;cursor:pointer;margin-top:1rem;transition:background 0.15s;letter-spacing:0.3px;text-align:center;text-decoration:none;display:block}
 .btn-main:hover{background:#c73b39}
 .btn-main:disabled{background:#2a2a2a;color:#444;cursor:default}
+.btn-link{background:#185FA5;text-decoration:none;display:inline-block;text-align:center}
+.btn-link:hover{background:#144f8a}
 </style>
 </head>
 <body>
@@ -78,9 +84,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div id="page-landing">
   <section class="landing">
     <div class="landing-content">
-      <div class="badge-landing">Clue Político: Simulador Periodístico</div>
+      <div class="badge-landing">Clue Político: Simulador de Periodismo de Investigación</div>
       <h1>EL MAKING-OF<br>DE LA <span>INVESTIGACIÓN</span></h1>
-      <p class="landing-sub">No leas la noticia, constrúyela. Rastrea folios inmobiliarios, analiza discursos feroces y destapa la acumulación de tierras baldías.</p>
+      <p class="landing-sub">No leas la noticia, constrúyela paso a paso. Rastrea folios inmobiliarios, analiza discursos en el Congreso y destapa la acumulación de tierras.</p>
       <div>
         <button class="btn-play" onclick="iniciarJuego()">Iniciar Investigación</button>
       </div>
@@ -91,7 +97,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <!-- GAME SECTION -->
 <div id="page-game" class="game-section">
   <div class="game-header">
-    <div class="creditos-pill">🎯 Rigor periodístico</div>
+    <div class="game-logo">AUDITORÍA <span>PERIODÍSTICA</span></div>
+    <div class="creditos-pill">🎯 Rigor técnico</div>
   </div>
 
   <div class="game-body">
@@ -107,16 +114,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
       <span class="tag tag-red">Paso 1: El Detonante</span>
       <div class="expediente">
-        <div class="expediente-label">El Hecho Histriónico</div>
+        <div class="expediente-label">El Hecho Viral</div>
         <h2>El senador entra al Capitolio Nacional montado a caballo</h2>
         <p>Ante las cámaras dice: <em>"Soy un campesino de origen humilde, defensor de los jinetes y de la Colombia rural olvidada. Mis propiedades son el fruto del sudor de una vida limpia."</em></p>
       </div>
       
       <div class="investigacion-box">
-        <p style="font-size: 14px; color:#aaa; margin-bottom: 1rem;">Como editor periodístico, ¿cuál es tu primer paso técnico para verificar la procedencia de su "fortuna campesina"?</p>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 1, this)">Buscar registros de prensa viejos y entrevistas en televisión donde hable de su infancia.</button>
+        <p style="font-size: 14px; color:#aaa; margin-bottom: 1rem;">Como investigador, ¿cuál es tu primer paso técnico para verificar la procedencia de su patrimonio?</p>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 1, this)">Buscar registros de prensa antiguos y interviews en televisión donde hable de su infancia.</button>
         <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 2, this)">Cruzar su número de cédula en la Ventanilla Única de Registro (VUR) y bases de datos catastrales.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 3, this)">Enviar un derecho de petición a su partido político pidiendo sus declaraciones de renta.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 3, this)">Enviar un derecho de petición a su partido político pidiendo sus declaraciones de renta internas.</button>
       </div>
       <button class="btn-main" id="btn-fuente" disabled onclick="ir('sc-dinero')">Siguiente paso: Rastrear el Dinero →</button>
     </div>
@@ -132,13 +139,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
       <span class="tag tag-info">Paso 2: Radiografía Inmobiliaria</span>
       <h2 style="margin-bottom:1rem;">Los Hallazgos del Folio</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">El cruce de datos arroja que el senador y su círculo familiar cercano tienen <strong>273 registros de tierras</strong> en los Llanos Orientales. Muchos de estos predios tienen origen en adjudicaciones del INCORA/INCODER.</p>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">El cruce de datos públicos arroja que el senador y su círculo familiar cercano concentran <strong>273 registros de tierras</strong>. Muchos de estos predios tienen origen en adjudicaciones estatales previas.</p>
       
       <div class="investigacion-box">
         <p style="font-size: 14px; font-weight:bold; margin-bottom: 1rem; color:#F0EDE6;">¿Cómo interpretas legalmente este hallazgo frente a la Ley 160 de 1994?</p>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 1, this)">Es completamente legal si los compró a precios de mercado a particulares.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 2, this)">Alerta de Acumulación: La Ley 160 prohíbe explícitamente concentrar más de una UAF (Unidad Agrícola Familiar) originada en baldíos del Estado.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 3, this)">Indica simplemente que el senador es un próspero empresario del agro y dinamiza la economía regional.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 1, this)">Es completamente legal si los compró a precios de mercado a particulares tras la adjudicación original.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 2, this)">Alerta de Acumulación: La normativa prohíbe concentrar más de una UAF (Unidad Agrícola Familiar) originalmente tipificada como baldío del Estado.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 3, this)">Indica únicamente que el senador funciona como un empresario del agro que unifica parcelas productivas.</button>
       </div>
       <button class="btn-main" id="btn-dinero" disabled onclick="ir('sc-tono')">Siguiente paso: Análisis de Discurso →</button>
     </div>
@@ -154,13 +161,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
       <span class="tag tag-red">Paso 3: Carga Emocional</span>
       <h2 style="margin-bottom:6px;">Marcaje de Evidencia</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Haz clic sobre las <strong>frases puramente emocionales o manipuladoras</strong> que usa el senador en la plenaria para defenderse, separándolas del debate técnico.</p>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Haz clic sobre las <strong>frases con alta carga emocional o narrativa</strong> que usa el senador para defenderse en la plenaria, separándolas de los datos verificables.</p>
       
       <div class="texto-analisis" id="discurso-box">
         "Colegas, esto es una <span class="word-btn" onclick="marcarPalabra(this)">persecución criminal de los medios bogotanos</span> contra los hombres del campo. Mis predios suman <span class="word-btn" onclick="marcarPalabra(this)">3.500 hectáreas adquiridas legítimamente</span>, pero la envidia de los tecnócratas quiere <span class="word-btn" onclick="marcarPalabra(this)">destruir la cultura llanera y mi honra familiar</span>."
       </div>
       
-      <p style="font-size:12px; color:#666;">*Selecciona los dos argumentos emocionales/ataques para avanzar.</p>
+      <p style="font-size:12px; color:#666;">*Selecciona los dos argumentos emocionales para habilitar el botón.</p>
       <button class="btn-main" id="btn-tono" disabled onclick="ir('sc-contradicciones')">Siguiente paso: Cruzar Contradicciones →</button>
     </div>
 
@@ -175,18 +182,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
       <span class="tag tag-info">Paso 4: El Quiebre</span>
       <h2 style="margin-bottom:1rem;">El Contraste Final</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">El senador sostiene que todo lo que posee proviene de herencias ancestrales llaneras. Sin embargo, tienes los folios de matrícula inmobiliaria frente a ti.</p>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">El senador sostiene que todo su patrimonio proviene de herencias ancestrales y familiares. No obstante, tienes las copias de las matrículas inmobiliarias indexadas.</p>
       
       <div class="investigacion-box">
-        <p style="font-size: 14px; font-weight:bold; margin-bottom: 1rem; color:#F0EDE6;">¿Cuál es la contradicción matemática irreversible que hallaste?</p>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 1, this)">Las fechas de titulación de los baldíos corresponden a los años 2010-2018 mediante compras consecutivas a campesinos adjudicatarios originales.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 2, this)">El senador paga muy pocos impuestos prediales en los municipios de la zona.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 3, this)">Los caballos que posee no están declarados en sus activos de campaña.</button>
+        <p style="font-size: 14px; font-weight:bold; margin-bottom: 1rem; color:#F0EDE6;">¿Cuál es la contradicción documental irreversible que hallaste?</p>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 1, this)">Las fechas de titulación demuestran compras consecutivas a campesinos adjudicatarios originales efectuadas en la última década.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 2, this)">El senador paga tarifas muy bajas de impuesto predial según los recibos de los municipios correspondientes.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 3, this)">Los caballos de exhibición que posee no figuran registrados formalmente en sus declaraciones de activos.</button>
       </div>
       <button class="btn-main" id="btn-contra" disabled onclick="ir('sc-publicar')">Redactar y Publicar Artículo →</button>
     </div>
 
-    <!-- PASO 5: PUBLICAR & COMPARAR -->
+    <!-- PASO 5: PUBLICAR -->
     <div id="sc-publicar" class="screen">
       <div class="progress">
         <div class="prog-step done"></div>
@@ -197,9 +204,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
       <span class="tag tag-red">El Cierre</span>
       <h2 style="margin-bottom:1rem;">¡Tu Investigación está Lista!</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Has conectado la fuente, el dinero, el tono y las contradicciones. Dale clic a publicar para imprimir el reportaje y contrastar tu metodología. </p>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Has cruzado la fuente, el dinero, el tono y las contradicciones documentales. Publica el reportaje para contrastar tu rigor metodológico con los hallazgos reales de la cadena de verificación.</p>
       
-      <button class="btn-main" style="background:#1D9E75" onclick="mostrarResultados()">📰 PUBLICAR</button>
+      <button class="btn-main" style="background:#1D9E75" onclick="mostrarResultados()">📰 PUBLICAR REPORTAJE INVESTIGATIVO</button>
     </div>
 
     <!-- SCREEN: PUNTAJE Y BALANCE REAL -->
@@ -211,13 +218,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
 
       <div class="rev-card">
-        <h3 style="color:#E24B4A; margin-bottom:10px;">La Investigación Real (El Caso Alirio Barrera)</h3>
+        <h3 style="color:#E24B4A; margin-bottom:10px;">La Investigación de Campo Real</h3>
         <p style="font-size:14px; color:#aaa; line-height:1.6; margin-bottom:10px;">
-          En la vida real, tras el show del caballo en el Congreso, el periodismo de investigación riguroso desentrañó un complejo entramado de acumulación de tierras. Al rastrear los folios de matrícula inmobiliaria (no las declaraciones verbales), se evidenció la adquisición sistemática de predios inicialmente baldíos otorgados por el Estado a campesinos en la región de Casanare.
+          En los casos reales de auditoría sobre este fenómeno, tras los actos histriónicos o simbólicos en los escenarios legislativos, el análisis de datos puros suele revelar complejos esquemas de acumulación. Al rastrear el histórico de los folios de matrícula inmobiliaria, se evidencia la compra sistemática de terrenos que inicialmente eran baldíos adjudicados por el Estado para familias de bajos recursos.
         </p>
         <p style="font-size:14px; color:#aaa; line-height:1.6;">
-          Esto violaba el espíritu de la <strong>Ley 160 de 1994</strong>, diseñada para evitar que los antiguos baldíos públicos terminen concentrados en manos de un solo gran terrateniente o político influyente. El uso del discurso populista y la identidad del "llano" sirvieron de cortina de humo emocional.
+          Esta práctica vulnera los límites de la <strong>Unidad Agrícola Familiar (UAF)</strong> consagrada en la ley agraria, cuyo fin primordial es impedir que la tierra pública termine concentrada en grandes terratenientes o figuras políticas influyentes. El uso de discursos regionalistas o identitarios opera como un distractor frente al debate técnico y jurídico de los folios.
         </p>
+        <a href="https://casamacondo.co/investigacion/una-cosecha-de-baldios/" target="_blank" class="btn-main btn-link">📖 Leer investigación completa publicada</a>
+      </div>
+
+      <!-- SECCIÓN DE FUENTES DE LA INVESTIGACIÓN -->
+      <div class="fuentes-card">
+        <h3 style="color:#F0EDE6; font-size:15px; font-weight:700; border-bottom:1px solid #333; padding-bottom:8px;">Fuentes Oficiales y Documentales Utilizadas</h3>
+        <ul class="fuentes-list">
+          <li><strong>Superintendencia de Notariado y Registro (SNR):</strong> Certificados de tradición y libertad de los folios de matrícula inmobiliaria indexados.</li>
+          <li><strong>Ventanilla Única de Registro (VUR):</strong> Historial transaccional y cruce de índices de propietarios bajo el número de identificación del sujeto.</li>
+          <li><strong>Agencia Nacional de Tierras (ANT):</strong> Resoluciones de adjudicación originaria de terrenos baldíos a familias campesinas.</li>
+          <li><strong>Instituto Geográfico Agustín Codazzi (IGAC):</strong> Planos catastrales y delimitación de las Unidades Agrícolas Familiares (UAF) por zonas de desarrollo hídrico y suelo.</li>
+          <li><strong>Gaceta del Congreso:</strong> Transcripciones oficiales de las intervenciones, debates de control político y declaraciones de intereses en la plenaria del Senado.</li>
+        </ul>
       </div>
 
       <div id="desglose-puntos"></div>
@@ -258,7 +278,6 @@ function marcarPalabra(btn) {
   var marcadas = document.querySelectorAll('#discurso-box .word-btn.marked');
   palabrasMarcadas = marcadas.length;
   
-  // Si marca los dos sesgos emocionales correctos (persecución criminal y destruir la cultura)
   if (palabrasMarcadas >= 2) {
     document.getElementById('btn-tono').removeAttribute('disabled');
   }
@@ -268,28 +287,25 @@ function mostrarResultados() {
   var puntos = 0;
   var desgloseHTML = '<div style="font-size:12px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Balance Metodológico</div>';
 
-  // Evaluar Fuente
   if (respuestasUsuario.fuente === 2) {
     puntos += 500;
-    desgloseHTML += '<div class="score-row"><span>🔍 Rastreo Inicial (Cédula/VUR):</span><span style="color:#5DCAA5">+500 pts (Riguroso)</span></div>';
+    desgloseHTML += '<div class="score-row"><span>🔍 Rastreo Inicial (Catastro/VUR):</span><span style="color:#5DCAA5">+500 pts (Riguroso)</span></div>';
   } else {
-    desgloseHTML += '<div class="score-row"><span>🔍 Rastreo Inicial:</span><span style="color:#F09595">0 pts (Poco efectivo para tierras)</span></div>';
+    desgloseHTML += '<div class="score-row"><span>🔍 Rastreo Inicial:</span><span style="color:#F09595">0 pts (Inefectivo para trazar tierras)</span></div>';
   }
 
-  // Evaluar Dinero
   if (respuestasUsuario.dinero === 2) {
     puntos += 500;
-    desgloseHTML += '<div class="score-row"><span>💰 Interpretación Ley 160:</span><span style="color:#5DCAA5">+500 pts (Certero)</span></div>';
+    desgloseHTML += '<div class="score-row"><span>💰 Interpretación Legal (UAF):</span><span style="color:#5DCAA5">+500 pts (Certero)</span></div>';
   } else {
-    desgloseHTML += '<div class="score-row"><span>💰 Interpretación Ley 160:</span><span style="color:#F09595">0 pts (Pasaste por alto la UAF)</span></div>';
+    desgloseHTML += '<div class="score-row"><span>💰 Interpretación Legal:</span><span style="color:#F09595">0 pts (Se omitieron las restricciones de ley)</span></div>';
   }
 
-  // Evaluar Contradicciones
   if (respuestasUsuario.contra === 1) {
     puntos += 500;
-    desgloseHTML += '<div class="score-row"><span>⚡ Cruce de Datos Fácticos:</span><span style="color:#5DCAA5">+500 pts (Impecable)</span></div>';
+    desgloseHTML += '<div class="score-row"><span>⚡ Cruce de Evidencia:</span><span style="color:#5DCAA5">+500 pts (Impecable)</span></div>';
   } else {
-    desgloseHTML += '<div class="score-row"><span>⚡ Cruce de Datos Fácticos:</span><span style="color:#F09595">0 pts (Sin sustento matemático)</span></div>';
+    desgloseHTML += '<div class="score-row"><span>⚡ Cruce de Evidencia:</span><span style="color:#F09595">0 pts (Sin sustento documental sólido)</span></div>';
   }
 
   ir('sc-puntaje');
@@ -297,11 +313,11 @@ function mostrarResultados() {
   
   var feedback = "";
   if (puntos === 1500) {
-    feedback = "¡Excelente! Utilizaste el rigor periodístico a la perfección. Desenmascaraste la acumulación con base en datos duros e inapelables.";
+    feedback = "¡Excelente! Aplicaste un estándar riguroso de verificación. Desenmascaraste la acumulación con base en datos públicos e inapelables.";
   } else if (puntos >= 500) {
-    feedback = "Buen intento, pero dejaste cabos sueltos. El político logró desviar parte de la atención con su narrativa.";
+    feedback = "Buen intento, pero dejaste vacíos metodológicos. El discurso estratégico logró desviar parte de la atención técnica.";
   } else {
-    feedback = "Tu investigación se quedó en la superficie del show mediático. Faltó rigurosidad en los folios.";
+    feedback = "La investigación se quedó en la superficie del show mediático. Faltó profundizar en el análisis documental del suelo.";
   }
   
   document.getElementById('score-feedback').textContent = feedback;
