@@ -86,6 +86,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .btn-skip{display:block;text-align:center;background:none;border:none;color:#666;font-size:12px;margin-top:0.75rem;cursor:pointer;text-decoration:underline}
 .btn-skip:hover{color:#aaa}
 
+/* TRANSPARENCIA DE PAUTA (CONTENIDO PAGO/PATROCINADO) */
+.badge-pauta{display:inline-block;background:#0d2e1a;border:1px solid #1D9E75;color:#5DCAA5;font-size:12px;font-weight:600;padding:6px 12px;border-radius:20px;margin-top:12px}
+.badge-pauta.alerta{background:#2e1a0d;border-color:#BA7517;color:#E8A855}
+.badge-pauta.riesgo{background:#301616;border-color:#663333;color:#F09595}
+
 /* REPOSITORIO (LA CENTRAL VERIFICADA) */
 .repo-container{padding:2rem 0}
 .repo-header{margin-bottom:2rem;border-bottom:1px solid #222;padding-bottom:1rem}
@@ -151,13 +156,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
       <div class="repo-grid">
         <div class="repo-card">
-          <div class="repo-meta"><span>📂 Caso #001 (Activo)</span> <span>📍 Origen: Tierras / Agro</span> <span>📅 Indexado: Hace poco</span></div>
+          <div class="repo-meta"><span>📂 Caso #001 (Activo)</span> <span>📍 Origen: Tierras / Agro</span> <span>📅 Indexado: Hace poco</span> <span>💸 Pauta: No detectada</span></div>
           <h3>La Cosecha de Baldíos y la Acumulación de la UAF</h3>
           <p>Auditoría metodológica sobre el fenómeno de acaparamiento de predios originalmente catalogados como baldíos estatales destinados a la reforma agraria campesina. Expone los métodos de distracción discursiva frente al cruce del registro público de la propiedad inmobiliaria.</p>
           <button class="btn-main" style="margin-top:10px; padding:10px;" onclick="mostrarSeccionGlobal('game')">Analizar este expediente en el simulador</button>
         </div>
         <div class="repo-card" style="border-left-color: #555; opacity: 0.6;">
-          <div class="repo-meta"><span>🔒 Caso #002 (Bloqueo Semanal)</span> <span>📍 Origen: Contratación</span> <span>📅 Próximamente</span></div>
+          <div class="repo-meta"><span>🔒 Caso #002 (Bloqueo Semanal)</span> <span>📍 Origen: Contratación</span> <span>📅 Próximamente</span> <span>💸 Pauta: Por evaluar</span></div>
           <h3>Los Contratos Espejo en la Infraestructura Regional</h3>
           <p>Análisis de pauta y trazabilidad presupuestaria sobre firmas de consorcios con personería jurídica modificada para evadir licitaciones públicas transparentes.</p>
         </div>
@@ -205,18 +210,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <div class="prog-step"></div>
         <div class="prog-step"></div>
       </div>
-      <span class="tag tag-red">Paso 1: El Detonante</span>
+      <span class="tag tag-red">Paso 1: Pista de Fuente</span>
       <div class="expediente">
         <div class="expediente-label">El Hecho Viral</div>
         <h2>El senador entra al Capitolio Nacional montado a caballo</h2>
         <p>Ante las cámaras dice: <em>"Soy un campesino de origen humilde, defensor de los jinetes y de la Colombia rural olvidadas. Mis propiedades son el fruto del sudor de una vida limpia."</em></p>
+        <div class="badge-pauta">💸 Transparencia de Pauta: sin contenido patrocinado o pago detectado en este caso</div>
       </div>
       
       <div class="investigacion-box">
-        <p style="font-size: 14px; color:#aaa; margin-bottom: 1rem;">Como investigador, ¿cuál es tu primer paso técnico para verificar la procedencia de su patrimonio?</p>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 1, this, 100)">Buscar registros de prensa antiguos y entrevistas en televisión donde hable de su infancia. (20 min)</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 2, this, 500)">Cruzar su número de cédula en la Ventanilla Única de Registro (VUR) y bases de datos catastrales. (5 min)</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 3, this, 200)">Enviar un derecho de petición a su partido político pidiendo sus declaraciones de renta internas. (15 días)</button>
+        <p style="font-size: 14px; color:#aaa; margin-bottom: 1rem;">Antes de investigar su patrimonio, tienes que evaluar la fuente misma del video que se volvió viral. ¿Quién lo emitió originalmente y qué tan confiable es?</p>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 1, this, 100)">Confiar en el resumen que circula por una cuenta anónima en redes y usarlo como punto de partida. (20 min)</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 2, this, 500)">Confirmar el video contra la transmisión oficial del Canal del Congreso y ubicar el minuto exacto de la intervención. (5 min)</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 3, this, 200)">Buscar capturas de pantalla y comentarios de otros usuarios para reconstruir el contexto. (15 días)</button>
       </div>
       <button class="btn-main" id="btn-fuente" disabled onclick="ir('sc-dinero')">Siguiente paso: Rastrear el Dinero →</button>
     </div>
@@ -544,7 +550,7 @@ function mostrarResultados() {
   
   // Construcción dinámica de la matriz de retroalimentación
   var desgloseHTML = '<div style="font-size:12px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Balance e Indicadores Técnicos</div>';
-  desgloseHTML += '<div class="score-row"><span>🔍 Identificación de Fuente (VUR/Catastro - Máx 500):</span><span style="color:' + (puntosBrutos.fuente === 500 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos.fuente + ' pts</span></div>';
+  desgloseHTML += '<div class="score-row"><span>🔍 Identificación de Fuente (Verificación de fuente primaria - Máx 500):</span><span style="color:' + (puntosBrutos.fuente === 500 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos.fuente + ' pts</span></div>';
   desgloseHTML += '<div class="score-row"><span>💰 Rastreo de Financiación (Ley 160/UAF - Máx 750):</span><span style="color:' + (puntosBrutos.dinero === 750 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos.dinero + ' pts</span></div>';
   desgloseHTML += '<div class="score-row"><span>⚡ Detección de Contradicción Documental (Máx 400):</span><span style="color:' + (puntosBrutos.tono === 400 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos.tono + ' pts</span></div>';
   desgloseHTML += '<div class="score-row"><span>⏱️ Factor de Tiempo Invertido (Eficiencia - Máx 250):</span><span style="color:#5DCAA5">' + puntosBrutos.tiempo + ' pts</span></div>';
