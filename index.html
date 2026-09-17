@@ -80,6 +80,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .col-derrumbar h4{color:#5DCAA5}
 .decision-col .evidence-item{cursor:default}
 
+/* ONBOARDING */
+.onboarding-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;font-size:14px;color:#ccc;line-height:1.5}
+.onboarding-icon{font-size:20px;flex-shrink:0;width:26px;text-align:center}
+.btn-skip{display:block;text-align:center;background:none;border:none;color:#666;font-size:12px;margin-top:0.75rem;cursor:pointer;text-decoration:underline}
+.btn-skip:hover{color:#aaa}
+
 /* REPOSITORIO (LA CENTRAL VERIFICADA) */
 .repo-container{padding:2rem 0}
 .repo-header{margin-bottom:2rem;border-bottom:1px solid #222;padding-bottom:1rem}
@@ -164,8 +170,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div id="global-game" class="game-section" style="display:none;">
   <div class="game-body">
 
+    <!-- PASO 0: ONBOARDING / TUTORIAL -->
+    <div id="sc-onboarding" class="screen active">
+      <span class="tag tag-purple">Antes de Empezar</span>
+      <div class="expediente" style="border-left-color:#6B46C1;">
+        <div class="expediente-label" style="color:#6B46C1;">Tu Misión</div>
+        <h2>Eres un periodista de investigación</h2>
+        <p>No vas a leer una noticia: vas a reconstruirla. Tu trabajo es rastrear el origen de un caso político real colombiano, siguiendo el mismo método que usan los periodistas de investigación reales.</p>
+      </div>
+
+      <div class="investigacion-box">
+        <p style="font-size:14px; color:#F0EDE6; margin-bottom:1rem; font-weight:bold;">En cada caso vas a trabajar con 4 tipos de evidencia:</p>
+        <div class="onboarding-item"><span class="onboarding-icon">🔍</span><div><strong>Fuente</strong> — ¿quién emitió la información y qué tan confiable es?</div></div>
+        <div class="onboarding-item"><span class="onboarding-icon">💰</span><div><strong>Dinero</strong> — ¿quién financia el mensaje o al actor detrás de él?</div></div>
+        <div class="onboarding-item"><span class="onboarding-icon">🎭</span><div><strong>Tono</strong> — ¿qué emociones intenta activar el discurso?</div></div>
+        <div class="onboarding-item"><span class="onboarding-icon">📄</span><div><strong>Contradicciones</strong> — ¿el discurso actual choca con hechos documentados?</div></div>
+      </div>
+
+      <div class="investigacion-box" style="border-color:#E24B4A;">
+        <p style="font-size:14px; color:#F0EDE6; line-height:1.6;"><strong>Regla del juego:</strong> al cerrar tu investigación vas a ver, de forma obligatoria, la trazabilidad real del caso — quién lo investigó, qué fuentes usó y qué encontró. La transparencia no es opcional: es la condición para publicar.</p>
+      </div>
+
+      <button class="btn-main" onclick="comenzarDesdeOnboarding()">Comenzar Investigación →</button>
+      <button class="btn-skip" onclick="comenzarDesdeOnboarding()">Ya jugué antes, saltar introducción</button>
+    </div>
+
     <!-- PASO 1: FUENTE -->
-    <div id="sc-fuente" class="screen active">
+    <div id="sc-fuente" class="screen">
       <div class="progress">
         <div class="prog-step active"></div>
         <div class="prog-step"></div>
@@ -388,6 +419,23 @@ var palabrasMarcadasCorrectas = 0;
 var mapaPuntosFuente = { 1: 100, 2: 500, 3: 200 };
 var mapaPuntosDinero = { 1: 200, 2: 750, 3: 300 };
 var mapaPuntosContra = { 1: 400, 2: 100, 3: 50 };
+
+// Onboarding: si el usuario ya vio la introducción antes, saltamos directo al Paso 1
+window.addEventListener('DOMContentLoaded', function () {
+  if (localStorage.getItem('cluepolitico_onboarded') === 'true') {
+    var onb = document.getElementById('sc-onboarding');
+    var paso1 = document.getElementById('sc-fuente');
+    if (onb && paso1) {
+      onb.classList.remove('active');
+      paso1.classList.add('active');
+    }
+  }
+});
+
+function comenzarDesdeOnboarding() {
+  localStorage.setItem('cluepolitico_onboarded', 'true');
+  ir('sc-fuente');
+}
 
 // Navegación Global Solución Observación Repositorio
 function mostrarSeccionGlobal(seccion) {
