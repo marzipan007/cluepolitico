@@ -138,7 +138,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <h1>EL MAKING-OF<br>DE LA <span>INVESTIGACIÓN</span></h1>
       <p class="landing-sub">No leas la noticia, constrúyela paso a paso. Conviértete en un periodista de investigación y desafía las narrativas de la opinión pública.</p>
       <div>
-        <button class="btn-play" onclick="mostrarSeccionGlobal('game')">Iniciar Investigación</button>
+        <button class="btn-play" onclick="irAInvestigacion(1)">Iniciar Investigación</button>
         <button class="btn-sec" onclick="mostrarSeccionGlobal('repo')">Explorar Repositorio</button>
       </div>
     </div>
@@ -159,12 +159,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
           <div class="repo-meta"><span>📂 Caso #001 (Activo)</span> <span>📍 Origen: Tierras / Agro</span> <span>📅 Indexado: Hace poco</span> <span>💸 Pauta: No detectada</span></div>
           <h3>La Cosecha de Baldíos y la Acumulación de la UAF</h3>
           <p>Auditoría metodológica sobre el fenómeno de acaparamiento de predios originalmente catalogados como baldíos estatales destinados a la reforma agraria campesina. Expone los métodos de distracción discursiva frente al cruce del registro público de la propiedad inmobiliaria.</p>
-          <button class="btn-main" style="margin-top:10px; padding:10px;" onclick="mostrarSeccionGlobal('game')">Analizar este expediente en el simulador</button>
+          <button class="btn-main" style="margin-top:10px; padding:10px;" onclick="irAInvestigacion(1)">Analizar este expediente en el simulador</button>
         </div>
-        <div class="repo-card" style="border-left-color: #555; opacity: 0.6;">
-          <div class="repo-meta"><span>🔒 Caso #002 (Bloqueo Semanal)</span> <span>📍 Origen: Contratación</span> <span>📅 Próximamente</span> <span>💸 Pauta: Por evaluar</span></div>
-          <h3>Los Contratos Espejo en la Infraestructura Regional</h3>
-          <p>Análisis de pauta y trazabilidad presupuestaria sobre firmas de consorcios con personería jurídica modificada para evadir licitaciones públicas transparentes.</p>
+        <div class="repo-card">
+          <div class="repo-meta"><span>📂 Caso #002 (Activo)</span> <span>📍 Origen: Función Pública / Patrimonio</span> <span>📅 Indexado: Hace poco</span> <span>💸 Pauta: No detectada</span></div>
+          <h3>El Patrimonio del Nuevo Contralor: la denuncia de enriquecimiento ilícito</h3>
+          <p>Verificación de una denuncia anónima sobre el patrimonio inmobiliario de un alto funcionario de control fiscal, cruzada contra registros públicos y escrituras, mientras el caso permanece abierto en la Fiscalía.</p>
+          <button class="btn-main" style="margin-top:10px; padding:10px;" onclick="irAInvestigacion(2)">Analizar este expediente en el simulador</button>
         </div>
       </div>
     </div>
@@ -198,6 +199,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
       <button class="btn-main" onclick="comenzarDesdeOnboarding()">Comenzar Investigación →</button>
       <button class="btn-skip" onclick="comenzarDesdeOnboarding()">Ya jugué antes, saltar introducción</button>
+    </div>
+
+    <!-- ENCUESTA PRE (ANTES DE JUGAR) -->
+    <div id="sc-encuesta-pre" class="screen">
+      <span class="tag tag-purple">Antes de Empezar</span>
+      <div class="expediente" style="border-left-color:#6B46C1;">
+        <div class="expediente-label" style="color:#6B46C1;">Encuesta Rápida (2 min)</div>
+        <h2>Antes de tu primera investigación</h2>
+        <p>Responde esta breve encuesta anónima para que podamos medir si el juego realmente cambia algo en tu forma de ver el contenido político. Solo te la mostramos una vez.</p>
+      </div>
+      <!-- ⚠️ Reemplaza el "src" de abajo por el link de inserción (Enviar → <>) de tu Google Form PRE real -->
+      <iframe src="https://docs.google.com/forms/d/e/REEMPLAZA_CON_TU_FORM_ID_PRE/viewform?embedded=true" width="100%" height="900" frameborder="0" style="border:1px solid #333;border-radius:8px;background:#fff;margin-top:1rem;">Cargando…</iframe>
+      <button class="btn-main" onclick="completarEncuestaPre()">Ya respondí, continuar a la investigación →</button>
     </div>
 
     <!-- PASO 1: FUENTE -->
@@ -407,7 +421,234 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
       <div id="desglose-puntos"></div>
 
-      <button class="btn-main" onclick="reiniciarInstanciaJuego()" style="margin-top:1rem">Investigar otro caso o ver repositorio →</button>
+      <button class="btn-main" onclick="irEncuestaPost()" style="margin-top:1rem">Continuar a la encuesta final →</button>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- CASO #002: LOS CONTRATOS ESPEJO EN LA INFRAESTRUCTURA REGIONAL -->
+    <!-- ========================================================= -->
+
+    <!-- CASO 2 - PASO 1: FUENTE -->
+    <div id="sc-fuente-2" class="screen">
+      <div class="progress">
+        <div class="prog-step active"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+      </div>
+      <span class="tag tag-red">Paso 1: Pista de Fuente</span>
+      <div class="expediente">
+        <div class="expediente-label">El Hecho</div>
+        <h2>El Congreso elige, casi por unanimidad, al nuevo jefe del organismo que fiscaliza el gasto público</h2>
+        <p>En su discurso de posesión promete, en sus palabras, ser <em>"la casa de la transparencia"</em>. Pero en los archivos de la Fiscalía reposa, desde hace tres años, una denuncia anónima que apunta en la dirección contraria.</p>
+        <div class="badge-pauta">💸 Transparencia de Pauta: sin contenido patrocinado o pago detectado en este caso</div>
+      </div>
+
+      <div class="investigacion-box">
+        <p style="font-size: 14px; color:#aaa; margin-bottom: 1rem;">Tienes en tus manos una denuncia anónima radicada hace tres años ante la Fiscalía. ¿Cuál es tu primer paso técnico antes de publicar cualquier hallazgo?</p>
+        <button class="opcion-investigar" onclick="seleccionarOpcion2('fuente', 1, this, 100)">Publicar los señalamientos de la denuncia tal como están redactados, citando la fuente anónima. (20 min)</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion2('fuente', 2, this, 500)">Verificar cada predio mencionado contra los folios de matrícula inmobiliaria y las escrituras públicas antes de publicar cualquier hallazgo. (5 min)</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion2('fuente', 3, this, 200)">Buscar la reacción pública en redes sociales sobre el nombramiento para evaluar si genera controversia. (15 días)</button>
+      </div>
+      <button class="btn-main" id="btn-fuente-2" disabled onclick="ir('sc-dinero-2')">Siguiente paso: Rastrear el Dinero →</button>
+    </div>
+
+    <!-- CASO 2 - PASO 2: DINERO -->
+    <div id="sc-dinero-2" class="screen">
+      <div class="progress">
+        <div class="prog-step done"></div>
+        <div class="prog-step active"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+      </div>
+      <span class="tag tag-info">Paso 2: Radiografía Patrimonial</span>
+      <h2 style="margin-bottom:1rem;">Los Hallazgos del Registro Público</h2>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">El cruce de escrituras públicas revela que el funcionario, su cónyuge y su hija concentran <strong>al menos 13 propiedades</strong> adquiridas entre 2009 y 2022, la mayoría sin hipoteca, mientras él ocupaba un cargo de secretario de comisión en el Senado con una asignación mensual cercana a los 18 millones de pesos.</p>
+
+      <div class="investigacion-box">
+        <p style="font-size: 14px; font-weight:bold; margin-bottom: 1rem; color:#F0EDE6;">¿Cómo interpretas este hallazgo frente al delito de enriquecimiento ilícito de servidor público?</p>
+        <button class="opcion-investigar" onclick="seleccionarOpcion2('dinero', 1, this, 200)">Es normal que un servidor público de alto nivel acumule propiedades con los años de servicio.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion2('dinero', 2, this, 750)">Alerta de Desproporción: la brecha entre el salario declarado y un patrimonio inmobiliario superior a 2.000 millones de pesos, casi todo sin hipoteca, configura el tipo penal de enriquecimiento ilícito — aunque corresponde a la justicia determinar responsabilidad.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion2('dinero', 3, this, 300)">Indica solamente que la familia tiene un buen manejo de sus finanzas personales.</button>
+      </div>
+      <button class="btn-main" id="btn-dinero-2" disabled onclick="ir('sc-tono-2')">Siguiente paso: Análisis de la Respuesta Oficial →</button>
+    </div>
+
+    <!-- CASO 2 - PASO 3: TONO -->
+    <div id="sc-tono-2" class="screen">
+      <div class="progress">
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step active"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+      </div>
+      <span class="tag tag-red">Paso 3: La Respuesta Oficial</span>
+      <h2 style="margin-bottom:6px;">Marcaje de Evidencia</h2>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Haz clic sobre los argumentos que son <strong>generales o procedimentales</strong> (no abordan directamente las cifras y fechas documentadas), separándolos del que sí responde punto por punto a lo encontrado.</p>
+
+      <div class="texto-analisis" id="discurso-box-2">
+        Según su defensa, esto es <span class="word-btn" onclick="marcarPalabra2(this, true)">un refrito de una denuncia anónima que ya fue archivada por el ente de control disciplinario</span>. La verificación documental en el registro de instrumentos públicos <span class="word-btn" onclick="marcarPalabra2(this, false)">no halló pruebas de uso de testaferros ni un incremento patrimonial desproporcionado</span>, y sostiene que <span class="word-btn" onclick="marcarPalabra2(this, true)">los vínculos familiares o políticos no autorizan, por sí solos, a atribuirle la propiedad de bienes de terceros</span>.
+      </div>
+
+      <p style="font-size:12px; color:#666;">*Selecciona los dos argumentos generales/procedimentales identificados para continuar.</p>
+      <button class="btn-main" id="btn-tono-2" disabled onclick="ir('sc-contradicciones-2')">Siguiente paso: Cruzar Contradicciones →</button>
+    </div>
+
+    <!-- CASO 2 - PASO 4: CONTRADICCIONES -->
+    <div id="sc-contradicciones-2" class="screen">
+      <div class="progress">
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step active"></div>
+        <div class="prog-step"></div>
+        <div class="prog-step"></div>
+      </div>
+      <span class="tag tag-info">Paso 4: El Quiebre</span>
+      <h2 style="margin-bottom:1rem;">El Contraste Final</h2>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">En una entrevista reciente, el funcionario niega cualquier cercanía con un fallecido senador condenado por liderar una red de corrupción. Sin embargo, tienes acceso al expediente de una investigación periodística previa sobre ese vínculo.</p>
+
+      <div class="investigacion-box">
+        <p style="font-size: 14px; font-weight:bold; margin-bottom: 1rem; color:#F0EDE6;">¿Cuál es la contradicción documental que hallaste?</p>
+        <button class="opcion-investigar" onclick="seleccionarOpcion2('contra', 1, this, 400)">Existen fotografías y una llamada interceptada, incorporada por la Corte Suprema a una medida de aseguramiento, que documentan la relación que niega.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion2('contra', 2, this, 100)">El funcionario cursó posgrados en universidades privadas costosas.</button>
+        <button class="opcion-investigar" onclick="seleccionarOpcion2('contra', 3, this, 50)">El funcionario viajaba con frecuencia a Europa y Estados Unidos.</button>
+      </div>
+      <button class="btn-main" id="btn-contra-2" disabled onclick="ir('sc-expediente-interactivo-2')">Siguiente paso: Construcción del Expediente →</button>
+    </div>
+
+    <!-- CASO 2 - PASO 5: CONSTRUCCIÓN DEL EXPEDIENTE -->
+    <div id="sc-expediente-interactivo-2" class="screen">
+      <div class="progress">
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step active"></div>
+        <div class="prog-step"></div>
+      </div>
+      <span class="tag tag-purple">Paso 5: Mesa de Control Metodológico</span>
+      <h2>Construcción del Expediente</h2>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1rem;">Clasifica cada hallazgo según si <strong>sostiene o derrumba</strong> el discurso de transparencia total del funcionario.</p>
+
+      <div class="board-container">
+        <div class="evidence-pool">
+          <div class="pool-title">Evidencias Recolectadas en Campo</div>
+          <div class="evidence-cards-container" id="pool-evidencias-2">
+            <div class="evidence-item" id="ev-1-2">
+              <div class="evidence-meta meta-fuente">Verificación en Registro de Instrumentos Públicos</div>
+              <div>13 propiedades familiares verificadas contra folios de matrícula inmobiliaria y escrituras públicas.</div>
+              <div style="display:flex; gap:10px; margin-top:5px;">
+                <button onclick="clasificarEvidencia2(1, 'sostiene')" style="flex:1; padding:4px; font-size:11px; background:#442222; color:#ffb3b3; border:1px solid #663333; cursor:pointer; border-radius:3px;">Sostiene Discurso</button>
+                <button onclick="clasificarEvidencia2(1, 'derrumbar')" style="flex:1; padding:4px; font-size:11px; background:#224433; color:#b3ffcc; border:1px solid #336644; cursor:pointer; border-radius:3px;">Derrumba Discurso</button>
+              </div>
+            </div>
+            <div class="evidence-item" id="ev-2-2">
+              <div class="evidence-meta meta-dinero">Análisis frente al tipo penal de enriquecimiento ilícito</div>
+              <div>Desproporción entre una asignación mensual cercana a 18 millones de pesos y un patrimonio inmobiliario superior a 2.000 millones, mayormente sin hipoteca.</div>
+              <div style="display:flex; gap:10px; margin-top:5px;">
+                <button onclick="clasificarEvidencia2(2, 'sostiene')" style="flex:1; padding:4px; font-size:11px; background:#442222; color:#ffb3b3; border:1px solid #663333; cursor:pointer; border-radius:3px;">Sostiene Discurso</button>
+                <button onclick="clasificarEvidencia2(2, 'derrumbar')" style="flex:1; padding:4px; font-size:11px; background:#224433; color:#b3ffcc; border:1px solid #336644; cursor:pointer; border-radius:3px;">Derrumba Discurso</button>
+              </div>
+            </div>
+            <div class="evidence-item" id="ev-3-2">
+              <div class="evidence-meta meta-tono">Análisis de la Respuesta Oficial</div>
+              <div>La defensa se apoya en un archivo disciplinario previo y en principios legales generales, sin desmentir punto por punto el detalle de las 13 propiedades.</div>
+              <div style="display:flex; gap:10px; margin-top:5px;">
+                <button onclick="clasificarEvidencia2(3, 'sostiene')" style="flex:1; padding:4px; font-size:11px; background:#442222; color:#ffb3b3; border:1px solid #663333; cursor:pointer; border-radius:3px;">Sostiene Discurso</button>
+                <button onclick="clasificarEvidencia2(3, 'derrumbar')" style="flex:1; padding:4px; font-size:11px; background:#224433; color:#b3ffcc; border:1px solid #336644; cursor:pointer; border-radius:3px;">Derrumba Discurso</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-columns">
+          <div class="decision-col col-sostener">
+            <h4>Sostiene la Narrativa</h4>
+            <div id="box-sostener-2" style="display:flex; flex-direction:column; gap:8px;"></div>
+          </div>
+          <div class="decision-col col-derrumbar">
+            <h4>Derrumba la Narrativa</h4>
+            <div id="box-derrumbar-2" style="display:flex; flex-direction:column; gap:8px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:12px; color:#666;">*Debes procesar y clasificar las 3 evidencias para fijar el Coeficiente de Evidencia y desbloquear la redacción final.</p>
+      <button class="btn-main" id="btn-expediente-2" disabled onclick="ir('sc-publicar-2')">Proceder a Redacción y Cierre →</button>
+    </div>
+
+    <!-- CASO 2 - PASO 6: PUBLICAR -->
+    <div id="sc-publicar-2" class="screen">
+      <div class="progress">
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step done"></div>
+        <div class="prog-step active"></div>
+      </div>
+      <span class="tag tag-red">El Cierre</span>
+      <h2 style="margin-bottom:1rem;">¡Tu Investigación está Lista!</h2>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Has estructurado el caso metodológicamente en tu panel de control. Es hora de emitir el veredicto definitivo del informe y calcular tu puntaje de rigor periodístico.</p>
+
+      <button class="btn-main" style="background:#1D9E75" onclick="mostrarResultados2()">📰 PUBLICAR REPORTAJE INVESTIGATIVO</button>
+    </div>
+
+    <!-- CASO 2 - SCREEN: PUNTAJE -->
+    <div id="sc-puntaje-2" class="screen">
+      <div class="score-hero">
+        <div style="font-size:12px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;">Reportaje Evaluado (Rigor Total)</div>
+        <div class="score-big" id="score-num-2">0 pts</div>
+        <p style="margin-top:10px; color:#888; font-weight:bold;" id="score-coef-2"></p>
+        <p style="margin-top:10px; color:#aaa; max-width:550px; margin-left:auto; margin-right:auto; font-size:14px; line-height:1.5;" id="score-feedback-2"></p>
+      </div>
+
+      <div class="rev-card">
+        <h3 style="color:#E24B4A; margin-bottom:10px;">La Investigación de Campo Real</h3>
+        <p style="font-size:14px; color:#aaa; line-height:1.6; margin-bottom:10px;">
+          Este caso reconstruye una investigación periodística real y verificada, publicada en agosto de 2026, sobre el patrimonio inmobiliario del nuevo jefe del organismo que fiscaliza el gasto público en Colombia. Una denuncia anónima radicada en 2023 ante la Fiscalía señala un incremento patrimonial injustificado durante su paso por el Congreso.
+        </p>
+        <p style="font-size:14px; color:#aaa; line-height:1.6;">
+          El ente de control disciplinario archivó en 2024 una revisión sobre el caso, y la Fiscalía no ha reportado avances formales en tres años. El funcionario y su defensa niegan cualquier irregularidad. <strong>Se trata de un caso judicial y disciplinario que sigue abierto: ningún tribunal ha determinado responsabilidad.</strong>
+        </p>
+        <a href="https://casamacondo.co/investigacion/enriquecimiento-jorge-eliecer-laverde/" target="_blank" class="btn-main btn-link">📖 Leer investigación completa publicada</a>
+      </div>
+
+      <!-- SECCIÓN DE FUENTES DE LA INVESTIGACIÓN -->
+      <div class="fuentes-card">
+        <h3 style="color:#F0EDE6; font-size:15px; font-weight:700; border-bottom:1px solid #333; padding-bottom:8px;">Fuentes Oficiales y Documentales Utilizadas</h3>
+        <ul class="fuentes-list">
+          <li><strong>Fiscalía General de la Nación (Dirección Especializada contra la Corrupción):</strong> entidad ante la que se radicó la denuncia anónima.</li>
+          <li><strong>Procuraduría General de la Nación:</strong> archivó una revisión disciplinaria sobre los mismos hechos.</li>
+          <li><strong>Registro de Instrumentos Públicos:</strong> folios de matrícula y escrituras que documentan la adquisición de las propiedades.</li>
+          <li><strong>SIGEP (Sistema de Información y Gestión del Empleo Público):</strong> hoja de vida y cargos ocupados por el funcionario.</li>
+          <li><strong>CasaMacondo:</strong> medio que verificó y publicó la investigación original.</li>
+        </ul>
+      </div>
+
+      <div id="desglose-puntos-2"></div>
+
+      <button class="btn-main" onclick="irEncuestaPost()" style="margin-top:1rem">Continuar a la encuesta final →</button>
+    </div>
+
+    <!-- ENCUESTA POST (DESPUÉS DE JUGAR, COMPARTIDA POR AMBOS CASOS) -->
+    <div id="sc-encuesta-post" class="screen">
+      <span class="tag tag-purple">Ya Casi Terminas</span>
+      <div class="expediente" style="border-left-color:#6B46C1;">
+        <div class="expediente-label" style="color:#6B46C1;">Encuesta Final (2 min)</div>
+        <h2>Cuéntanos cómo te fue</h2>
+        <p>Esta encuesta nos ayuda a mejorar el juego para la próxima entrega. Tus respuestas son anónimas.</p>
+      </div>
+      <!-- ⚠️ Reemplaza el "src" de abajo por el link de inserción (Enviar → <>) de tu Google Form POST real -->
+      <iframe src="https://docs.google.com/forms/d/e/REEMPLAZA_CON_TU_FORM_ID_POST/viewform?embedded=true" width="100%" height="1400" frameborder="0" style="border:1px solid #333;border-radius:8px;background:#fff;margin-top:1rem;">Cargando…</iframe>
+      <button class="btn-main" onclick="completarEncuestaPost()">Ya respondí, volver al repositorio →</button>
     </div>
 
   </div>
@@ -426,21 +667,100 @@ var mapaPuntosFuente = { 1: 100, 2: 500, 3: 200 };
 var mapaPuntosDinero = { 1: 200, 2: 750, 3: 300 };
 var mapaPuntosContra = { 1: 400, 2: 100, 3: 50 };
 
-// Onboarding: si el usuario ya vio la introducción antes, saltamos directo al Paso 1
+// ===== CASO #002: Los Contratos Espejo (estado independiente del Caso #001) =====
+var puntosBrutos2 = { fuente: 0, dinero: 0, tono: 0, tiempo: 250 };
+var clasificacionEvidencias2 = { 1: null, 2: null, 3: null };
+var totalEvidenciasClasificadas2 = 0;
+var mapaPuntosFuente2 = { 1: 100, 2: 500, 3: 200 };
+var mapaPuntosDinero2 = { 1: 200, 2: 750, 3: 300 };
+var mapaPuntosContra2 = { 1: 400, 2: 100, 3: 50 };
+
+// ===== NAVEGACIÓN GENERAL: onboarding → encuesta PRE → caso → encuesta POST =====
+var casoDestino = 1;
+
+// Al cargar la página, si el usuario ya vio el onboarding y ya respondió la encuesta PRE,
+// saltamos directo al Paso 1 del Caso #001 (comportamiento por defecto de la pestaña "Simulador")
 window.addEventListener('DOMContentLoaded', function () {
-  if (localStorage.getItem('cluepolitico_onboarded') === 'true') {
-    var onb = document.getElementById('sc-onboarding');
-    var paso1 = document.getElementById('sc-fuente');
-    if (onb && paso1) {
-      onb.classList.remove('active');
-      paso1.classList.add('active');
-    }
+  var onboarded = localStorage.getItem('cluepolitico_onboarded') === 'true';
+  var preEncuesta = localStorage.getItem('cluepolitico_pre_encuesta') === 'true';
+  var onb = document.getElementById('sc-onboarding');
+  if (onboarded && preEncuesta) {
+    onb.classList.remove('active');
+    document.getElementById('sc-fuente').classList.add('active');
+  } else if (onboarded && !preEncuesta) {
+    onb.classList.remove('active');
+    document.getElementById('sc-encuesta-pre').classList.add('active');
   }
 });
 
+// Punto de entrada único: botón de landing y ambas tarjetas de La Central Verificada pasan por aquí
+function irAInvestigacion(caso) {
+  casoDestino = caso;
+  mostrarSeccionGlobal('game');
+  if (localStorage.getItem('cluepolitico_onboarded') !== 'true') {
+    ir('sc-onboarding');
+  } else if (localStorage.getItem('cluepolitico_pre_encuesta') !== 'true') {
+    ir('sc-encuesta-pre');
+  } else {
+    lanzarCasoDestino();
+  }
+}
+
 function comenzarDesdeOnboarding() {
   localStorage.setItem('cluepolitico_onboarded', 'true');
-  ir('sc-fuente');
+  if (localStorage.getItem('cluepolitico_pre_encuesta') !== 'true') {
+    ir('sc-encuesta-pre');
+  } else {
+    lanzarCasoDestino();
+  }
+}
+
+function completarEncuestaPre() {
+  localStorage.setItem('cluepolitico_pre_encuesta', 'true');
+  lanzarCasoDestino();
+}
+
+function lanzarCasoDestino() {
+  if (casoDestino === 2) {
+    iniciarCaso2();
+  } else {
+    ir('sc-fuente');
+  }
+}
+
+function irEncuestaPost() {
+  if (localStorage.getItem('cluepolitico_post_encuesta') === 'true') {
+    reiniciarInstanciaJuego();
+  } else {
+    ir('sc-encuesta-post');
+  }
+}
+
+function completarEncuestaPost() {
+  localStorage.setItem('cluepolitico_post_encuesta', 'true');
+  reiniciarInstanciaJuego();
+}
+
+// Prepara y lanza el Caso #002 (reinicia su estado por si ya se había jugado antes sin recargar)
+function iniciarCaso2() {
+  puntosBrutos2 = { fuente: 0, dinero: 0, tono: 0, tiempo: 250 };
+  clasificacionEvidencias2 = { 1: null, 2: null, 3: null };
+  totalEvidenciasClasificadas2 = 0;
+  document.querySelectorAll('#sc-fuente-2 .opcion-investigar, #sc-dinero-2 .opcion-investigar, #sc-contradicciones-2 .opcion-investigar').forEach(function (b) { b.classList.remove('selected'); });
+  document.querySelectorAll('#discurso-box-2 .word-btn').forEach(function (w) { w.classList.remove('marked'); });
+  ['btn-fuente-2', 'btn-dinero-2', 'btn-tono-2', 'btn-contra-2', 'btn-expediente-2'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.setAttribute('disabled', 'true');
+  });
+  var pool = document.getElementById('pool-evidencias-2');
+  if (pool) {
+    ['ev-1-2', 'ev-2-2', 'ev-3-2'].forEach(function (id) {
+      var card = document.getElementById(id);
+      if (card) pool.appendChild(card);
+    });
+  }
+  mostrarSeccionGlobal('game');
+  ir('sc-fuente-2');
 }
 
 // Navegación Global Solución Observación Repositorio
@@ -573,6 +893,90 @@ function mostrarResultados() {
 function reiniciarInstanciaJuego() {
   location.reload();
 }
+
+// ===== FUNCIONES DEL CASO #002 (paralelas a las del Caso #001, estado independiente) =====
+
+function seleccionarOpcion2(paso, opc, elemento, puntosAsignados) {
+  var btns = elemento.parentNode.querySelectorAll('.opcion-investigar');
+  btns.forEach(function (b) { b.classList.remove('selected') });
+  elemento.classList.add('selected');
+
+  if (paso === 'fuente') puntosBrutos2.fuente = mapaPuntosFuente2[opc];
+  if (paso === 'dinero') puntosBrutos2.dinero = mapaPuntosDinero2[opc];
+  if (paso === 'contra') puntosBrutos2.tono = mapaPuntosContra2[opc];
+
+  document.getElementById('btn-' + paso + '-2').removeAttribute('disabled');
+}
+
+function marcarPalabra2(btn, esCorrecto) {
+  btn.classList.toggle('marked');
+  var marcadasCorrectas = document.querySelectorAll('#discurso-box-2 .word-btn.marked');
+  if (marcadasCorrectas.length >= 2) {
+    document.getElementById('btn-tono-2').removeAttribute('disabled');
+  } else {
+    document.getElementById('btn-tono-2').setAttribute('disabled', 'true');
+  }
+}
+
+function clasificarEvidencia2(idEvidencia, columnaDestino) {
+  clasificacionEvidencias2[idEvidencia] = columnaDestino;
+
+  var tarjetaNode = document.getElementById('ev-' + idEvidencia + '-2');
+  if (columnaDestino === 'sostiene') {
+    document.getElementById('box-sostener-2').appendChild(tarjetaNode);
+  } else {
+    document.getElementById('box-derrumbar-2').appendChild(tarjetaNode);
+  }
+
+  var conteo = 0;
+  for (var k in clasificacionEvidencias2) {
+    if (clasificacionEvidencias2[k] !== null) conteo++;
+  }
+  totalEvidenciasClasificadas2 = conteo;
+
+  if (totalEvidenciasClasificadas2 === 3) {
+    document.getElementById('btn-expediente-2').removeAttribute('disabled');
+  }
+}
+
+function mostrarResultados2() {
+  var aciertosMesa = 0;
+  if (clasificacionEvidencias2[1] === 'derrumbar') aciertosMesa++;
+  if (clasificacionEvidencias2[2] === 'derrumbar') aciertosMesa++;
+  if (clasificacionEvidencias2[3] === 'derrumbar') aciertosMesa++;
+
+  var C_evidencia = 0.2;
+  if (aciertosMesa === 1) C_evidencia = 0.5;
+  if (aciertosMesa === 2) C_evidencia = 0.8;
+  if (aciertosMesa === 3) C_evidencia = 1.0;
+
+  var sumatoriaPilaresBrutos = puntosBrutos2.fuente + puntosBrutos2.dinero + puntosBrutos2.tono + puntosBrutos2.tiempo;
+  var puntajeNetoFinal = Math.round(sumatoriaPilaresBrutos * C_evidencia);
+
+  ir('sc-puntaje-2');
+  document.getElementById('score-num-2').textContent = puntajeNetoFinal + ' / 1.900 pts';
+  document.getElementById('score-coef-2').textContent = 'Coeficiente de Evidencia Atribuido: ' + (C_evidencia * 100) + '%';
+
+  var desgloseHTML = '<div style="font-size:12px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Balance e Indicadores Técnicos</div>';
+  desgloseHTML += '<div class="score-row"><span>🔍 Identificación de Fuente (Verificación de fuente primaria - Máx 500):</span><span style="color:' + (puntosBrutos2.fuente === 500 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos2.fuente + ' pts</span></div>';
+  desgloseHTML += '<div class="score-row"><span>💰 Rastreo de Financiación (Enriquecimiento Ilícito - Máx 750):</span><span style="color:' + (puntosBrutos2.dinero === 750 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos2.dinero + ' pts</span></div>';
+  desgloseHTML += '<div class="score-row"><span>⚡ Detección de Contradicción Documental (Máx 400):</span><span style="color:' + (puntosBrutos2.tono === 400 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos2.tono + ' pts</span></div>';
+  desgloseHTML += '<div class="score-row"><span>⏱️ Factor de Tiempo Invertido (Eficiencia - Máx 250):</span><span style="color:#5DCAA5">' + puntosBrutos2.tiempo + ' pts</span></div>';
+  desgloseHTML += '<div class="score-row" style="background:#1a1a1a; padding:12px; font-weight:bold;"><span>🎯 Multiplicador por Rigor Metodológico (C_evidencia):</span><span style="color:#6B46C1">x ' + C_evidencia + '</span></div>';
+
+  document.getElementById('desglose-puntos-2').innerHTML = desgloseHTML;
+
+  var feedback = "";
+  if (puntajeNetoFinal >= 1600) {
+    feedback = "¡Rigor Periodístico Impecable! Lograste distinguir los argumentos procedimentales de los que realmente abordan los hallazgos, y usaste el cruce de registros públicos para documentar la desproporción patrimonial. Tu expediente se archiva con validez probatoria real.";
+  } else if (puntajeNetoFinal >= 1000) {
+    feedback = "Buen reportaje, pero con grietas en la validación. Identificaste datos clave, pero permitiste fallas en la clasificación del expediente final, reduciendo la contundencia de la publicación.";
+  } else {
+    feedback = "Alerta de Superficialidad: La investigación aceptó la respuesta oficial sin distinguir qué partes abordaban realmente los hallazgos. Faltó solidez técnica en el cruce de registros públicos, y la estructuración metodológica fue ineficaz.";
+  }
+  document.getElementById('score-feedback-2').textContent = feedback;
+}
+
 </script>
 </body>
 </html>
