@@ -96,9 +96,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .repo-header{margin-bottom:2rem;border-bottom:1px solid #222;padding-bottom:1rem}
 .repo-grid{display:flex;flex-direction:column;gap:1.5rem}
 .repo-card{background:#111;border:1px solid #222;border-left:4px solid #185FA5;border-radius:0 6px 6px 0;padding:1.5rem;display:flex;flex-direction:column;gap:10px}
-.repo-meta{display:flex;gap:15px;font-size:12px;color:#666}
+.repo-meta{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;color:#666}
 .repo-card h3{font-size:18px;color:#F0EDE6;font-weight:700}
 .repo-card p{font-size:14px;color:#999;line-height:1.5}
+.repo-source{font-size:12px;color:#5BCAA5;font-weight:600}
+.repo-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.repo-actions .btn-main{margin-top:0;padding:12px;flex:1;min-width:210px;width:auto;font-size:14px}
+.btn-outline{background:transparent;border:1px solid #444;color:#ccc}
+.btn-outline:hover{background:#1a1a1a;border-color:#888;color:#fff}
 
 /* REVELACION & FUENTES */
 .rev-card{background:#111;border:1px solid #333;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
@@ -110,12 +115,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .score-big{font-size:72px;font-weight:800;color:#F0EDE6;line-height:1}
 .score-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #1a1a1a;font-size:14px}
 
+/* ENCUESTAS (fallback de enlace externo) */
+.encuesta-fallback{font-size:13px;color:#888;margin-top:12px;line-height:1.5;text-align:center}
+.encuesta-fallback a{color:#7FB5F0;font-weight:600}
+
 /* BUTTONS & LINKS */
 .btn-main{width:100%;padding:16px;background:#E24B4A;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:6px;cursor:pointer;margin-top:1rem;transition:background 0.15s;letter-spacing:0.3px;text-align:center;text-decoration:none;display:block}
 .btn-main:hover{background:#c73b39}
 .btn-main:disabled{background:#2a2a2a;color:#444;cursor:default}
 .btn-link{background:#185FA5;text-decoration:none;display:inline-block;text-align:center}
 .btn-link:hover{background:#144f8a}
+.btn-outline.btn-link{background:transparent}
 </style>
 </head>
 <body>
@@ -152,20 +162,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="repo-header">
         <span class="tag tag-info">Componente Permanente</span>
         <h2 style="font-size:32px; font-weight:800; margin-top:5px;">La Central Verificada</h2>
-        <p style="color:#888; font-size:15px; margin-top:5px;">Base de datos de expedientes clasificados e indexados con base en investigaciones periodísticas reales del ecosistema nacional.</p>
+        <p style="color:#888; font-size:15px; margin-top:5px;">Base de datos de expedientes clasificados e indexados con base en investigaciones periodísticas reales del ecosistema nacional. Puedes leer cada investigación publicada directamente, o reconstruirla paso a paso en el simulador: tú eliges.</p>
       </div>
       <div class="repo-grid">
         <div class="repo-card">
           <div class="repo-meta"><span>📂 Caso #001 (Activo)</span> <span>📍 Origen: Tierras / Agro</span> <span>📅 Indexado: Hace poco</span> <span>💸 Pauta: No detectada</span></div>
           <h3>La Cosecha de Baldíos y la Acumulación de la UAF</h3>
           <p>Auditoría metodológica sobre el fenómeno de acaparamiento de predios originalmente catalogados como baldíos estatales destinados a la reforma agraria campesina. Expone los métodos de distracción discursiva frente al cruce del registro público de la propiedad inmobiliaria.</p>
-          <button class="btn-main" style="margin-top:10px; padding:10px;" onclick="irAInvestigacion(1)">Analizar este expediente en el simulador</button>
+          <div class="repo-source">Investigación publicada por CasaMacondo</div>
+          <div class="repo-actions">
+            <a class="btn-main btn-link" href="https://casamacondo.co/investigacion/una-cosecha-de-baldios/" target="_blank" rel="noopener">📖 Leer la investigación publicada</a>
+            <button class="btn-main btn-outline" onclick="irAInvestigacion(1)">🎮 Analizar en el simulador</button>
+          </div>
         </div>
         <div class="repo-card">
           <div class="repo-meta"><span>📂 Caso #002 (Activo)</span> <span>📍 Origen: Función Pública / Patrimonio</span> <span>📅 Indexado: Hace poco</span> <span>💸 Pauta: No detectada</span></div>
           <h3>El Patrimonio del Nuevo Contralor: la denuncia de enriquecimiento ilícito</h3>
           <p>Verificación de una denuncia anónima sobre el patrimonio inmobiliario de un alto funcionario de control fiscal, cruzada contra registros públicos y escrituras, mientras el caso permanece abierto en la Fiscalía.</p>
-          <button class="btn-main" style="margin-top:10px; padding:10px;" onclick="irAInvestigacion(2)">Analizar este expediente en el simulador</button>
+          <div class="repo-source">Investigación publicada por CasaMacondo</div>
+          <div class="repo-actions">
+            <a class="btn-main btn-link" href="https://casamacondo.co/investigacion/enriquecimiento-jorge-eliecer-laverde/" target="_blank" rel="noopener">📖 Leer la investigación publicada</a>
+            <button class="btn-main btn-outline" onclick="irAInvestigacion(2)">🎮 Analizar en el simulador</button>
+          </div>
         </div>
       </div>
     </div>
@@ -209,8 +227,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <h2>Antes de tu primera investigación</h2>
         <p>Responde esta breve encuesta anónima para que podamos medir si el juego realmente cambia algo en tu forma de ver el contenido político. Solo te la mostramos una vez.</p>
       </div>
-      <!-- ⚠️ Reemplaza el "src" de abajo por el link de inserción (Enviar → <>) de tu Google Form PRE real -->
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSesJSC09V3O4Ik8S1PXwUxvgKBIIZwIooGBDtRNsg3XFypX-g/viewform?embedded=true" width="100%" height="900" frameborder="0" style="border:1px solid #333;border-radius:8px;background:#fff;margin-top:1rem;">Cargando…</iframe>
+      <p class="encuesta-fallback">¿No ves el formulario? <a href="https://docs.google.com/forms/d/e/1FAIpQLSesJSC09V3O4Ik8S1PXwUxvgKBIIZwIooGBDtRNsg3XFypX-g/viewform" target="_blank" rel="noopener">Ábrelo en una pestaña nueva</a> y luego vuelve aquí.</p>
       <button class="btn-main" onclick="completarEncuestaPre()">Ya respondí, continuar a la investigación →</button>
     </div>
 
@@ -321,7 +339,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
       <span class="tag tag-purple">Paso 5: Mesa de Control Metodológico</span>
       <h2>Construcción del Expediente</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1rem;">Determina el destino crítico de los hallazgos de tu investigación. Haz clic en cada tarjeta para **clasificar si sostiene o derrumba** el discurso político de inocencia del senador.</p>
+      <p style="color:#aaa; font-size:14px; margin-bottom:1rem;">Determina el destino crítico de los hallazgos de tu investigación. Haz clic en cada tarjeta para <strong>clasificar si sostiene o derrumba</strong> el discurso político de inocencia del senador.</p>
       
       <div class="board-container">
         <div class="evidence-pool">
@@ -404,7 +422,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <p style="font-size:14px; color:#aaa; line-height:1.6;">
           Esta práctica vulnera los límites de la <strong>Unidad Agrícola Familiar (UAF)</strong> consagrada en la ley agraria, cuyo fin primordial es impedir que la tierra pública termine concentrada en grandes terratenientes o figuras políticas influyentes. El uso de discursos regionalistas o identitarios opera como un distractor frente al debate técnico y jurídico de los folios.
         </p>
-        <a href="https://casamacondo.co/investigacion/una-cosecha-de-baldios/" target="_blank" class="btn-main btn-link">📖 Leer investigación completa publicada</a>
+        <a href="https://casamacondo.co/investigacion/una-cosecha-de-baldios/" target="_blank" rel="noopener" class="btn-main btn-link">📖 Leer investigación completa publicada</a>
       </div>
 
       <!-- SECCIÓN DE FUENTES DE LA INVESTIGACIÓN -->
@@ -618,7 +636,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <p style="font-size:14px; color:#aaa; line-height:1.6;">
           El ente de control disciplinario archivó en 2024 una revisión sobre el caso, y la Fiscalía no ha reportado avances formales en tres años. El funcionario y su defensa niegan cualquier irregularidad. <strong>Se trata de un caso judicial y disciplinario que sigue abierto: ningún tribunal ha determinado responsabilidad.</strong>
         </p>
-        <a href="https://casamacondo.co/investigacion/enriquecimiento-jorge-eliecer-laverde/" target="_blank" class="btn-main btn-link">📖 Leer investigación completa publicada</a>
+        <a href="https://casamacondo.co/investigacion/enriquecimiento-jorge-eliecer-laverde/" target="_blank" rel="noopener" class="btn-main btn-link">📖 Leer investigación completa publicada</a>
       </div>
 
       <!-- SECCIÓN DE FUENTES DE LA INVESTIGACIÓN -->
@@ -646,8 +664,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <h2>Cuéntanos cómo te fue</h2>
         <p>Esta encuesta nos ayuda a mejorar el juego para la próxima entrega. Tus respuestas son anónimas.</p>
       </div>
-      <!-- ⚠️ Reemplaza el "src" de abajo por el link de inserción (Enviar → <>) de tu Google Form POST real -->
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5hkNAYn3ix3WdtZS7p4Dbnny66wkoBmiuyZxUBDbhRaAZ7Q/viewform?embedded=true" width="100%" height="1400" frameborder="0" style="border:1px solid #333;border-radius:8px;background:#fff;margin-top:1rem;">Cargando…</iframe>
+      <p class="encuesta-fallback">¿No ves el formulario? <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5hkNAYn3ix3WdtZS7p4Dbnny66wkoBmiuyZxUBDbhRaAZ7Q/viewform" target="_blank" rel="noopener">Ábrelo en una pestaña nueva</a> y luego vuelve aquí.</p>
       <button class="btn-main" onclick="completarEncuestaPost()">Ya respondí, volver al repositorio →</button>
     </div>
 
@@ -655,6 +673,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 
 <script>
+// ===== ALMACENAMIENTO SEGURO =====
+// Si localStorage está bloqueado (iframe, vista previa, modo privado), usamos memoria para que nada se rompa.
+var _memStore = {};
+function lsGet(k) {
+  try { return window.localStorage.getItem(k); } catch (e) { return _memStore[k] || null; }
+}
+function lsSet(k, v) {
+  try { window.localStorage.setItem(k, v); } catch (e) { _memStore[k] = v; }
+}
+function lsRemove(k) {
+  try { window.localStorage.removeItem(k); } catch (e) { delete _memStore[k]; }
+}
+
+// Para repetir las encuestas al probar: abre el archivo con ?reset=1 al final de la dirección
+if (/[?&]reset=1/.test(location.search)) {
+  ['cluepolitico_onboarded', 'cluepolitico_pre_encuesta', 'cluepolitico_post_encuesta'].forEach(lsRemove);
+}
+
 // VARIABLES MATEMÁTICAS ADAPTADAS AL DOCUMENTO ACADÉMICO (MAX 1.900 PUNTOS)
 var puntosBrutos = { fuente: 0, dinero: 0, tono: 0, tiempo: 250 }; // Tiempo inicia en el techo máximo presupuestado (250 pts)
 var respuestasUsuario = { fuente: null, dinero: null, contra: null };
@@ -678,11 +714,15 @@ var mapaPuntosContra2 = { 1: 400, 2: 100, 3: 50 };
 // ===== NAVEGACIÓN GENERAL: onboarding → encuesta PRE → caso → encuesta POST =====
 var casoDestino = 1;
 
-// Al cargar la página, si el usuario ya vio el onboarding y ya respondió la encuesta PRE,
-// saltamos directo al Paso 1 del Caso #001 (comportamiento por defecto de la pestaña "Simulador")
 window.addEventListener('DOMContentLoaded', function () {
-  var onboarded = localStorage.getItem('cluepolitico_onboarded') === 'true';
-  var preEncuesta = localStorage.getItem('cluepolitico_pre_encuesta') === 'true';
+  // Si volvemos de terminar el juego, abrimos directamente La Central Verificada
+  if (location.hash === '#repo') {
+    mostrarSeccionGlobal('repo');
+  }
+
+  // Si el usuario ya vio el onboarding, la pestaña "Simulador" abre en el punto correcto
+  var onboarded = lsGet('cluepolitico_onboarded') === 'true';
+  var preEncuesta = lsGet('cluepolitico_pre_encuesta') === 'true';
   var onb = document.getElementById('sc-onboarding');
   if (onboarded && preEncuesta) {
     onb.classList.remove('active');
@@ -693,13 +733,13 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// Punto de entrada único: botón de landing y ambas tarjetas de La Central Verificada pasan por aquí
+// Punto de entrada único al simulador: botón de landing y botones "Analizar en el simulador" de La Central Verificada
 function irAInvestigacion(caso) {
   casoDestino = caso;
   mostrarSeccionGlobal('game');
-  if (localStorage.getItem('cluepolitico_onboarded') !== 'true') {
+  if (lsGet('cluepolitico_onboarded') !== 'true') {
     ir('sc-onboarding');
-  } else if (localStorage.getItem('cluepolitico_pre_encuesta') !== 'true') {
+  } else if (lsGet('cluepolitico_pre_encuesta') !== 'true') {
     ir('sc-encuesta-pre');
   } else {
     lanzarCasoDestino();
@@ -707,8 +747,8 @@ function irAInvestigacion(caso) {
 }
 
 function comenzarDesdeOnboarding() {
-  localStorage.setItem('cluepolitico_onboarded', 'true');
-  if (localStorage.getItem('cluepolitico_pre_encuesta') !== 'true') {
+  lsSet('cluepolitico_onboarded', 'true');
+  if (lsGet('cluepolitico_pre_encuesta') !== 'true') {
     ir('sc-encuesta-pre');
   } else {
     lanzarCasoDestino();
@@ -716,7 +756,7 @@ function comenzarDesdeOnboarding() {
 }
 
 function completarEncuestaPre() {
-  localStorage.setItem('cluepolitico_pre_encuesta', 'true');
+  lsSet('cluepolitico_pre_encuesta', 'true');
   lanzarCasoDestino();
 }
 
@@ -729,7 +769,7 @@ function lanzarCasoDestino() {
 }
 
 function irEncuestaPost() {
-  if (localStorage.getItem('cluepolitico_post_encuesta') === 'true') {
+  if (lsGet('cluepolitico_post_encuesta') === 'true') {
     reiniciarInstanciaJuego();
   } else {
     ir('sc-encuesta-post');
@@ -737,7 +777,7 @@ function irEncuestaPost() {
 }
 
 function completarEncuestaPost() {
-  localStorage.setItem('cluepolitico_post_encuesta', 'true');
+  lsSet('cluepolitico_post_encuesta', 'true');
   reiniciarInstanciaJuego();
 }
 
@@ -779,6 +819,7 @@ function mostrarSeccionGlobal(seccion) {
   } else if(seccion === 'repo') {
     document.getElementById('global-repo').style.display = 'block';
     document.getElementById('nav-repo').classList.add('active');
+    window.scrollTo(0,0);
   } else if(seccion === 'game') {
     document.getElementById('global-game').style.display = 'block';
     document.getElementById('nav-game').classList.add('active');
@@ -890,7 +931,9 @@ function mostrarResultados() {
   document.getElementById('score-feedback').textContent = feedback;
 }
 
+// Al terminar, recarga el juego y deja al usuario en La Central Verificada
 function reiniciarInstanciaJuego() {
+  location.hash = '#repo';
   location.reload();
 }
 
