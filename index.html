@@ -3,186 +3,246 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clue Político</title>
+<title>Clue Político · Aventura</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0E0E0E;color:#F0EDE6;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0A0E1F;color:#F0EDE6;overflow-x:hidden}
 
-/* NAVBAR & NAVIGATION */
-.navbar{background:#111;border-bottom:1px solid #222;padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+/* NAVBAR */
+.navbar{background:#10152B;border-bottom:1px solid #222B52;padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:8px}
 .game-logo{font-size:14px;font-weight:800;letter-spacing:1px;color:#F0EDE6;cursor:pointer}
-.game-logo span{color:#E24B4A}
+.game-logo span{color:#8B5CF6}
 .nav-links{display:flex;gap:1.5rem}
-.nav-item{color:#aaa;text-decoration:none;font-size:13px;font-weight:600;transition:color 0.15s;background:none;border:none;cursor:pointer}
-.nav-item:hover, .nav-item.active{color:#E24B4A}
-.creditos-pill{background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:6px 16px;font-size:13px;color:#F0EDE6;font-weight:600}
+.nav-item{color:#aaa;font-size:13px;font-weight:600;transition:color 0.15s;background:none;border:none;cursor:pointer}
+.nav-item:hover,.nav-item.active{color:#8B5CF6}
 
 /* LANDING */
-.landing{min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;background:#0E0E0E;position:relative}
-.landing::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,#1a1a1a 39px,#1a1a1a 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,#1a1a1a 39px,#1a1a1a 40px);opacity:0.4}
+.landing{min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;background:#0A0E1F;position:relative}
+.landing::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,#182042 39px,#182042 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,#182042 39px,#182042 40px);opacity:0.4}
 .landing-content{position:relative;z-index:1;max-width:700px}
-.badge-landing{display:inline-block;background:#E24B4A;color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:3px;margin-bottom:2rem}
-.landing h1{font-size:clamp(42px,6vw,80px);font-weight:800;line-height:1;letter-spacing:-2px;color:#F0EDE6;margin-bottom:1rem}
-.landing h1 span{color:#E24B4A}
-.landing-sub{font-size:18px;color:#888780;line-height:1.6;margin-bottom:2.5rem;max-width:550px;margin-left:auto;margin-right:auto}
-.btn-play{display:inline-block;background:#E24B4A;color:#fff;font-size:16px;font-weight:700;padding:16px 48px;border-radius:4px;border:none;cursor:pointer;letter-spacing:0.5px;transition:background 0.15s;margin:0.5rem}
-.btn-sec{display:inline-block;background:#1a1a1a;border:1px solid #333;color:#aaa;font-size:16px;font-weight:600;padding:16px 32px;border-radius:4px;cursor:pointer;transition:all 0.15s;margin:0.5rem;text-decoration:none}
+.badge-landing{display:inline-block;background:#8B5CF6;color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:3px;margin-bottom:2rem}
+.landing h1{font-size:clamp(40px,6vw,76px);font-weight:800;line-height:1;letter-spacing:-2px;color:#F0EDE6;margin-bottom:1rem}
+.landing h1 span{color:#8B5CF6}
+.landing-sub{font-size:18px;color:#a09e96;line-height:1.6;margin-bottom:2.5rem;max-width:550px;margin-left:auto;margin-right:auto}
+.btn-play{display:inline-block;background:#8B5CF6;color:#fff;font-size:16px;font-weight:700;padding:16px 40px;border-radius:4px;border:none;cursor:pointer;margin:0.5rem}
+.btn-play:hover{background:#7443e0}
+.btn-sec{display:inline-block;background:#182042;border:1px solid #2E3868;color:#aaa;font-size:16px;font-weight:600;padding:16px 28px;border-radius:4px;cursor:pointer;transition:all 0.15s;margin:0.5rem}
 .btn-sec:hover{border-color:#888;color:#fff}
 
-/* GAME STRUCTURE */
-.game-section{background:#0E0E0E}
-.game-body{max-width:720px;margin:0 auto;padding:3rem 2rem}
+/* ESTRUCTURA */
+.game-section{background:#0A0E1F}
+.game-body{max-width:720px;margin:0 auto;padding:3rem 1.5rem}
 .screen{display:none}
 .screen.active{display:block}
 
-/* PROGRESS */
-.progress{display:flex;gap:6px;margin-bottom:2.5rem}
-.prog-step{flex:1;height:3px;background:#222;border-radius:2px}
-.prog-step.done{background:#E24B4A}
+/* PROGRESO */
+.progress{display:flex;gap:6px;margin-bottom:2rem}
+.prog-step{flex:1;height:3px;background:#222B52;border-radius:2px}
+.prog-step.done{background:#8B5CF6}
 .prog-step.active{background:#888}
 
-/* EXPEDIENTE & CARDS */
+/* TARJETAS */
 .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:3px;margin-bottom:10px}
-.tag-red{background:#E24B4A;color:#fff}
-.tag-info{background:#185FA5;color:#B5D4F4}
-.tag-purple{background:#6B46C1;color:#E9D8FD}
-.expediente{border:1px solid #333;border-left:4px solid #E24B4A;border-radius:0 8px 8px 0;padding:1.5rem;margin:1.5rem 0;background:#111}
-.expediente-label{font-size:11px;color:#E24B4A;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem}
+.tag-red{background:#8B5CF6;color:#fff}
+.tag-info{background:#2F6FED;color:#B5D4F4}
+.tag-purple{background:#4F46E5;color:#E0E7FF}
+.tag-giro{background:#BA7517;color:#fff}
+.expediente{border:1px solid #2E3868;border-left:4px solid #8B5CF6;border-radius:0 8px 8px 0;padding:1.5rem;margin:1.5rem 0;background:#10152B}
+.expediente-label{font-size:11px;color:#8B5CF6;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem}
 .expediente h2{font-size:22px;font-weight:800;color:#F0EDE6;line-height:1.3;margin-bottom:0.75rem}
-.expediente p{font-size:14px;color:#888;line-height:1.6}
+.expediente p{font-size:15px;color:#aaa;line-height:1.7}
+.historia{font-size:15px;color:#bbb;line-height:1.75;margin:1rem 0 1.5rem}
+.historia strong{color:#F0EDE6}
+.investigacion-box{background:#10152B;border:1px solid #262F58;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
+.pregunta{font-size:15px;font-weight:700;color:#F0EDE6;margin-bottom:0.5rem;line-height:1.5}
 
-/* PASOS DE INVESTIGACIÓN */
-.investigacion-box{background:#111;border:1px solid #2a2a2a;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
-.opcion-investigar{width:100%;text-align:left;background:#0E0E0E;border:1px solid #333;border-radius:6px;padding:1rem;margin-top:10px;cursor:pointer;color:#aaa;font-size:14px;transition:all 0.15s}
-.opcion-investigar:hover{border-color:#E24B4A;color:#fff}
-.opcion-investigar.selected{border-color:#1D9E75;background:#0d2e1a;color:#fff}
+/* OPCIONES */
+.opcion-investigar{width:100%;text-align:left;background:#0A0E1F;border:1px solid #2E3868;border-radius:6px;padding:1rem;margin-top:10px;cursor:pointer;color:#bbb;font-size:14px;line-height:1.5;transition:all 0.15s;display:flex;gap:12px;align-items:flex-start;font-family:inherit}
+.opcion-investigar:hover{border-color:#8B5CF6;color:#fff}
+.letra{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#222B52;color:#aaa;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.opcion-investigar.bien{border-color:#1D9E75;background:#0d2e1a;color:#fff}
+.opcion-investigar.medio{border-color:#BA7517;background:#2e1a0d;color:#fff}
+.opcion-investigar.mal{border-color:#C0392B;background:#301616;color:#fff}
+.opcion-investigar.apagada{opacity:0.35;cursor:default}
+.opcion-investigar.apagada:hover{border-color:#2E3868;color:#bbb}
+.consecuencia{border-radius:6px;padding:1rem 1.2rem;margin-top:1.2rem;font-size:14px;line-height:1.7;border-left:4px solid #555;background:#141A36;color:#ddd}
+.consecuencia b{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+.consecuencia.bien{background:#0d2e1a;border-color:#1D9E75}.consecuencia.bien b{color:#5DCAA5}
+.consecuencia.medio{background:#2e1a0d;border-color:#BA7517}.consecuencia.medio b{color:#E8A855}
+.consecuencia.mal{background:#301616;border-color:#C0392B}.consecuencia.mal b{color:#F09595}
 
-/* TEXT HIGHLIGHTER (TONO) */
-.texto-analisis{background:#161616;padding:1.5rem;border-radius:8px;line-height:1.8;font-size:16px;color:#F0EDE6;margin-bottom:1.5rem;border:1px solid #222}
-.word-btn{display:inline-block;padding:2px 4px;margin:2px 1px;border-radius:3px;cursor:pointer;transition:all 0.15s;background:#222}
-.word-btn:hover{background:#444}
+/* GLOSARIO + LIBRETA */
+details.glosario,details.libreta{background:#141A36;border:1px solid #262F58;border-radius:6px;padding:0.8rem 1rem;margin:1rem 0;font-size:13px;color:#aaa;line-height:1.6}
+details summary{cursor:pointer;font-weight:700;color:#7DB3FF;font-size:13px}
+details.libreta summary{color:#E8A855}
+details.libreta ul{margin:10px 0 0 18px}
+details.libreta li{margin-bottom:5px}
+
+/* MARCAR FRASES */
+.texto-analisis{background:#141A36;padding:1.5rem;border-radius:8px;line-height:2;font-size:16px;color:#F0EDE6;margin-bottom:1.5rem;border:1px solid #222B52}
+.word-btn{display:inline;padding:3px 5px;border-radius:3px;cursor:pointer;transition:all 0.15s;background:#262F58;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.word-btn:hover{background:#3B4680}
 .word-btn.marked{background:#BA7517;color:#fff;font-weight:bold}
+.word-btn.ok{background:#1D9E75;color:#fff;font-weight:bold}
+.word-btn.bad{background:#C0392B;color:#fff;font-weight:bold}
+.word-btn.miss{outline:2px dashed #1D9E75}
+.texto-analisis.bloqueado .word-btn{cursor:default}
 
-/* INTERACTIVE EXPEDIENT WORKBOARD (CONSTRUCCIÓN DEL EXPEDIENTE) */
+/* MESA DE EVIDENCIAS */
 .board-container{display:flex;flex-direction:column;gap:1.5rem;margin:1.5rem 0}
-.evidence-pool{background:#161616;border:1px solid #333;border-radius:8px;padding:1.2rem}
+.evidence-pool{background:#141A36;border:1px solid #2E3868;border-radius:8px;padding:1.2rem}
 .pool-title{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-weight:bold}
 .evidence-cards-container{display:flex;flex-direction:column;gap:10px}
-.evidence-item{background:#222;border:1px solid #444;border-radius:6px;padding:12px;font-size:13px;color:#eee;cursor:grab;display:flex;flex-direction:column;gap:8px}
+.evidence-item{background:#222B52;border:1px solid #3B4680;border-radius:6px;padding:12px;font-size:13px;color:#eee;display:flex;flex-direction:column;gap:8px;line-height:1.5}
 .evidence-meta{font-size:10px;text-transform:uppercase;letter-spacing:0.5px;font-weight:bold}
-.meta-fuente{color:#5BCAA5} .meta-dinero{color:#E24B4A} .meta-tono{color:#BA7517}
-.decision-columns{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:5px}
-.decision-col{background:#111;border:2px dashed #333;border-radius:8px;padding:1rem;min-height:160px;transition:all 0.2s}
-.decision-col.drag-over{border-color:#E24B4A;background:#1a1515}
-.decision-col h4{font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #222;text-align:center}
+.meta-fuente{color:#5BCAA5}.meta-dinero{color:#8B5CF6}.meta-tono{color:#BA7517}
+.ev-btns{display:flex;gap:10px;margin-top:5px}
+.ev-btns button{flex:1;padding:8px 4px;font-size:12px;cursor:pointer;border-radius:3px;font-family:inherit}
+.b-sostiene{background:#442222;color:#ffb3b3;border:1px solid #663333}
+.b-derrumba{background:#224433;color:#b3ffcc;border:1px solid #336644}
+.decision-columns{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.decision-col{background:#10152B;border:2px dashed #2E3868;border-radius:8px;padding:1rem;min-height:140px}
+.decision-col h4{font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #222B52;text-align:center}
 .col-sostener h4{color:#F09595}
 .col-derrumbar h4{color:#5DCAA5}
-.decision-col .evidence-item{cursor:default}
+.col-box{display:flex;flex-direction:column;gap:8px}
 
 /* ONBOARDING */
 .onboarding-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;font-size:14px;color:#ccc;line-height:1.5}
 .onboarding-icon{font-size:20px;flex-shrink:0;width:26px;text-align:center}
-.btn-skip{display:block;text-align:center;background:none;border:none;color:#666;font-size:12px;margin-top:0.75rem;cursor:pointer;text-decoration:underline}
+.btn-skip{display:block;margin:0.75rem auto 0;text-align:center;background:none;border:none;color:#777;font-size:12px;cursor:pointer;text-decoration:underline}
 .btn-skip:hover{color:#aaa}
 
-/* TRANSPARENCIA DE PAUTA (CONTENIDO PAGO/PATROCINADO) */
+/* PAUTA */
 .badge-pauta{display:inline-block;background:#0d2e1a;border:1px solid #1D9E75;color:#5DCAA5;font-size:12px;font-weight:600;padding:6px 12px;border-radius:20px;margin-top:12px}
-.badge-pauta.alerta{background:#2e1a0d;border-color:#BA7517;color:#E8A855}
-.badge-pauta.riesgo{background:#301616;border-color:#663333;color:#F09595}
 
-/* REPOSITORIO (LA CENTRAL VERIFICADA) */
+/* CASOS REALES */
 .repo-container{padding:2rem 0}
-.repo-header{margin-bottom:2rem;border-bottom:1px solid #222;padding-bottom:1rem}
+.repo-header{margin-bottom:2rem;border-bottom:1px solid #222B52;padding-bottom:1rem}
 .repo-grid{display:flex;flex-direction:column;gap:1.5rem}
-.repo-card{background:#111;border:1px solid #222;border-left:4px solid #185FA5;border-radius:0 6px 6px 0;padding:1.5rem;display:flex;flex-direction:column;gap:10px}
-.repo-meta{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;color:#666}
+.repo-card{background:#10152B;border:1px solid #222B52;border-left:4px solid #2F6FED;border-radius:0 6px 6px 0;padding:1.5rem;display:flex;flex-direction:column;gap:10px}
+.repo-meta{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;color:#777}
 .repo-card h3{font-size:18px;color:#F0EDE6;font-weight:700}
-.repo-card p{font-size:14px;color:#999;line-height:1.5}
+.repo-card p{font-size:14px;color:#aaa;line-height:1.6}
 .repo-source{font-size:12px;color:#5BCAA5;font-weight:600}
 .repo-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .repo-actions .btn-main{margin-top:0;padding:12px;flex:1;min-width:210px;width:auto;font-size:14px}
-.btn-outline{background:transparent;border:1px solid #444;color:#ccc}
-.btn-outline:hover{background:#1a1a1a;border-color:#888;color:#fff}
 
-/* REVELACION & FUENTES */
-.rev-card{background:#111;border:1px solid #333;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
-.fuentes-card{background:#161616;border:1px solid #222;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
+/* RESULTADOS */
+.rev-card{background:#10152B;border:1px solid #2E3868;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
+.rev-card p{font-size:14px;color:#aaa;line-height:1.7;margin-bottom:10px}
+.fuentes-card{background:#141A36;border:1px solid #222B52;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
 .fuentes-list{list-style:none;margin-top:0.75rem}
-.fuentes-list li{font-size:13px;color:#aaa;margin-bottom:8px;padding-left:12px;position:relative}
-.fuentes-list li::before{content:'•';position:absolute;left:0;color:#E24B4A}
-.score-hero{text-align:center;padding:2rem 0}
-.score-big{font-size:72px;font-weight:800;color:#F0EDE6;line-height:1}
-.score-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #1a1a1a;font-size:14px}
-
-/* ENCUESTAS (fallback de enlace externo) */
+.fuentes-list li{font-size:13px;color:#aaa;margin-bottom:8px;padding-left:12px;position:relative;line-height:1.5}
+.fuentes-list li::before{content:'•';position:absolute;left:0;color:#8B5CF6}
+.score-hero{text-align:center;padding:1.5rem 0}
+.score-big{font-size:clamp(40px,10vw,64px);font-weight:800;color:#F0EDE6;line-height:1}
+.final-titulo{font-size:22px;font-weight:800;margin:6px 0}
+.score-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #182042;font-size:14px}
 .encuesta-fallback{font-size:13px;color:#888;margin-top:12px;line-height:1.5;text-align:center}
-.encuesta-fallback a{color:#7FB5F0;font-weight:600}
+.encuesta-fallback a{color:#7DB3FF;font-weight:600}
 
-/* BUTTONS & LINKS */
-.btn-main{width:100%;padding:16px;background:#E24B4A;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:6px;cursor:pointer;margin-top:1rem;transition:background 0.15s;letter-spacing:0.3px;text-align:center;text-decoration:none;display:block}
-.btn-main:hover{background:#c73b39}
-.btn-main:disabled{background:#2a2a2a;color:#444;cursor:default}
-.btn-link{background:#185FA5;text-decoration:none;display:inline-block;text-align:center}
-.btn-link:hover{background:#144f8a}
-.btn-outline.btn-link{background:transparent}
+/* BOTONES */
+.btn-main{width:100%;padding:16px;background:#8B5CF6;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:6px;cursor:pointer;margin-top:1rem;transition:background 0.15s;text-align:center;text-decoration:none;display:block;font-family:inherit}
+.btn-main:hover{background:#7443e0}
+.btn-main:disabled{background:#262F58;color:#555;cursor:default}
+.btn-link{background:#2F6FED}
+.btn-link:hover{background:#2559c4}
+.btn-outline{background:transparent;border:1px solid #3B4680;color:#ccc}
+.btn-outline:hover{background:#182042;border-color:#888;color:#fff}
+.btn-verde{background:#1D9E75}
+.btn-verde:hover{background:#177d5c}
+
+
+/* NIVELES */
+.nivel-chip{font-size:12px;font-weight:700;color:#E0E7FF;background:#182042;border:1px solid #2E3868;border-radius:20px;padding:6px 14px;white-space:nowrap}
+.estrellas{font-size:28px;letter-spacing:4px;margin-bottom:8px}
+.nivel-card{background:#10152B;border:1px solid #2E3868;border-radius:10px;padding:1.3rem;margin:1.5rem 0;position:relative;overflow:hidden}
+.nivel-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(139,92,246,.22),transparent 60%);pointer-events:none}
+.nivel-top{display:flex;align-items:center;gap:14px;position:relative}
+.nivel-ico{font-size:38px;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#2F6FED,#8B5CF6);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nivel-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#A78BFA;font-weight:700}
+.nivel-nombre{font-size:22px;font-weight:800;color:#F0EDE6}
+.xp-gain{margin-left:auto;font-size:18px;font-weight:800;color:#7DB3FF}
+.xp-bar{height:12px;background:#222B52;border-radius:6px;margin:16px 0 8px;overflow:hidden;position:relative}
+.xp-fill{height:100%;width:0;background:linear-gradient(90deg,#2F6FED,#8B5CF6);border-radius:6px;transition:width 1.1s ease-out}
+.xp-text{font-size:12px;color:#9aa3d4;position:relative}
+.levelup{margin-top:14px;padding:12px 14px;border-radius:8px;background:linear-gradient(90deg,rgba(47,111,237,.3),rgba(139,92,246,.3));border:1px solid #8B5CF6;font-weight:700;color:#fff;font-size:15px;animation:pop .6s ease-out;position:relative}
+@keyframes pop{0%{transform:scale(.7);opacity:0}70%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+.insignias{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:10px 0 1.5rem}
+.insignia{background:#10152B;border:1px solid #2E3868;border-radius:8px;padding:10px;text-align:center;font-size:12px;color:#9aa3d4;line-height:1.4}
+.insignia .i{font-size:26px;display:block;margin-bottom:4px}
+.insignia b{display:block;color:#F0EDE6;font-size:13px}
+.insignia.off{opacity:.35;filter:grayscale(1)}
+.insignia.nueva{border-color:#8B5CF6;box-shadow:0 0 14px rgba(139,92,246,.45);animation:pop .6s ease-out}
+.confeti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:999}
+.confeti i{position:absolute;top:-14px;width:8px;height:14px;border-radius:2px;animation:caer linear forwards}
+@keyframes caer{to{transform:translateY(105vh) rotate(720deg)}}
+
+@media(max-width:560px){
+  .navbar{padding:0.75rem 1rem}
+  .nav-links{gap:1rem}
+  .game-body{padding:2rem 1rem}
+  .decision-columns{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
-<!-- GLOBAL STICKY NAVBAR -->
 <nav class="navbar">
   <div class="game-logo" onclick="mostrarSeccionGlobal('landing')">CLUE <span>POLÍTICO</span></div>
   <div class="nav-links">
     <button class="nav-item active" id="nav-landing" onclick="mostrarSeccionGlobal('landing')">Inicio</button>
-    <button class="nav-item" id="nav-game" onclick="mostrarSeccionGlobal('game')">Simulador</button>
+    <button class="nav-item" id="nav-game" onclick="abrirAventura()">Aventura</button>
     <button class="nav-item" id="nav-repo" onclick="mostrarSeccionGlobal('repo')">La Central Verificada</button>
   </div>
+  <div class="nivel-chip" id="nivel-chip" title="Tu nivel de periodista">🌱 Nv. 1 · Practicante · 0 XP</div>
 </nav>
 
-<!-- SECCIÓN GLOBAL: LANDING PAGE -->
+<!-- INICIO -->
 <div id="global-landing">
   <section class="landing">
     <div class="landing-content">
-      <div class="badge-landing">Clue Político: Simulador de Periodismo de Investigación</div>
-      <h1>EL MAKING-OF<br>DE LA <span>INVESTIGACIÓN</span></h1>
-      <p class="landing-sub">No leas la noticia, constrúyela paso a paso. Conviértete en un periodista de investigación y desafía las narrativas de la opinión pública.</p>
+      <div class="badge-landing">Aventura interactiva · Periodismo de investigación</div>
+      <h1>TÚ ELIGES<br>CÓMO SE <span>INVESTIGA</span></h1>
+      <p class="landing-sub">Eres periodista y tienes un caso político real entre manos. Cada decisión que tomes cambia la historia: puedes llegar a la verdad… o terminar desmentido en redes. ¿Qué camino eliges?</p>
       <div>
-        <button class="btn-play" onclick="irAInvestigacion(1)">Iniciar Investigación</button>
-        <button class="btn-sec" onclick="mostrarSeccionGlobal('repo')">Explorar Repositorio</button>
+        <button class="btn-play" onclick="irAInvestigacion(1)">Empezar la aventura</button>
+        <button class="btn-sec" onclick="mostrarSeccionGlobal('repo')">Ver La Central Verificada</button>
       </div>
     </div>
   </section>
 </div>
 
-<!-- SECCIÓN GLOBAL: REPOSITORIO (LA CENTRAL VERIFICADA) -->
+<!-- CASOS REALES -->
 <div id="global-repo" class="game-section" style="display:none;">
   <div class="game-body">
     <div class="repo-container">
       <div class="repo-header">
-        <span class="tag tag-info">Componente Permanente</span>
-        <h2 style="font-size:32px; font-weight:800; margin-top:5px;">La Central Verificada</h2>
-        <p style="color:#888; font-size:15px; margin-top:5px;">Base de datos de expedientes clasificados e indexados con base en investigaciones periodísticas reales del ecosistema nacional. Puedes leer cada investigación publicada directamente, o reconstruirla paso a paso en el simulador: tú eliges.</p>
+        <span class="tag tag-info">La Central Verificada</span>
+        <h2 style="font-size:32px; font-weight:800; margin-top:5px;">Elige tu caso</h2>
+        <p style="color:#999; font-size:15px; margin-top:5px; line-height:1.6;">Cada aventura está basada en una investigación periodística real. Puedes leer el reportaje original o vivirlo paso a paso, tomando las decisiones del periodista. Tú eliges.</p>
       </div>
       <div class="repo-grid">
         <div class="repo-card">
-          <div class="repo-meta"><span>📂 Caso #001 (Activo)</span> <span>📍 Origen: Tierras / Agro</span> <span>📅 Indexado: Hace poco</span> <span>💸 Pauta: No detectada</span></div>
-          <h3>La Cosecha de Baldíos y la Acumulación de la UAF</h3>
-          <p>Auditoría metodológica sobre el fenómeno de acaparamiento de predios originalmente catalogados como baldíos estatales destinados a la reforma agraria campesina. Expone los métodos de distracción discursiva frente al cruce del registro público de la propiedad inmobiliaria.</p>
+          <div class="repo-meta"><span>📂 Caso 1</span> <span id="mejor-1">🏅 Tu mejor puntaje: —</span> <span>📍 Tema: tierras y campo</span> <span>💸 Sin publicidad pagada</span></div>
+          <h3>El senador que llegó a caballo y las 273 tierras</h3>
+          <p>Un senador dice que es un campesino humilde. Los registros públicos muestran cientos de predios que antes eran tierras del Estado para campesinos pobres. ¿Cómo lo investigas sin caer en el show?</p>
           <div class="repo-source">Investigación publicada por CasaMacondo</div>
           <div class="repo-actions">
-            <a class="btn-main btn-link" href="https://casamacondo.co/investigacion/una-cosecha-de-baldios/" target="_blank" rel="noopener">📖 Leer la investigación publicada</a>
-            <button class="btn-main btn-outline" onclick="irAInvestigacion(1)">🎮 Analizar en el simulador</button>
+            <a class="btn-main btn-link" href="https://casamacondo.co/investigacion/una-cosecha-de-baldios/" target="_blank" rel="noopener">📖 Leer la investigación real</a>
+            <button class="btn-main btn-outline" onclick="irAInvestigacion(1)">🎮 Vivirlo como aventura</button>
           </div>
         </div>
         <div class="repo-card">
-          <div class="repo-meta"><span>📂 Caso #002 (Activo)</span> <span>📍 Origen: Función Pública / Patrimonio</span> <span>📅 Indexado: Hace poco</span> <span>💸 Pauta: No detectada</span></div>
-          <h3>El Patrimonio del Nuevo Contralor: la denuncia de enriquecimiento ilícito</h3>
-          <p>Verificación de una denuncia anónima sobre el patrimonio inmobiliario de un alto funcionario de control fiscal, cruzada contra registros públicos y escrituras, mientras el caso permanece abierto en la Fiscalía.</p>
+          <div class="repo-meta"><span>📂 Caso 2</span> <span id="mejor-2">🏅 Tu mejor puntaje: —</span> <span>📍 Tema: cargos públicos y patrimonio</span> <span>💸 Sin publicidad pagada</span></div>
+          <h3>El nuevo Contralor y una denuncia anónima</h3>
+          <p>Acaba de llegar a vigilar la plata pública y promete "transparencia". Pero hay una denuncia anónima sobre su patrimonio. El caso sigue abierto en la Fiscalía: tu reto es contar lo que se puede probar, sin acusar de más.</p>
           <div class="repo-source">Investigación publicada por CasaMacondo</div>
           <div class="repo-actions">
-            <a class="btn-main btn-link" href="https://casamacondo.co/investigacion/enriquecimiento-jorge-eliecer-laverde/" target="_blank" rel="noopener">📖 Leer la investigación publicada</a>
-            <button class="btn-main btn-outline" onclick="irAInvestigacion(2)">🎮 Analizar en el simulador</button>
+            <a class="btn-main btn-link" href="https://casamacondo.co/investigacion/enriquecimiento-jorge-eliecer-laverde/" target="_blank" rel="noopener">📖 Leer la investigación real</a>
+            <button class="btn-main btn-outline" onclick="irAInvestigacion(2)">🎮 Vivirlo como aventura</button>
           </div>
         </div>
       </div>
@@ -190,483 +250,72 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 </div>
 
-<!-- SECCIÓN GLOBAL: SIMULADOR DE JUEGO -->
+<!-- AVENTURA -->
 <div id="global-game" class="game-section" style="display:none;">
   <div class="game-body">
 
-    <!-- PASO 0: ONBOARDING / TUTORIAL -->
+    <!-- ONBOARDING -->
     <div id="sc-onboarding" class="screen active">
-      <span class="tag tag-purple">Antes de Empezar</span>
-      <div class="expediente" style="border-left-color:#6B46C1;">
-        <div class="expediente-label" style="color:#6B46C1;">Tu Misión</div>
-        <h2>Eres un periodista de investigación</h2>
-        <p>No vas a leer una noticia: vas a reconstruirla. Tu trabajo es rastrear el origen de un caso político real colombiano, siguiendo el mismo método que usan los periodistas de investigación reales.</p>
+      <span class="tag tag-purple">Antes de empezar</span>
+      <div class="expediente" style="border-left-color:#4F46E5;">
+        <div class="expediente-label" style="color:#A78BFA;">Cómo funciona</div>
+        <h2>Tú eres el o la periodista</h2>
+        <p>Esto no es una noticia para leer: es una historia donde tú decides qué hacer. En cada escena eliges un camino, ves qué pasa y sigues. Algunas decisiones te acercan a la verdad; otras te meten en problemas.</p>
       </div>
 
       <div class="investigacion-box">
-        <p style="font-size:14px; color:#F0EDE6; margin-bottom:1rem; font-weight:bold;">En cada caso vas a trabajar con 4 tipos de evidencia:</p>
-        <div class="onboarding-item"><span class="onboarding-icon">🔍</span><div><strong>Fuente</strong> — ¿quién emitió la información y qué tan confiable es?</div></div>
-        <div class="onboarding-item"><span class="onboarding-icon">💰</span><div><strong>Dinero</strong> — ¿quién financia el mensaje o al actor detrás de él?</div></div>
-        <div class="onboarding-item"><span class="onboarding-icon">🎭</span><div><strong>Tono</strong> — ¿qué emociones intenta activar el discurso?</div></div>
-        <div class="onboarding-item"><span class="onboarding-icon">📄</span><div><strong>Contradicciones</strong> — ¿el discurso actual choca con hechos documentados?</div></div>
+        <p style="font-size:14px; color:#F0EDE6; margin-bottom:1rem; font-weight:bold;">En cada caso te vas a preguntar 4 cosas:</p>
+        <div class="onboarding-item"><span class="onboarding-icon">🔍</span><div><strong>Fuente</strong> — ¿quién dijo esto y puedo confiar? Incluye revisar si un video o audio fue manipulado (por ejemplo, con IA).</div></div>
+        <div class="onboarding-item"><span class="onboarding-icon">💰</span><div><strong>Dinero</strong> — ¿de dónde sale la plata del actor y quién paga para que el mensaje circule?</div></div>
+        <div class="onboarding-item"><span class="onboarding-icon">🎭</span><div><strong>Tono</strong> — ¿qué emoción quiere provocarme este discurso?</div></div>
+        <div class="onboarding-item"><span class="onboarding-icon">📄</span><div><strong>Contradicciones</strong> — lo que dice hoy choca con un hecho documentado (un registro, un video, una votación). Un dato llamativo no basta.</div></div>
       </div>
 
-      <div class="investigacion-box" style="border-color:#E24B4A;">
-        <p style="font-size:14px; color:#F0EDE6; line-height:1.6;"><strong>Regla del juego:</strong> al cerrar tu investigación vas a ver, de forma obligatoria, la trazabilidad real del caso — quién lo investigó, qué fuentes usó y qué encontró. La transparencia no es opcional: es la condición para publicar.</p>
+      <div class="investigacion-box">
+        <p style="font-size:14px; color:#ccc; line-height:1.7;">🎲 <strong>Ojo:</strong> las decisiones no se pueden deshacer (como en la vida real), pero puedes volver a jugar el caso y probar otro camino. El orden de las opciones cambia cada vez.</p>
       </div>
 
-      <button class="btn-main" onclick="comenzarDesdeOnboarding()">Comenzar Investigación →</button>
-      <button class="btn-skip" onclick="comenzarDesdeOnboarding()">Ya jugué antes, saltar introducción</button>
+      <div class="investigacion-box">
+        <p style="font-size:14px; color:#ccc; line-height:1.7;">🏆 <strong>Sube de nivel:</strong> tu puntaje suma XP. Empiezas como Practicante y puedes llegar a Leyenda de la redacción. También ganas insignias por investigar bien. Tu progreso se guarda en este navegador.</p>
+      </div>
+
+      <div class="investigacion-box" style="border-color:#8B5CF6;">
+        <p style="font-size:14px; color:#F0EDE6; line-height:1.7;"><strong>Regla del juego:</strong> al final siempre vas a ver qué encontró la investigación real, quién la hizo y qué fuentes usó. Transparencia ante todo: así se construye confianza.</p>
+      </div>
+
+      <button class="btn-main" onclick="comenzarDesdeOnboarding()">Empezar →</button>
+      <button class="btn-skip" onclick="comenzarDesdeOnboarding()">Ya jugué antes, saltar esto</button>
     </div>
 
-    <!-- ENCUESTA PRE (ANTES DE JUGAR) -->
+    <!-- ENCUESTA PRE -->
     <div id="sc-encuesta-pre" class="screen">
-      <span class="tag tag-purple">Antes de Empezar</span>
-      <div class="expediente" style="border-left-color:#6B46C1;">
-        <div class="expediente-label" style="color:#6B46C1;">Encuesta Rápida (2 min)</div>
-        <h2>Antes de tu primera investigación</h2>
-        <p>Responde esta breve encuesta anónima para que podamos medir si el juego realmente cambia algo en tu forma de ver el contenido político. Solo te la mostramos una vez.</p>
+      <span class="tag tag-purple">Antes de empezar</span>
+      <div class="expediente" style="border-left-color:#4F46E5;">
+        <div class="expediente-label" style="color:#A78BFA;">Encuesta rápida (2 min)</div>
+        <h2>Antes de tu primera aventura</h2>
+        <p>Responde esta encuesta anónima para ayudarnos a saber si el juego cambia tu forma de ver el contenido político. Solo te la mostramos una vez.</p>
       </div>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSesJSC09V3O4Ik8S1PXwUxvgKBIIZwIooGBDtRNsg3XFypX-g/viewform?embedded=true" width="100%" height="900" frameborder="0" style="border:1px solid #333;border-radius:8px;background:#fff;margin-top:1rem;">Cargando…</iframe>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSesJSC09V3O4Ik8S1PXwUxvgKBIIZwIooGBDtRNsg3XFypX-g/viewform?embedded=true" width="100%" height="900" frameborder="0" style="border:1px solid #2E3868;border-radius:8px;background:#fff;margin-top:1rem;">Cargando…</iframe>
       <p class="encuesta-fallback">¿No ves el formulario? <a href="https://docs.google.com/forms/d/e/1FAIpQLSesJSC09V3O4Ik8S1PXwUxvgKBIIZwIooGBDtRNsg3XFypX-g/viewform" target="_blank" rel="noopener">Ábrelo en una pestaña nueva</a> y luego vuelve aquí.</p>
-      <button class="btn-main" onclick="completarEncuestaPre()">Ya respondí, continuar a la investigación →</button>
+      <button class="btn-main" onclick="completarEncuestaPre()">Ya respondí, ir a la aventura →</button>
     </div>
 
-    <!-- PASO 1: FUENTE -->
-    <div id="sc-fuente" class="screen">
-      <div class="progress">
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-      </div>
-      <span class="tag tag-red">Paso 1: Pista de Fuente</span>
-      <div class="expediente">
-        <div class="expediente-label">El Hecho Viral</div>
-        <h2>El senador entra al Capitolio Nacional montado a caballo</h2>
-        <p>Ante las cámaras dice: <em>"Soy un campesino de origen humilde, defensor de los jinetes y de la Colombia rural olvidadas. Mis propiedades son el fruto del sudor de una vida limpia."</em></p>
-        <div class="badge-pauta">💸 Transparencia de Pauta: sin contenido patrocinado o pago detectado en este caso</div>
-      </div>
-      
-      <div class="investigacion-box">
-        <p style="font-size: 14px; color:#aaa; margin-bottom: 1rem;">Antes de investigar su patrimonio, tienes que evaluar la fuente misma del video que se volvió viral. ¿Quién lo emitió originalmente y qué tan confiable es?</p>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 1, this, 100)">Confiar en el resumen que circula por una cuenta anónima en redes y usarlo como punto de partida. (20 min)</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 2, this, 500)">Confirmar el video contra la transmisión oficial del Canal del Congreso y ubicar el minuto exacto de la intervención. (5 min)</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('fuente', 3, this, 200)">Buscar capturas de pantalla y comentarios de otros usuarios para reconstruir el contexto. (15 días)</button>
-      </div>
-      <button class="btn-main" id="btn-fuente" disabled onclick="ir('sc-dinero')">Siguiente paso: Rastrear el Dinero →</button>
+    <!-- ESCENA DINÁMICA (aquí se dibuja cada parte de la historia) -->
+    <div id="sc-juego" class="screen">
+      <div id="juego"></div>
     </div>
 
-    <!-- PASO 2: DINERO -->
-    <div id="sc-dinero" class="screen">
-      <div class="progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-      </div>
-      <span class="tag tag-info">Paso 2: Radiografía Inmobiliaria</span>
-      <h2 style="margin-bottom:1rem;">Los Hallazgos del Folio</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">El cruce de datos públicos arroja que el senador y su círculo familiar cercano concentran <strong>273 registros de tierras</strong>. Muchos de estos predios tienen origen en adjudicaciones estatales previas.</p>
-      
-      <div class="investigacion-box">
-        <p style="font-size: 14px; font-weight:bold; margin-bottom: 1rem; color:#F0EDE6;">¿Cómo interpretas legalmente este hallazgo frente a la Ley 160 de 1994?</p>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 1, this, 200)">Es completamente legal si los compró a precios de mercado a particulares tras la adjudicación original.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 2, this, 750)">Alerta de Acumulación: La normativa prohíbe concentrar más de una UAF (Unidad Agrícola Familiar) originalmente tipificada como baldío del Estado.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('dinero', 3, this, 300)">Indica únicamente que el senador funciona como un empresario del agro que unifica parcelas productivas.</button>
-      </div>
-      <button class="btn-main" id="btn-dinero" disabled onclick="ir('sc-tono')">Siguiente paso: Análisis de Discurso →</button>
-    </div>
-
-    <!-- PASO 3: TONO -->
-    <div id="sc-tono" class="screen">
-      <div class="progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-      </div>
-      <span class="tag tag-red">Paso 3: Carga Emocional</span>
-      <h2 style="margin-bottom:6px;">Marcaje de Evidencia</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Haz clic sobre las <strong>frases con alta carga emocional o narrativa</strong> que usa el senador para defenderse en la plenaria, separándolas de los datos verificables.</p>
-      
-      <div class="texto-analisis" id="discurso-box">
-        "Colegas, esto es una <span class="word-btn" onclick="marcarPalabra(this, true)">persecución criminal de los medios bogotanos</span> contra los hombres del campo. Mis predios suman <span class="word-btn" onclick="marcarPalabra(this, false)">3.500 hectáreas adquiridas legítimamente</span>, pero la envidia de los tecnócratas quiere <span class="word-btn" onclick="marcarPalabra(this, true)">destruir la cultura llanera y mi honra familiar</span>."
-      </div>
-      
-      <p style="font-size:12px; color:#666;">*Selecciona los dos argumentos con carga emocional identificada para continuar.</p>
-      <button class="btn-main" id="btn-tono" disabled onclick="ir('sc-contradicciones')">Siguiente paso: Cruzar Contradicciones →</button>
-    </div>
-
-    <!-- PASO 4: CONTRADICCIONES -->
-    <div id="sc-contradicciones" class="screen">
-      <div class="progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-      </div>
-      <span class="tag tag-info">Paso 4: El Quiebre</span>
-      <h2 style="margin-bottom:1rem;">El Contraste Final</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">El senador sostiene que todo su patrimonio proviene de herencias ancestrales y familiares. No obstante, tienes las copias de las matrículas inmobiliarias indexadas.</p>
-      
-      <div class="investigacion-box">
-        <p style="font-size: 14px; font-weight:bold; margin-bottom: 1rem; color:#F0EDE6;">¿Cuál es la contradicción documental irreversible que hallaste?</p>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 1, this, 400)">Las fechas de titulación demuestran compras consecutivas a campesinos adjudicatarios originales efectuadas en la última década.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 2, this, 100)">El senador paga tarifas muy bajas de impuesto predial según los recibos de los municipios correspondientes.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion('contra', 3, this, 50)">Los caballos de exhibición que posee no figuran registrados formalmente en sus declaraciones de activos.</button>
-      </div>
-      <button class="btn-main" id="btn-contra" disabled onclick="ir('sc-expediente-interactivo')">Siguiente paso: Construcción del Expediente →</button>
-    </div>
-
-    <!-- NUEVO PASO INTERACTIVO: CONSTRUCCIÓN DEL EXPEDIENTE (SOLICITADO POR LA PROFESORA) -->
-    <div id="sc-expediente-interactivo" class="screen">
-      <div class="progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
-      </div>
-      <span class="tag tag-purple">Paso 5: Mesa de Control Metodológico</span>
-      <h2>Construcción del Expediente</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1rem;">Determina el destino crítico de los hallazgos de tu investigación. Haz clic en cada tarjeta para <strong>clasificar si sostiene o derrumba</strong> el discurso político de inocencia del senador.</p>
-      
-      <div class="board-container">
-        <div class="evidence-pool">
-          <div class="pool-title">Evidencias Recolectadas en Campo</div>
-          <div class="evidence-cards-container" id="pool-evidencias">
-            <div class="evidence-item" id="ev-1">
-              <div class="evidence-meta meta-fuente">Certificados SNR / Catastro</div>
-              <div>Concentración de 273 matrículas de predios rurales de origen baldío.</div>
-              <div style="display:flex; gap:10px; margin-top:5px;">
-                <button onclick="clasificarEvidencia(1, 'sostiene')" style="flex:1; padding:4px; font-size:11px; background:#442222; color:#ffb3b3; border:1px solid #663333; cursor:pointer; border-radius:3px;">Sostiene Discurso</button>
-                <button onclick="clasificarEvidencia(1, 'derrumbar')" style="flex:1; padding:4px; font-size:11px; background:#224433; color:#b3ffcc; border:1px solid #336644; cursor:pointer; border-radius:3px;">Derrumba Discurso</button>
-              </div>
-            </div>
-            <div class="evidence-item" id="ev-2">
-              <div class="evidence-meta meta-dinero">Análisis Legal Ley 160</div>
-              <div>Violación expresa a los topes de acumulación de la Unidad Agrícola Familiar (UAF).</div>
-              <div style="display:flex; gap:10px; margin-top:5px;">
-                <button onclick="clasificarEvidencia(2, 'sostiene')" style="flex:1; padding:4px; font-size:11px; background:#442222; color:#ffb3b3; border:1px solid #663333; cursor:pointer; border-radius:3px;">Sostiene Discurso</button>
-                <button onclick="clasificarEvidencia(2, 'derrumbar')" style="flex:1; padding:4px; font-size:11px; background:#224433; color:#b3ffcc; border:1px solid #336644; cursor:pointer; border-radius:3px;">Derrumba Discurso</button>
-              </div>
-            </div>
-            <div class="evidence-item" id="ev-3">
-              <div class="evidence-meta meta-tono">Análisis de Narrativa Plenaria</div>
-              <div>Uso estratégico de adjetivos emotivos ("persecución", "cultura llanera") para evadir datos duros.</div>
-              <div style="display:flex; gap:10px; margin-top:5px;">
-                <button onclick="clasificarEvidencia(3, 'sostiene')" style="flex:1; padding:4px; font-size:11px; background:#442222; color:#ffb3b3; border:1px solid #663333; cursor:pointer; border-radius:3px;">Sostiene Discurso</button>
-                <button onclick="clasificarEvidencia(3, 'derrumbar')" style="flex:1; padding:4px; font-size:11px; background:#224433; color:#b3ffcc; border:1px solid #336644; cursor:pointer; border-radius:3px;">Derrumba Discurso</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="decision-columns">
-          <div class="decision-col col-sostener">
-            <h4>Sostiene la Narrativa</h4>
-            <div id="box-sostener" style="display:flex; flex-direction:column; gap:8px;"></div>
-          </div>
-          <div class="decision-col col-derrumbar">
-            <h4>Derrumba la Narrativa</h4>
-            <div id="box-derrumbar" style="display:flex; flex-direction:column; gap:8px;"></div>
-          </div>
-        </div>
-      </div>
-
-      <p style="font-size:12px; color:#666;">*Debes procesar y clasificar las 3 evidencias para fijar el Coeficiente de Evidencia y desbloquear la redacción final.</p>
-      <button class="btn-main" id="btn-expediente" disabled onclick="ir('sc-publicar')">Proceder a Redacción y Cierre →</button>
-    </div>
-
-    <!-- PASO 6: PUBLICAR -->
-    <div id="sc-publicar" class="screen">
-      <div class="progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
-      </div>
-      <span class="tag tag-red">El Cierre</span>
-      <h2 style="margin-bottom:1rem;">¡Tu Investigación está Lista!</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Has estructurado el caso metodológicamente en tu panel de control. Es hora de emitir el veredicto definitivo del informe y calcular tu puntaje de rigor periodístico.</p>
-      
-      <button class="btn-main" style="background:#1D9E75" onclick="mostrarResultados()">📰 PUBLICAR REPORTAJE INVESTIGATIVO</button>
-    </div>
-
-    <!-- SCREEN: PUNTAJE Y BALANCE REAL CORREGIDO A 1900 PTS MAX + MULTIPLICADOR -->
-    <div id="sc-puntaje" class="screen">
-      <div class="score-hero">
-        <div style="font-size:12px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;">Reportaje Evaluado (Rigor Total)</div>
-        <div class="score-big" id="score-num">0 pts</div>
-        <p style="margin-top:10px; color:#888; font-weight:bold;" id="score-coef"></p>
-        <p style="margin-top:10px; color:#aaa; max-width:550px; margin-left:auto; margin-right:auto; font-size:14px; line-height:1.5;" id="score-feedback"></p>
-      </div>
-
-      <div class="rev-card">
-        <h3 style="color:#E24B4A; margin-bottom:10px;">La Investigación de Campo Real</h3>
-        <p style="font-size:14px; color:#aaa; line-height:1.6; margin-bottom:10px;">
-          En los casos reales de auditoría sobre este fenómeno, tras los actos histriónicos o simbólicos en los escenarios legislativos, el análisis de datos puros suele revelar complejos esquemas de acumulación. Al rastrear el histórico de los folios de matrícula inmobiliaria, se evidencia la compra sistemática de terrenos que inicialmente eran baldíos adjudicados por el Estado para familias de bajos recursos.
-        </p>
-        <p style="font-size:14px; color:#aaa; line-height:1.6;">
-          Esta práctica vulnera los límites de la <strong>Unidad Agrícola Familiar (UAF)</strong> consagrada en la ley agraria, cuyo fin primordial es impedir que la tierra pública termine concentrada en grandes terratenientes o figuras políticas influyentes. El uso de discursos regionalistas o identitarios opera como un distractor frente al debate técnico y jurídico de los folios.
-        </p>
-        <a href="https://casamacondo.co/investigacion/una-cosecha-de-baldios/" target="_blank" rel="noopener" class="btn-main btn-link">📖 Leer investigación completa publicada</a>
-      </div>
-
-      <!-- SECCIÓN DE FUENTES DE LA INVESTIGACIÓN -->
-      <div class="fuentes-card">
-        <h3 style="color:#F0EDE6; font-size:15px; font-weight:700; border-bottom:1px solid #333; padding-bottom:8px;">Fuentes Oficiales y Documentales Utilizadas</h3>
-        <ul class="fuentes-list">
-          <li><strong>Superintendencia de Notariado y Registro (SNR):</strong> Certificados de tradición y libertad de los folios de matrícula inmobiliaria indexados.</li>
-          <li><strong>Ventanilla Única de Registro (VUR):</strong> Historial transaccional y cruce de índices de propietarios bajo el número de identificación del sujeto.</li>
-          <li><strong>Agencia Nacional de Tierras (ANT):</strong> Resoluciones de adjudicación originaria de terrenos baldíos a familias campesinas.</li>
-          <li><strong>Instituto Geográfico Agustín Codazzi (IGAC):</strong> Planos catastrales y delimitación de las Unidades Agrícolas Familiares (UAF) por zonas de desarrollo hídrico y suelo.</li>
-          <li><strong>Gaceta del Congreso:</strong> Transcripciones oficiales de las intervenciones, debates de control político y declaraciones de intereses en la plenaria del Senado.</li>
-        </ul>
-      </div>
-
-      <div id="desglose-puntos"></div>
-
-      <button class="btn-main" onclick="irEncuestaPost()" style="margin-top:1rem">Continuar a la encuesta final →</button>
-    </div>
-
-    <!-- ========================================================= -->
-    <!-- CASO #002: LOS CONTRATOS ESPEJO EN LA INFRAESTRUCTURA REGIONAL -->
-    <!-- ========================================================= -->
-
-    <!-- CASO 2 - PASO 1: FUENTE -->
-    <div id="sc-fuente-2" class="screen">
-      <div class="progress">
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-      </div>
-      <span class="tag tag-red">Paso 1: Pista de Fuente</span>
-      <div class="expediente">
-        <div class="expediente-label">El Hecho</div>
-        <h2>El Congreso elige, casi por unanimidad, al nuevo jefe del organismo que fiscaliza el gasto público</h2>
-        <p>En su discurso de posesión promete, en sus palabras, ser <em>"la casa de la transparencia"</em>. Pero en los archivos de la Fiscalía reposa, desde hace tres años, una denuncia anónima que apunta en la dirección contraria.</p>
-        <div class="badge-pauta">💸 Transparencia de Pauta: sin contenido patrocinado o pago detectado en este caso</div>
-      </div>
-
-      <div class="investigacion-box">
-        <p style="font-size: 14px; color:#aaa; margin-bottom: 1rem;">Tienes en tus manos una denuncia anónima radicada hace tres años ante la Fiscalía. ¿Cuál es tu primer paso técnico antes de publicar cualquier hallazgo?</p>
-        <button class="opcion-investigar" onclick="seleccionarOpcion2('fuente', 1, this, 100)">Publicar los señalamientos de la denuncia tal como están redactados, citando la fuente anónima. (20 min)</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion2('fuente', 2, this, 500)">Verificar cada predio mencionado contra los folios de matrícula inmobiliaria y las escrituras públicas antes de publicar cualquier hallazgo. (5 min)</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion2('fuente', 3, this, 200)">Buscar la reacción pública en redes sociales sobre el nombramiento para evaluar si genera controversia. (15 días)</button>
-      </div>
-      <button class="btn-main" id="btn-fuente-2" disabled onclick="ir('sc-dinero-2')">Siguiente paso: Rastrear el Dinero →</button>
-    </div>
-
-    <!-- CASO 2 - PASO 2: DINERO -->
-    <div id="sc-dinero-2" class="screen">
-      <div class="progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-      </div>
-      <span class="tag tag-info">Paso 2: Radiografía Patrimonial</span>
-      <h2 style="margin-bottom:1rem;">Los Hallazgos del Registro Público</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">El cruce de escrituras públicas revela que el funcionario, su cónyuge y su hija concentran <strong>al menos 13 propiedades</strong> adquiridas entre 2009 y 2022, la mayoría sin hipoteca, mientras él ocupaba un cargo de secretario de comisión en el Senado con una asignación mensual cercana a los 18 millones de pesos.</p>
-
-      <div class="investigacion-box">
-        <p style="font-size: 14px; font-weight:bold; margin-bottom: 1rem; color:#F0EDE6;">¿Cómo interpretas este hallazgo frente al delito de enriquecimiento ilícito de servidor público?</p>
-        <button class="opcion-investigar" onclick="seleccionarOpcion2('dinero', 1, this, 200)">Es normal que un servidor público de alto nivel acumule propiedades con los años de servicio.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion2('dinero', 2, this, 750)">Alerta de Desproporción: la brecha entre el salario declarado y un patrimonio inmobiliario superior a 2.000 millones de pesos, casi todo sin hipoteca, configura el tipo penal de enriquecimiento ilícito — aunque corresponde a la justicia determinar responsabilidad.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion2('dinero', 3, this, 300)">Indica solamente que la familia tiene un buen manejo de sus finanzas personales.</button>
-      </div>
-      <button class="btn-main" id="btn-dinero-2" disabled onclick="ir('sc-tono-2')">Siguiente paso: Análisis de la Respuesta Oficial →</button>
-    </div>
-
-    <!-- CASO 2 - PASO 3: TONO -->
-    <div id="sc-tono-2" class="screen">
-      <div class="progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-      </div>
-      <span class="tag tag-red">Paso 3: La Respuesta Oficial</span>
-      <h2 style="margin-bottom:6px;">Marcaje de Evidencia</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Haz clic sobre los argumentos que son <strong>generales o procedimentales</strong> (no abordan directamente las cifras y fechas documentadas), separándolos del que sí responde punto por punto a lo encontrado.</p>
-
-      <div class="texto-analisis" id="discurso-box-2">
-        Según su defensa, esto es <span class="word-btn" onclick="marcarPalabra2(this, true)">un refrito de una denuncia anónima que ya fue archivada por el ente de control disciplinario</span>. La verificación documental en el registro de instrumentos públicos <span class="word-btn" onclick="marcarPalabra2(this, false)">no halló pruebas de uso de testaferros ni un incremento patrimonial desproporcionado</span>, y sostiene que <span class="word-btn" onclick="marcarPalabra2(this, true)">los vínculos familiares o políticos no autorizan, por sí solos, a atribuirle la propiedad de bienes de terceros</span>.
-      </div>
-
-      <p style="font-size:12px; color:#666;">*Selecciona los dos argumentos generales/procedimentales identificados para continuar.</p>
-      <button class="btn-main" id="btn-tono-2" disabled onclick="ir('sc-contradicciones-2')">Siguiente paso: Cruzar Contradicciones →</button>
-    </div>
-
-    <!-- CASO 2 - PASO 4: CONTRADICCIONES -->
-    <div id="sc-contradicciones-2" class="screen">
-      <div class="progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
-        <div class="prog-step"></div>
-      </div>
-      <span class="tag tag-info">Paso 4: El Quiebre</span>
-      <h2 style="margin-bottom:1rem;">El Contraste Final</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">En una entrevista reciente, el funcionario niega cualquier cercanía con un fallecido senador condenado por liderar una red de corrupción. Sin embargo, tienes acceso al expediente de una investigación periodística previa sobre ese vínculo.</p>
-
-      <div class="investigacion-box">
-        <p style="font-size: 14px; font-weight:bold; margin-bottom: 1rem; color:#F0EDE6;">¿Cuál es la contradicción documental que hallaste?</p>
-        <button class="opcion-investigar" onclick="seleccionarOpcion2('contra', 1, this, 400)">Existen fotografías y una llamada interceptada, incorporada por la Corte Suprema a una medida de aseguramiento, que documentan la relación que niega.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion2('contra', 2, this, 100)">El funcionario cursó posgrados en universidades privadas costosas.</button>
-        <button class="opcion-investigar" onclick="seleccionarOpcion2('contra', 3, this, 50)">El funcionario viajaba con frecuencia a Europa y Estados Unidos.</button>
-      </div>
-      <button class="btn-main" id="btn-contra-2" disabled onclick="ir('sc-expediente-interactivo-2')">Siguiente paso: Construcción del Expediente →</button>
-    </div>
-
-    <!-- CASO 2 - PASO 5: CONSTRUCCIÓN DEL EXPEDIENTE -->
-    <div id="sc-expediente-interactivo-2" class="screen">
-      <div class="progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
-        <div class="prog-step"></div>
-      </div>
-      <span class="tag tag-purple">Paso 5: Mesa de Control Metodológico</span>
-      <h2>Construcción del Expediente</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1rem;">Clasifica cada hallazgo según si <strong>sostiene o derrumba</strong> el discurso de transparencia total del funcionario.</p>
-
-      <div class="board-container">
-        <div class="evidence-pool">
-          <div class="pool-title">Evidencias Recolectadas en Campo</div>
-          <div class="evidence-cards-container" id="pool-evidencias-2">
-            <div class="evidence-item" id="ev-1-2">
-              <div class="evidence-meta meta-fuente">Verificación en Registro de Instrumentos Públicos</div>
-              <div>13 propiedades familiares verificadas contra folios de matrícula inmobiliaria y escrituras públicas.</div>
-              <div style="display:flex; gap:10px; margin-top:5px;">
-                <button onclick="clasificarEvidencia2(1, 'sostiene')" style="flex:1; padding:4px; font-size:11px; background:#442222; color:#ffb3b3; border:1px solid #663333; cursor:pointer; border-radius:3px;">Sostiene Discurso</button>
-                <button onclick="clasificarEvidencia2(1, 'derrumbar')" style="flex:1; padding:4px; font-size:11px; background:#224433; color:#b3ffcc; border:1px solid #336644; cursor:pointer; border-radius:3px;">Derrumba Discurso</button>
-              </div>
-            </div>
-            <div class="evidence-item" id="ev-2-2">
-              <div class="evidence-meta meta-dinero">Análisis frente al tipo penal de enriquecimiento ilícito</div>
-              <div>Desproporción entre una asignación mensual cercana a 18 millones de pesos y un patrimonio inmobiliario superior a 2.000 millones, mayormente sin hipoteca.</div>
-              <div style="display:flex; gap:10px; margin-top:5px;">
-                <button onclick="clasificarEvidencia2(2, 'sostiene')" style="flex:1; padding:4px; font-size:11px; background:#442222; color:#ffb3b3; border:1px solid #663333; cursor:pointer; border-radius:3px;">Sostiene Discurso</button>
-                <button onclick="clasificarEvidencia2(2, 'derrumbar')" style="flex:1; padding:4px; font-size:11px; background:#224433; color:#b3ffcc; border:1px solid #336644; cursor:pointer; border-radius:3px;">Derrumba Discurso</button>
-              </div>
-            </div>
-            <div class="evidence-item" id="ev-3-2">
-              <div class="evidence-meta meta-tono">Análisis de la Respuesta Oficial</div>
-              <div>La defensa se apoya en un archivo disciplinario previo y en principios legales generales, sin desmentir punto por punto el detalle de las 13 propiedades.</div>
-              <div style="display:flex; gap:10px; margin-top:5px;">
-                <button onclick="clasificarEvidencia2(3, 'sostiene')" style="flex:1; padding:4px; font-size:11px; background:#442222; color:#ffb3b3; border:1px solid #663333; cursor:pointer; border-radius:3px;">Sostiene Discurso</button>
-                <button onclick="clasificarEvidencia2(3, 'derrumbar')" style="flex:1; padding:4px; font-size:11px; background:#224433; color:#b3ffcc; border:1px solid #336644; cursor:pointer; border-radius:3px;">Derrumba Discurso</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="decision-columns">
-          <div class="decision-col col-sostener">
-            <h4>Sostiene la Narrativa</h4>
-            <div id="box-sostener-2" style="display:flex; flex-direction:column; gap:8px;"></div>
-          </div>
-          <div class="decision-col col-derrumbar">
-            <h4>Derrumba la Narrativa</h4>
-            <div id="box-derrumbar-2" style="display:flex; flex-direction:column; gap:8px;"></div>
-          </div>
-        </div>
-      </div>
-
-      <p style="font-size:12px; color:#666;">*Debes procesar y clasificar las 3 evidencias para fijar el Coeficiente de Evidencia y desbloquear la redacción final.</p>
-      <button class="btn-main" id="btn-expediente-2" disabled onclick="ir('sc-publicar-2')">Proceder a Redacción y Cierre →</button>
-    </div>
-
-    <!-- CASO 2 - PASO 6: PUBLICAR -->
-    <div id="sc-publicar-2" class="screen">
-      <div class="progress">
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step done"></div>
-        <div class="prog-step active"></div>
-      </div>
-      <span class="tag tag-red">El Cierre</span>
-      <h2 style="margin-bottom:1rem;">¡Tu Investigación está Lista!</h2>
-      <p style="color:#aaa; font-size:14px; margin-bottom:1.5rem;">Has estructurado el caso metodológicamente en tu panel de control. Es hora de emitir el veredicto definitivo del informe y calcular tu puntaje de rigor periodístico.</p>
-
-      <button class="btn-main" style="background:#1D9E75" onclick="mostrarResultados2()">📰 PUBLICAR REPORTAJE INVESTIGATIVO</button>
-    </div>
-
-    <!-- CASO 2 - SCREEN: PUNTAJE -->
-    <div id="sc-puntaje-2" class="screen">
-      <div class="score-hero">
-        <div style="font-size:12px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;">Reportaje Evaluado (Rigor Total)</div>
-        <div class="score-big" id="score-num-2">0 pts</div>
-        <p style="margin-top:10px; color:#888; font-weight:bold;" id="score-coef-2"></p>
-        <p style="margin-top:10px; color:#aaa; max-width:550px; margin-left:auto; margin-right:auto; font-size:14px; line-height:1.5;" id="score-feedback-2"></p>
-      </div>
-
-      <div class="rev-card">
-        <h3 style="color:#E24B4A; margin-bottom:10px;">La Investigación de Campo Real</h3>
-        <p style="font-size:14px; color:#aaa; line-height:1.6; margin-bottom:10px;">
-          Este caso reconstruye una investigación periodística real y verificada, publicada en agosto de 2026, sobre el patrimonio inmobiliario del nuevo jefe del organismo que fiscaliza el gasto público en Colombia. Una denuncia anónima radicada en 2023 ante la Fiscalía señala un incremento patrimonial injustificado durante su paso por el Congreso.
-        </p>
-        <p style="font-size:14px; color:#aaa; line-height:1.6;">
-          El ente de control disciplinario archivó en 2024 una revisión sobre el caso, y la Fiscalía no ha reportado avances formales en tres años. El funcionario y su defensa niegan cualquier irregularidad. <strong>Se trata de un caso judicial y disciplinario que sigue abierto: ningún tribunal ha determinado responsabilidad.</strong>
-        </p>
-        <a href="https://casamacondo.co/investigacion/enriquecimiento-jorge-eliecer-laverde/" target="_blank" rel="noopener" class="btn-main btn-link">📖 Leer investigación completa publicada</a>
-      </div>
-
-      <!-- SECCIÓN DE FUENTES DE LA INVESTIGACIÓN -->
-      <div class="fuentes-card">
-        <h3 style="color:#F0EDE6; font-size:15px; font-weight:700; border-bottom:1px solid #333; padding-bottom:8px;">Fuentes Oficiales y Documentales Utilizadas</h3>
-        <ul class="fuentes-list">
-          <li><strong>Fiscalía General de la Nación (Dirección Especializada contra la Corrupción):</strong> entidad ante la que se radicó la denuncia anónima.</li>
-          <li><strong>Procuraduría General de la Nación:</strong> archivó una revisión disciplinaria sobre los mismos hechos.</li>
-          <li><strong>Registro de Instrumentos Públicos:</strong> folios de matrícula y escrituras que documentan la adquisición de las propiedades.</li>
-          <li><strong>SIGEP (Sistema de Información y Gestión del Empleo Público):</strong> hoja de vida y cargos ocupados por el funcionario.</li>
-          <li><strong>CasaMacondo:</strong> medio que verificó y publicó la investigación original.</li>
-        </ul>
-      </div>
-
-      <div id="desglose-puntos-2"></div>
-
-      <button class="btn-main" onclick="irEncuestaPost()" style="margin-top:1rem">Continuar a la encuesta final →</button>
-    </div>
-
-    <!-- ENCUESTA POST (DESPUÉS DE JUGAR, COMPARTIDA POR AMBOS CASOS) -->
+    <!-- ENCUESTA POST -->
     <div id="sc-encuesta-post" class="screen">
-      <span class="tag tag-purple">Ya Casi Terminas</span>
-      <div class="expediente" style="border-left-color:#6B46C1;">
-        <div class="expediente-label" style="color:#6B46C1;">Encuesta Final (2 min)</div>
+      <span class="tag tag-purple">Ya casi terminas</span>
+      <div class="expediente" style="border-left-color:#4F46E5;">
+        <div class="expediente-label" style="color:#A78BFA;">Encuesta final (2 min)</div>
         <h2>Cuéntanos cómo te fue</h2>
-        <p>Esta encuesta nos ayuda a mejorar el juego para la próxima entrega. Tus respuestas son anónimas.</p>
+        <p>Tus respuestas nos ayudan a mejorar el juego. Son anónimas.</p>
       </div>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5hkNAYn3ix3WdtZS7p4Dbnny66wkoBmiuyZxUBDbhRaAZ7Q/viewform?embedded=true" width="100%" height="1400" frameborder="0" style="border:1px solid #333;border-radius:8px;background:#fff;margin-top:1rem;">Cargando…</iframe>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5hkNAYn3ix3WdtZS7p4Dbnny66wkoBmiuyZxUBDbhRaAZ7Q/viewform?embedded=true" width="100%" height="1400" frameborder="0" style="border:1px solid #2E3868;border-radius:8px;background:#fff;margin-top:1rem;">Cargando…</iframe>
       <p class="encuesta-fallback">¿No ves el formulario? <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5hkNAYn3ix3WdtZS7p4Dbnny66wkoBmiuyZxUBDbhRaAZ7Q/viewform" target="_blank" rel="noopener">Ábrelo en una pestaña nueva</a> y luego vuelve aquí.</p>
-      <button class="btn-main" onclick="completarEncuestaPost()">Ya respondí, volver al repositorio →</button>
+      <button class="btn-main" onclick="completarEncuestaPost()">Ya respondí, volver a los casos →</button>
     </div>
 
   </div>
@@ -674,352 +323,803 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <script>
 // ===== ALMACENAMIENTO SEGURO =====
-// Si localStorage está bloqueado (iframe, vista previa, modo privado), usamos memoria para que nada se rompa.
 var _memStore = {};
-function lsGet(k) {
-  try { return window.localStorage.getItem(k); } catch (e) { return _memStore[k] || null; }
-}
-function lsSet(k, v) {
-  try { window.localStorage.setItem(k, v); } catch (e) { _memStore[k] = v; }
-}
-function lsRemove(k) {
-  try { window.localStorage.removeItem(k); } catch (e) { delete _memStore[k]; }
-}
+function lsGet(k){ try { return window.localStorage.getItem(k); } catch (e) { return _memStore[k] || null; } }
+function lsSet(k,v){ try { window.localStorage.setItem(k,v); } catch (e) { _memStore[k] = v; } }
+function lsRemove(k){ try { window.localStorage.removeItem(k); } catch (e) { delete _memStore[k]; } }
 
-// Para repetir las encuestas al probar: abre el archivo con ?reset=1 al final de la dirección
+// Para repetir las encuestas al probar: agrega ?reset=1 al final de la dirección
 if (/[?&]reset=1/.test(location.search)) {
-  ['cluepolitico_onboarded', 'cluepolitico_pre_encuesta', 'cluepolitico_post_encuesta'].forEach(lsRemove);
+  ['cluepolitico_onboarded','cluepolitico_pre_encuesta','cluepolitico_post_encuesta','cluepolitico_progreso'].forEach(lsRemove);
 }
 
-// VARIABLES MATEMÁTICAS ADAPTADAS AL DOCUMENTO ACADÉMICO (MAX 1.900 PUNTOS)
-var puntosBrutos = { fuente: 0, dinero: 0, tono: 0, tiempo: 250 }; // Tiempo inicia en el techo máximo presupuestado (250 pts)
-var respuestasUsuario = { fuente: null, dinero: null, contra: null };
-var clasificacionEvidencias = { 1: null, 2: null, 3: null }; 
-var totalEvidenciasClasificadas = 0;
-var palabrasMarcadasCorrectas = 0;
+/* =====================================================================
+   HISTORIAS (los dos casos)
+   Cada "nodo" es una escena. Tipos:
+   - elige:     el jugador escoge entre opciones. Cada opción puede asignar puntos
+                (set), restar tiempo, anotar una pista en la libreta y llevar a otra escena (next).
+   - marcar:    el jugador toca frases en un texto.
+   - clasificar:el jugador decide si cada hallazgo sostiene o derrumba el discurso.
+   - publicar:  escena final que calcula el puntaje.
+   - fin:       final alternativo (la historia se acaba antes).
+   Puntaje máximo (igual que antes): fuente 500 + dinero 750 + contradicción 400 + tiempo 250 = 1.900,
+   multiplicado por el coeficiente de rigor (0.2 a 1.0).
+   ===================================================================== */
+var CASOS = {
 
-// Relación de puntos brutos configurados por elección técnica exacta
-var mapaPuntosFuente = { 1: 100, 2: 500, 3: 200 };
-var mapaPuntosDinero = { 1: 200, 2: 750, 3: 300 };
-var mapaPuntosContra = { 1: 400, 2: 100, 3: 50 };
+/* ------------------------------ CASO 1 ------------------------------ */
+1: {
+  inicio: 'fuente',
+  pilares: { dinero: 'Ley 160 / UAF' },
+  link: 'https://casamacondo.co/investigacion/una-cosecha-de-baldios/',
+  real: [
+    'En la investigación real, al revisar la historia de cada predio en los folios de matrícula, se ve un patrón: muchos terrenos eran baldíos que el Estado le entregó a familias de bajos recursos y después fueron comprados uno tras otro.',
+    'Eso choca con los límites de la <strong>Unidad Agrícola Familiar (UAF)</strong>, que existe para evitar que la tierra pública termine en manos de grandes terratenientes o políticos con poder. Los discursos sobre "identidad" o "cultura" funcionan como cortina de humo frente al debate técnico y legal.'
+  ],
+  fuentes: [
+    '<strong>Superintendencia de Notariado y Registro (SNR):</strong> certificados de tradición y libertad de los predios.',
+    '<strong>Ventanilla Única de Registro (VUR):</strong> historial de compras y ventas por número de identificación.',
+    '<strong>Agencia Nacional de Tierras (ANT):</strong> resoluciones que entregaron baldíos a familias campesinas.',
+    '<strong>IGAC (Instituto Geográfico Agustín Codazzi):</strong> planos catastrales y tamaño de las UAF por zona.',
+    '<strong>Gaceta del Congreso:</strong> transcripciones oficiales de debates y declaraciones en el Senado.'
+  ],
+  finales: {
+    alto: '¡Reportaje blindado! Separaste el show de los datos y usaste los registros de tierras y la ley para mostrar el patrón de acumulación. Tu nota resiste cualquier desmentido.',
+    medio: 'Buen reportaje, pero con grietas. Encontraste datos clave, pero fallaste en clasificar algunas pruebas, y eso le quita fuerza a tu publicación frente a los críticos.',
+    bajo: 'El show te ganó. Te dejaste llevar por el video y los argumentos emocionales del senador, y te faltó cruzar bien los registros de tierras. Tu nota queda floja.'
+  },
+  nodos: {
 
-// ===== CASO #002: Los Contratos Espejo (estado independiente del Caso #001) =====
-var puntosBrutos2 = { fuente: 0, dinero: 0, tono: 0, tiempo: 250 };
-var clasificacionEvidencias2 = { 1: null, 2: null, 3: null };
-var totalEvidenciasClasificadas2 = 0;
-var mapaPuntosFuente2 = { 1: 100, 2: 500, 3: 200 };
-var mapaPuntosDinero2 = { 1: 200, 2: 750, 3: 300 };
-var mapaPuntosContra2 = { 1: 400, 2: 100, 3: 50 };
+    fuente: {
+      paso: 1, tag: 'Capítulo 1 · El video', tagClase: 'tag-red', tipo: 'elige',
+      label: 'Lo que está pasando',
+      titulo: 'Un senador entra al Congreso… montado a caballo',
+      texto: 'Son las 7 a. m. y tu celular no para de vibrar. Un video del senador llegando a caballo al Capitolio tiene miles de compartidos. Frente a las cámaras dice: <em>«Soy un campesino humilde, defiendo a la Colombia rural que todos olvidan. Todo lo que tengo es fruto de una vida de trabajo honesto.»</em><br><br>Tu editor te escribe: <em>«¿Hay historia aquí? Tienes hasta mañana.»</em>',
+      pauta: '💸 Sin publicidad ni contenido pagado detectado en este caso',
+      pregunta: 'Antes de hablar de su plata, tienes que saber si el video es real y está completo. ¿Qué haces primero?',
+      opciones: [
+        { t: 'Uso el resumen que circula en una cuenta anónima de redes. Es lo más rápido (20 min).', tono: 'mal',
+          fb: 'Ahorraste tiempo, pero no sabes quién editó ese video ni si está completo. Estás construyendo sobre arena.',
+          set: { fuente: 100 }, next: 'fuente_giro' },
+        { t: 'Busco la transmisión oficial del Canal del Congreso, ubico el minuto exacto y confirmo que el video no esté manipulado (por ejemplo, con IA) (5 min).', tono: 'bien',
+          fb: 'En unos minutos tienes el video completo, sin cortes ni manipulación. Ahora tienes una fuente que puedes citar sin miedo.',
+          set: { fuente: 500 }, libreta: 'Video completo verificado en el Canal del Congreso, con minuto exacto.', next: 'dinero' },
+        { t: 'Reviso capturas y comentarios de otros usuarios para armar el contexto (15 días).', tono: 'medio',
+          fb: 'Pasaron dos semanas leyendo comentarios. Aprendiste lo que opina la gente, no lo que pasó de verdad. El caso sigue vivo, pero perdiste mucho tiempo.',
+          set: { fuente: 200 }, tiempo: -100, next: 'dinero' }
+      ]
+    },
 
-// ===== NAVEGACIÓN GENERAL: onboarding → encuesta PRE → caso → encuesta POST =====
+    fuente_giro: {
+      paso: 1, tag: 'Giro en la historia', tagClase: 'tag-giro', tipo: 'elige',
+      label: 'Algo no cuadra',
+      titulo: 'Tu contacto en el Congreso se ríe',
+      texto: 'Llamas a alguien que estuvo en la plenaria. Se ríe: <em>«Ese video está recortado. Lo que el senador dijo antes del "soy campesino" cambia todo el sentido.»</em><br><br>Para colmo, la cuenta anónima acaba de borrar su publicación. Tu editor escribe: <em>«¿Ya podemos publicar? Esto es tendencia.»</em>',
+      pregunta: '¿Qué haces?',
+      opciones: [
+        { t: 'Voy al Canal del Congreso a ver la transmisión completa, aunque pierda unas horas.', tono: 'bien',
+          fb: 'Buena corrección. Perdiste tiempo, pero ahora tienes una base sólida para seguir.',
+          set: { fuente: 300 }, tiempo: -40, libreta: 'Corregiste el rumbo: viste la transmisión completa y descubriste que el video viral estaba recortado.', next: 'dinero' },
+        { t: 'Publico igual. El tema ya es tendencia y no quiero llegar tarde.', tono: 'mal',
+          fb: 'Publicaste sin verificar…', next: 'fin_desmentido' }
+      ]
+    },
+
+    fin_desmentido: {
+      tipo: 'fin', tag: 'Final alternativo', tagClase: 'tag-red',
+      titulo: 'Te desmienten en pleno directo',
+      texto: 'Publicas el resumen de la cuenta anónima. En unas horas, el Canal del Congreso muestra el video completo y el senador sale a decir que eres un mentiroso. Tu medio borra la nota y tu credibilidad queda por el suelo.<br><br><strong>La lección:</strong> verificar toma 5 minutos. Arreglar un error toma meses.'
+    },
+
+    dinero: {
+      paso: 2, tag: 'Capítulo 2 · Sigue la plata (y las tierras)', tagClase: 'tag-info', tipo: 'elige',
+      label: 'Lo que encuentras',
+      titulo: '273 registros de tierras',
+      texto: 'Pides los registros públicos de propiedad. El resultado te deja sin palabras: el senador y su familia cercana aparecen con <strong>273 registros de tierras</strong>. Muchos son predios que el Estado entregó antes a campesinos.',
+      glosario: '<strong>Baldío:</strong> tierra del Estado que se entrega a campesinos sin tierra.<br><strong>UAF (Unidad Agrícola Familiar):</strong> la cantidad de tierra pensada para que una familia campesina viva y trabaje.<br><strong>Ley 160 de 1994:</strong> busca que nadie junte más de una UAF de tierras que alguna vez fueron baldíos.',
+      pregunta: '¿Cómo interpretas este hallazgo?',
+      opciones: [
+        { t: 'Es legal si las compró a precios de mercado a otros particulares.', tono: 'mal',
+          fb: 'Suena lógico, pero estás mirando solo el precio. La ley también mira de dónde viene la tierra.',
+          set: { dinero: 130 }, next: 'dinero_giro' },
+        { t: 'Hay una alerta: la ley prohíbe juntar más de una UAF de tierras que fueron baldíos del Estado.', tono: 'bien',
+          fb: 'Exacto. Miraste el origen de la tierra, no solo la cantidad. Esa es la pista clave del caso.',
+          set: { dinero: 500 }, libreta: '273 registros de tierras; muchos con origen en baldíos. La Ley 160 limita la acumulación a una UAF.', next: 'pauta' },
+        { t: 'Solo muestra que es un empresario del agro que junta parcelas para producir.', tono: 'mal',
+          fb: 'Es una explicación cómoda, pero no la comprobaste. Con eso estás repitiendo la defensa del senador.',
+          set: { dinero: 200 }, next: 'dinero_giro' }
+      ]
+    },
+
+    dinero_giro: {
+      paso: 2, tag: 'Giro en la historia', tagClase: 'tag-giro', tipo: 'elige',
+      label: 'Una llamada inesperada',
+      titulo: 'Una abogada de tierras te frena',
+      texto: 'Le cuentas tu idea a una abogada experta en tierras. Te escribe: <em>«Antes de decir eso, mira el origen de esos predios. La ley no solo se fija en el precio: también en de dónde salió la tierra.»</em>',
+      pregunta: '¿Cómo sigues?',
+      opciones: [
+        { t: 'Reviso el historial de cada predio (su "folio de matrícula") y averiguo de dónde venía.', tono: 'bien',
+          fb: 'Tomó más tiempo, pero ahora tu lectura se apoya en documentos y no en suposiciones.',
+          set: { dinero: 330 }, tiempo: -40, libreta: 'Revisaste el historial de los predios y confirmaste su origen en tierras del Estado.', next: 'pauta' },
+        { t: 'Me quedo con mi lectura inicial. Ya tengo suficiente.', tono: 'mal',
+          fb: 'Sigues adelante, pero con una base débil. Esto te va a costar más adelante.', next: 'pauta' }
+      ]
+    },
+
+    pauta: {
+      paso: 3, tag: 'Capítulo 3 · ¿Quién paga para que circule?', tagClase: 'tag-info', tipo: 'elige',
+      label: 'Una duda de tu editor',
+      titulo: 'El video está en todas partes',
+      texto: 'Tu editor te escribe: <em>«Este video se movió muy rápido. ¿Alguien pagó para impulsarlo?»</em><br><br>No es lo mismo un contenido que se vuelve viral solo que uno que se promociona con plata. Y si nadie lo está pagando, eso también es un dato.',
+      glosario: '<strong>Pauta:</strong> publicidad pagada para que un contenido llegue a más gente.<br><strong>Biblioteca de anuncios:</strong> base pública de las redes donde se ven los anuncios activos y quién los paga.<br><strong>SECOP:</strong> sistema público donde se publican los contratos del Estado.',
+      pregunta: '¿Cómo averiguas si hay plata detrás de la difusión?',
+      opciones: [
+        { t: 'Doy por hecho que es orgánico: nadie pagaría por promocionar un video así.', tono: 'mal',
+          fb: 'Es una suposición. Sin revisar, no sabes si hubo pauta o no.',
+          set: { pauta: 80 }, next: 'tono' },
+        { t: 'Reviso la biblioteca de anuncios de las redes y los contratos públicos (SECOP) buscando pauta o contratos relacionados.', tono: 'bien',
+          fb: 'No encuentras pauta ni contratos ligados a la difusión. Eso también es un hallazgo: puedes escribir "no se detectó pauta" sin inventar un patrocinador.',
+          set: { pauta: 250 }, libreta: 'Revisaste la biblioteca de anuncios y el SECOP: no se detectó pauta ni contratos ligados a la difusión.', next: 'tono' },
+        { t: 'Escribo que el video fue impulsado con plata de campaña, para darle más fuerza a la nota.', tono: 'mal',
+          fb: 'Afirmaste algo que no probaste. Si alguien lo revisa, tu nota queda en problemas.',
+          set: { pauta: 0 }, next: 'tono' }
+      ]
+    },
+
+    tono: {
+      paso: 4, tag: 'Capítulo 4 · El discurso', tagClase: 'tag-red', tipo: 'marcar',
+      titulo: 'Escucha cómo se defiende',
+      texto: 'El senador toma la palabra en el pleno del Senado. Algunas de sus frases buscan que <strong>sientas algo</strong> (rabia, pena, orgullo). Otras dan <strong>datos que se pueden comprobar</strong>.',
+      instruccion: 'Toca las <strong>2 frases emocionales</strong>, esas que buscan provocar una emoción en vez de dar datos.',
+      partes: [
+        '"Colegas, esto es una ',
+        { t: 'persecución criminal de los medios bogotanos', e: true },
+        ' contra los hombres del campo. Mis predios suman ',
+        { t: '3.500 hectáreas adquiridas legítimamente', e: false },
+        ', pero la envidia de los tecnócratas quiere ',
+        { t: 'destruir la cultura llanera y mi honra familiar', e: true },
+        '."'
+      ],
+      ok: 'Bien visto. «Persecución» y «destruir la cultura llanera» no responden a ninguna cifra: solo buscan que te pongas de su lado. Lo único que se puede comprobar es lo de las 3.500 hectáreas, y justo ahí hay que seguir investigando.',
+      mal: 'Casi. Las frases emocionales eran «persecución criminal…» y «destruir la cultura llanera…», porque apelan a la emoción y no responden a datos. «3.500 hectáreas» sí es un dato que se puede revisar.',
+      next: 'contra'
+    },
+
+    contra: {
+      paso: 5, tag: 'Capítulo 5 · El quiebre', tagClase: 'tag-info', tipo: 'elige',
+      label: 'El momento clave',
+      titulo: 'Su versión contra los documentos',
+      texto: 'El senador insiste: todo su patrimonio viene de herencias de su familia. Pero tú tienes en el escritorio copias de las matrículas de los predios.',
+      glosario: '<strong>Contradicción</strong> (en periodismo): cuando lo que alguien afirma hoy choca con un hecho que se puede comprobar con un documento, un registro o un video. No es una simple incoherencia ni un dato llamativo: tiene que ser verificable.',
+      pregunta: '¿Cuál es la contradicción que no puede explicar?',
+      opciones: [
+        { t: 'Las fechas muestran compras seguidas a campesinos que recibieron esas tierras del Estado, en la última década.', tono: 'bien',
+          fb: 'Eso es. Si fueran herencias ancestrales, no habría compras recientes a los adjudicatarios originales. Su versión no cuadra con los papeles.',
+          set: { contra: 250 }, libreta: 'Las fechas muestran compras recientes a campesinos adjudicatarios, no herencias.', next: 'expediente' },
+        { t: 'Paga muy poco de impuesto predial, según los recibos de los municipios.', tono: 'mal',
+          fb: 'Dato curioso, pero no contradice lo de la herencia ni prueba nada importante.',
+          set: { contra: 60 }, next: 'expediente' },
+        { t: 'Sus caballos de exhibición no aparecen en su declaración de bienes.', tono: 'mal',
+          fb: 'Llamativo para una nota de color, pero no toca el fondo del asunto.',
+          set: { contra: 30 }, next: 'expediente' }
+      ]
+    },
+
+    expediente: {
+      paso: 6, tag: 'Capítulo 6 · Ordena tus pruebas', tagClase: 'tag-purple', tipo: 'clasificar',
+      titulo: 'Tu mesa de trabajo',
+      texto: 'Antes de escribir, pon tus hallazgos sobre la mesa. Para cada uno, decide: ¿<strong>sostiene</strong> la versión del senador o la <strong>derrumba</strong>? Ojo: no todo lo que encontraste va en su contra.',
+      evidencias: [
+        { meta: 'Registros oficiales (SNR / Catastro)', clase: 'meta-fuente', t: 'Hay 273 matrículas de predios rurales que antes eran baldíos.', ok: 'derrumba', por: 'Choca con la idea de que todo es herencia: muchas matrículas vienen de baldíos.' },
+        { meta: 'Análisis de la Ley 160', clase: 'meta-dinero', t: 'Supera los topes de acumulación de la UAF.', ok: 'derrumba', por: 'Va en contra de la ley que él dice respetar.' },
+        { meta: 'Análisis del discurso', clase: 'meta-tono', t: 'Usa palabras cargadas de emoción («persecución», «cultura llanera») en lugar de responder a los datos.', ok: 'derrumba', por: 'Esquiva las cifras apelando a la emoción.' },
+        { meta: 'Precio de compra', clase: 'meta-dinero', t: 'Pagar a precios de mercado no es ilegal por sí solo.', ok: 'sostiene', por: 'Es un punto válido para su defensa: el precio no prueba nada. Por eso importa el origen de la tierra.' }
+      ],
+      aviso: 'Ojo: "derrumbar el discurso" no es lo mismo que probar un delito. Eso le toca a la justicia.',
+      next: 'publicar'
+    },
+
+    publicar: {
+      paso: 7, tag: 'Capítulo 7 · El cierre', tagClase: 'tag-red', tipo: 'publicar',
+      titulo: 'Tu reportaje está listo',
+      texto: 'Tienes las pruebas ordenadas. Es hora de publicar y ver cómo lo recibe la gente (y tu editor).',
+      boton: '📰 Publicar el reportaje'
+    }
+  }
+},
+
+/* ------------------------------ CASO 2 ------------------------------ */
+2: {
+  inicio: 'fuente',
+  pilares: { dinero: 'Enriquecimiento ilícito' },
+  link: 'https://casamacondo.co/investigacion/enriquecimiento-jorge-eliecer-laverde/',
+  real: [
+    'Este caso reconstruye una investigación periodística real, publicada en agosto de 2026, sobre el patrimonio en propiedades del nuevo jefe del organismo que vigila el gasto público en Colombia. En 2023 se radicó una denuncia anónima ante la Fiscalía que señala un aumento de patrimonio sin justificar durante su paso por el Congreso.',
+    'La Procuraduría archivó en 2024 una revisión sobre el caso y la Fiscalía no ha reportado avances formales en tres años. El funcionario y su defensa niegan cualquier irregularidad. <strong>Es un caso judicial y disciplinario que sigue abierto: ningún tribunal ha determinado responsabilidad.</strong>'
+  ],
+  fuentes: [
+    '<strong>Fiscalía General de la Nación (Dirección Especializada contra la Corrupción):</strong> ante quien se presentó la denuncia anónima.',
+    '<strong>Procuraduría General de la Nación:</strong> archivó una revisión disciplinaria sobre los mismos hechos.',
+    '<strong>Registro de Instrumentos Públicos:</strong> folios de matrícula y escrituras que muestran cómo se compraron las propiedades.',
+    '<strong>SIGEP (Sistema de Información y Gestión del Empleo Público):</strong> hoja de vida y cargos del funcionario.',
+    '<strong>CasaMacondo:</strong> el medio que verificó y publicó la investigación original.'
+  ],
+  finales: {
+    alto: '¡Reportaje blindado! Distinguiste los argumentos generales de los que de verdad responden a los hallazgos y usaste los registros públicos para mostrar la brecha entre ingresos y patrimonio, sin acusar de más.',
+    medio: 'Buen reportaje, pero con grietas. Encontraste datos clave, pero fallaste en clasificar algunas pruebas, y eso le quita fuerza a tu publicación.',
+    bajo: 'Aceptaste la respuesta oficial sin separar lo que respondía a los hallazgos de lo que no. Te faltó cruzar mejor los registros públicos y tu nota queda floja.'
+  },
+  nodos: {
+
+    fuente: {
+      paso: 1, tag: 'Capítulo 1 · La denuncia', tagClase: 'tag-red', tipo: 'elige',
+      label: 'Lo que está pasando',
+      titulo: 'Eligen al nuevo "vigilante" de la plata pública',
+      texto: 'El Congreso elige, casi por unanimidad, al nuevo jefe del organismo que vigila cómo se gasta el dinero público. En su discurso promete ser <em>«la casa de la transparencia»</em>.<br><br>Pero hay un problema: desde hace tres años, en la Fiscalía reposa una denuncia anónima que apunta en la dirección contraria. Esa denuncia acaba de llegar a tus manos.',
+      pauta: '💸 Sin publicidad ni contenido pagado detectado en este caso',
+      pregunta: '¿Cuál es tu primer paso antes de publicar cualquier cosa?',
+      opciones: [
+        { t: 'Publico lo que dice la denuncia tal cual, citando la fuente anónima (20 min).', tono: 'mal',
+          fb: 'Es rápido, pero una denuncia sin verificar es solo una acusación. No tienes nada propio que la respalde.',
+          set: { fuente: 100 }, next: 'fuente_giro' },
+        { t: 'Verifico cada predio mencionado en los folios de matrícula y las escrituras públicas antes de publicar (5 min por predio).', tono: 'bien',
+          fb: 'Así se hace. Ahora no dependes de lo que dice un anónimo: tienes documentos oficiales en la mano.',
+          set: { fuente: 500 }, libreta: 'Cada predio de la denuncia se verificó contra folios de matrícula y escrituras públicas.', next: 'dinero' },
+        { t: 'Reviso la reacción en redes al nombramiento para ver si genera controversia (15 días).', tono: 'medio',
+          fb: 'Tienes mucho ruido, pero ningún dato. La controversia en redes no prueba nada sobre su patrimonio y perdiste semanas.',
+          set: { fuente: 200 }, tiempo: -100, next: 'dinero' }
+      ]
+    },
+
+    fuente_giro: {
+      paso: 1, tag: 'Giro en la historia', tagClase: 'tag-giro', tipo: 'elige',
+      label: 'Alerta',
+      titulo: 'Te llama el abogado del funcionario',
+      texto: 'Antes de que publiques, te llama el abogado del funcionario: <em>«Esa denuncia es anónima y no tiene una sola prueba. Si publican sin verificar, los demandamos.»</em><br><br>Tiene razón en algo: no tienes nada propio todavía.',
+      pregunta: '¿Qué haces?',
+      opciones: [
+        { t: 'Paro y verifico los predios en los registros antes de publicar.', tono: 'bien',
+          fb: 'Buena decisión. Pierdes un poco de tiempo, pero ganas una nota que se puede defender.',
+          set: { fuente: 300 }, tiempo: -40, libreta: 'Tras la advertencia del abogado, decidiste verificar los predios antes de publicar.', next: 'dinero' },
+        { t: 'Publico igual. La denuncia ya es pública en la Fiscalía.', tono: 'mal',
+          fb: 'Publicaste sin verificar…', next: 'fin_demanda' }
+      ]
+    },
+
+    fin_demanda: {
+      tipo: 'fin', tag: 'Final alternativo', tagClase: 'tag-red',
+      titulo: 'Te llega una demanda',
+      texto: 'Publicas la denuncia tal cual. El funcionario responde con una demanda y tu medio tiene que retirar la nota. Peor aún: la discusión deja de ser sobre su patrimonio y pasa a ser sobre tu error.<br><br><strong>La lección:</strong> una denuncia anónima es un punto de partida, no una prueba. Sin verificación, el caso se te puede caer encima.'
+    },
+
+    dinero: {
+      paso: 2, tag: 'Capítulo 2 · Sigue la plata', tagClase: 'tag-info', tipo: 'elige',
+      label: 'Lo que encuentras',
+      titulo: '13 propiedades en 13 años',
+      texto: 'Cruzas las escrituras públicas. El funcionario, su pareja y su hija suman <strong>al menos 13 propiedades</strong> compradas entre 2009 y 2022, la mayoría sin hipoteca. Durante esos años, él fue secretario de comisión en el Senado, con un sueldo cercano a <strong>18 millones de pesos al mes</strong>.',
+      glosario: '<strong>Enriquecimiento ilícito:</strong> delito en el que un servidor público aumenta su patrimonio muy por encima de lo que le permiten sus ingresos y no puede justificarlo. Lo decide un juez, no un periodista.<br><strong>Hipoteca:</strong> un préstamo con la propiedad como garantía. Que no haya hipoteca suele significar que se pagó de contado.',
+      pregunta: '¿Cómo interpretas este hallazgo?',
+      opciones: [
+        { t: 'Es normal que un funcionario de alto nivel vaya acumulando propiedades con los años.', tono: 'mal',
+          fb: 'Puede ser, pero no hiciste las cuentas. Aceptar la explicación más cómoda no es investigar.',
+          set: { dinero: 130 }, next: 'dinero_giro' },
+        { t: 'Hay una alerta: la brecha entre su sueldo y un patrimonio de más de 2.000 millones, casi todo sin hipoteca, encaja con lo que describe el delito de enriquecimiento ilícito. Pero decidir si hay culpa le toca a la justicia.', tono: 'bien',
+          fb: 'Muy bien. Mostraste la brecha con datos y dejaste claro que no eres tú quien condena. Eso es rigor.',
+          set: { dinero: 500 }, libreta: 'Patrimonio inmobiliario de más de 2.000 millones, casi sin hipoteca, frente a un sueldo cercano a 18 millones al mes.', next: 'pauta' },
+        { t: 'Solo indica que la familia maneja muy bien sus finanzas.', tono: 'mal',
+          fb: 'Es una lectura muy generosa y no la comprobaste. Con 18 millones al mes, la cuenta no se explica sola.',
+          set: { dinero: 200 }, next: 'dinero_giro' }
+      ]
+    },
+
+    dinero_giro: {
+      paso: 2, tag: 'Giro en la historia', tagClase: 'tag-giro', tipo: 'elige',
+      label: 'Tu editora pregunta',
+      titulo: '«¿Seguro que eso se explica solo?»',
+      texto: 'Tu editora revisa tu borrador y te devuelve una pregunta: <em>«18 millones al mes, 13 propiedades, más de 2.000 millones de patrimonio, casi todo sin hipoteca. ¿De verdad eso se explica con "años de servicio"?»</em>',
+      pregunta: '¿Cómo sigues?',
+      opciones: [
+        { t: 'Comparo ingresos y patrimonio año por año, y lo cuento como una brecha que hay que explicar, sin acusar a nadie.', tono: 'bien',
+          fb: 'Mucho mejor. Ahora tu nota muestra números concretos y deja abierta la pregunta, sin pasarte de la raya.',
+          set: { dinero: 330 }, tiempo: -40, libreta: 'Comparaste ingresos y patrimonio año por año para mostrar la brecha.', next: 'pauta' },
+        { t: 'Me quedo con mi lectura. Ya tengo suficiente.', tono: 'mal',
+          fb: 'Sigues, pero con una base floja que se va a notar al final.', next: 'pauta' }
+      ]
+    },
+
+    pauta: {
+      paso: 3, tag: 'Capítulo 3 · ¿Quién mueve esta historia?', tagClase: 'tag-info', tipo: 'elige',
+      label: 'Una duda de tu editora',
+      titulo: 'La denuncia aparece justo ahora',
+      texto: 'Tu editora te pregunta: <em>«La historia sale justo cuando lo eligen. ¿Hay plata moviéndola, a favor o en contra de él?»</em><br><br>Saber quién impulsa una historia también es parte de la trazabilidad. Y si no encuentras nada, también hay que decirlo.',
+      glosario: '<strong>Pauta:</strong> publicidad pagada para que un contenido llegue a más gente.<br><strong>Biblioteca de anuncios:</strong> base pública de las redes donde se ven los anuncios activos y quién los paga.<br><strong>SECOP:</strong> sistema público donde se publican los contratos del Estado.',
+      pregunta: '¿Qué haces con esa pregunta?',
+      opciones: [
+        { t: 'La descarto: lo que importa es el patrimonio, no quién mueve la historia.', tono: 'medio',
+          fb: 'Es entendible, pero te quedas sin saber si hay intereses detrás. Eso también le sirve al lector.',
+          set: { pauta: 80 }, next: 'tono' },
+        { t: 'Reviso la biblioteca de anuncios y los contratos públicos (SECOP) buscando pauta o contratos relacionados.', tono: 'bien',
+          fb: 'No encuentras pauta ni contratos ligados a la difusión. Es un hallazgo válido: puedes decir "no se detectó pauta" sin inventar intereses.',
+          set: { pauta: 250 }, libreta: 'Revisaste la biblioteca de anuncios y el SECOP: no se detectó pauta ni contratos ligados a la difusión.', next: 'tono' },
+        { t: 'Escribo que la denuncia es una jugada de sus rivales políticos.', tono: 'mal',
+          fb: 'Eso no lo probaste. Acusar sin pruebas a otros te quita credibilidad.',
+          set: { pauta: 0 }, next: 'tono' }
+      ]
+    },
+
+    tono: {
+      paso: 4, tag: 'Capítulo 4 · La respuesta oficial', tagClase: 'tag-red', tipo: 'marcar',
+      titulo: 'Esto es lo que responde su defensa',
+      texto: 'El funcionario y su defensa responden. Algunos argumentos son <strong>generales</strong> (no tocan las cifras ni las fechas). Otro sí responde <strong>punto por punto</strong> a lo que encontraste.',
+      instruccion: 'Toca los <strong>2 argumentos generales</strong>, los que no responden directamente a los datos.',
+      partes: [
+        'Según su defensa, esto es ',
+        { t: 'un refrito de una denuncia anónima que ya fue archivada por el ente de control disciplinario', e: true },
+        '. La revisión en el registro de instrumentos públicos ',
+        { t: 'no halló pruebas de testaferros ni un incremento de patrimonio desproporcionado', e: false },
+        ', y sostiene que ',
+        { t: 'los vínculos familiares o políticos no bastan, por sí solos, para atribuirle bienes de otras personas', e: true },
+        '.'
+      ],
+      ok: 'Bien visto. Esos dos argumentos son generales: hablan de que la denuncia es vieja o de lo que "en principio" no se puede atribuir, pero no explican las 13 propiedades una por una. El otro sí responde a los datos, y por eso hay que contrastarlo con tus documentos.',
+      mal: 'Casi. Los argumentos generales eran el del "refrito de denuncia archivada" y el de los "vínculos familiares". El otro sí responde de frente a lo encontrado.',
+      next: 'contra'
+    },
+
+    contra: {
+      paso: 5, tag: 'Capítulo 5 · El quiebre', tagClase: 'tag-info', tipo: 'elige',
+      label: 'El momento clave',
+      titulo: 'Lo que dijo contra lo que hay en los archivos',
+      texto: 'En una entrevista reciente, el funcionario niega tener cualquier cercanía con un senador fallecido que fue condenado por liderar una red de corrupción. Pero tú tienes el expediente de una investigación periodística anterior sobre ese vínculo.',
+      glosario: '<strong>Contradicción</strong> (en periodismo): cuando lo que alguien afirma hoy choca con un hecho que se puede comprobar con un documento, un registro o un video. No es una simple incoherencia ni un dato llamativo: tiene que ser verificable.',
+      pregunta: '¿Cuál es la contradicción documentada?',
+      opciones: [
+        { t: 'Hay fotos y una llamada interceptada, que la Corte Suprema incorporó a una medida de aseguramiento, que muestran la relación que él niega.', tono: 'bien',
+          fb: 'Eso sí es una contradicción: lo que dice contra lo que está documentado por fuentes verificables.',
+          set: { contra: 250 }, libreta: 'Fotos y una llamada interceptada (incorporada por la Corte Suprema) contradicen que no tuviera cercanía con el senador condenado.', next: 'expediente' },
+        { t: 'Hizo posgrados en universidades privadas muy costosas.', tono: 'mal',
+          fb: 'Eso no contradice nada de lo que dijo. Es un dato suelto.',
+          set: { contra: 60 }, next: 'expediente' },
+        { t: 'Viajaba mucho a Europa y Estados Unidos.', tono: 'mal',
+          fb: 'Viajar no es ilegal ni contradice su versión. No sirve como prueba.',
+          set: { contra: 30 }, next: 'expediente' }
+      ]
+    },
+
+    expediente: {
+      paso: 6, tag: 'Capítulo 6 · Ordena tus pruebas', tagClase: 'tag-purple', tipo: 'clasificar',
+      titulo: 'Tu mesa de trabajo',
+      texto: 'Pon tus hallazgos sobre la mesa. Para cada uno, decide si <strong>sostiene</strong> o <strong>derrumba</strong> el discurso de "transparencia total" del funcionario. Ojo: no todo lo que encontraste va en su contra.',
+      evidencias: [
+        { meta: 'Verificación en el Registro de Instrumentos Públicos', clase: 'meta-fuente', t: '13 propiedades de la familia verificadas en folios de matrícula y escrituras públicas.', ok: 'derrumba', por: 'Documenta propiedades reales que él debe poder explicar.' },
+        { meta: 'Comparación con el delito de enriquecimiento ilícito', clase: 'meta-dinero', t: 'Hay una brecha entre un sueldo cercano a 18 millones y un patrimonio de más de 2.000 millones, casi todo sin hipoteca.', ok: 'derrumba', por: 'Muestra una brecha que debe explicar (no prueba por sí sola un delito).' },
+        { meta: 'Análisis de la respuesta oficial', clase: 'meta-tono', t: 'La defensa se apoya en un archivo disciplinario anterior y en principios generales, sin desmentir punto por punto las 13 propiedades.', ok: 'derrumba', por: 'No responde de frente a los datos.' },
+        { meta: 'Procuraduría', clase: 'meta-fuente', t: 'La Procuraduría archivó en 2024 una revisión disciplinaria sobre estos hechos.', ok: 'sostiene', por: 'Es un hecho real a favor del funcionario y hay que contarlo. Pero un archivo disciplinario no es una absolución penal.' }
+      ],
+      aviso: 'Ojo: "derrumbar el discurso" no es lo mismo que probar un delito. Aquí ningún tribunal ha decidido nada.',
+      next: 'publicar'
+    },
+
+    publicar: {
+      paso: 7, tag: 'Capítulo 7 · El cierre', tagClase: 'tag-red', tipo: 'publicar',
+      titulo: 'Tu reportaje está listo',
+      texto: 'Tienes las pruebas ordenadas. Es hora de publicar y ver cómo lo recibe la gente (y tu editora).',
+      boton: '📰 Publicar el reportaje'
+    }
+  }
+}
+};
+
+/* =====================================================================
+   MOTOR DE LA AVENTURA
+   ===================================================================== */
+var E = null;            // estado de la partida en curso
 var casoDestino = 1;
 
-window.addEventListener('DOMContentLoaded', function () {
-  // Si volvemos de terminar el juego, abrimos directamente La Central Verificada
-  if (location.hash === '#repo') {
-    mostrarSeccionGlobal('repo');
-  }
+function nuevoEstado(caso){
+  return { caso: caso, nodo: null, p: { fuente: 0, dinero: 0, pauta: 0, tono: 0, contra: 0 }, tiempo: 250, clas: {}, libreta: [], marcadas: 0 };
+}
 
-  // Si el usuario ya vio el onboarding, la pestaña "Simulador" abre en el punto correcto
-  var onboarded = lsGet('cluepolitico_onboarded') === 'true';
-  var preEncuesta = lsGet('cluepolitico_pre_encuesta') === 'true';
-  var onb = document.getElementById('sc-onboarding');
-  if (onboarded && preEncuesta) {
-    onb.classList.remove('active');
-    document.getElementById('sc-fuente').classList.add('active');
-  } else if (onboarded && !preEncuesta) {
-    onb.classList.remove('active');
-    document.getElementById('sc-encuesta-pre').classList.add('active');
+function iniciarCaso(n){
+  E = nuevoEstado(n);
+  mostrarSeccionGlobal('game');
+  ir('sc-juego');
+  mostrarNodo(CASOS[n].inicio);
+}
+
+function nodoActual(){ return CASOS[E.caso].nodos[E.nodo]; }
+
+function shuffle(a){
+  var r = a.slice(), i, j, t;
+  for (i = r.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = r[i]; r[i] = r[j]; r[j] = t; }
+  return r;
+}
+
+function progresoHTML(paso){
+  var h = '<div class="progress">';
+  for (var i = 1; i <= 7; i++) h += '<div class="prog-step ' + (i < paso ? 'done' : (i === paso ? 'active' : '')) + '"></div>';
+  return h + '</div>';
+}
+
+function libretaHTML(){
+  if (!E.libreta.length) return '';
+  var h = '<details class="libreta"><summary>📓 Tu libreta (' + E.libreta.length + (E.libreta.length === 1 ? ' pista' : ' pistas') + ')</summary><ul>';
+  E.libreta.forEach(function(l){ h += '<li>' + l + '</li>'; });
+  return h + '</ul></details>';
+}
+
+function mostrarNodo(id){
+  E.nodo = id;
+  var n = nodoActual(), h = '';
+  if (n.tipo === 'elige') h = renderElige(n);
+  else if (n.tipo === 'marcar') h = renderMarcar(n);
+  else if (n.tipo === 'clasificar') h = renderClasificar(n);
+  else if (n.tipo === 'publicar') h = renderPublicar(n);
+  else if (n.tipo === 'fin') h = renderFin(n);
+  document.getElementById('juego').innerHTML = h;
+  window.scrollTo(0, 0);
+}
+
+/* ---------- Escena de decisión ---------- */
+function renderElige(n){
+  var h = progresoHTML(n.paso) + '<span class="tag ' + n.tagClase + '">' + n.tag + '</span>';
+  h += '<div class="expediente' + (n.tagClase === 'tag-giro' ? '" style="border-left-color:#BA7517' : '') + '">';
+  h += '<div class="expediente-label"' + (n.tagClase === 'tag-giro' ? ' style="color:#E8A855"' : '') + '>' + n.label + '</div>';
+  h += '<h2>' + n.titulo + '</h2><p>' + n.texto + '</p>';
+  if (n.pauta) h += '<div class="badge-pauta">' + n.pauta + '</div>';
+  h += '</div>';
+  if (n.glosario) h += '<details class="glosario"><summary>¿Qué significa esto?</summary><div style="margin-top:8px">' + n.glosario + '</div></details>';
+  h += libretaHTML();
+  h += '<div class="investigacion-box"><p class="pregunta">' + n.pregunta + '</p><div id="opciones">';
+  var orden = shuffle(n.opciones.map(function(o, i){ return i; }));
+  orden.forEach(function(i, k){
+    h += '<button class="opcion-investigar" data-i="' + i + '" onclick="elegir(' + i + ')"><span class="letra">' + 'ABC'[k] + '</span><span>' + n.opciones[i].t + '</span></button>';
+  });
+  h += '</div><div id="resultado"></div></div>';
+  return h;
+}
+
+function elegir(i){
+  var n = nodoActual(), o = n.opciones[i];
+  var btns = document.querySelectorAll('#opciones .opcion-investigar');
+  btns.forEach(function(b){
+    b.disabled = true;
+    b.setAttribute('onclick', '');
+    if (parseInt(b.getAttribute('data-i'), 10) === i) b.classList.add(o.tono);
+    else b.classList.add('apagada');
+  });
+  if (o.set) for (var k in o.set) E.p[k] = o.set[k];
+  var costo = (o.tiempo !== undefined) ? o.tiempo : (o.tono === 'mal' ? -30 : 0);
+  E.tiempo = Math.max(0, E.tiempo + costo);
+  if (o.libreta) E.libreta.push(o.libreta);
+
+  var rotulo = o.tono === 'bien' ? '✅ Buena decisión' : (o.tono === 'medio' ? '⚠️ Camino lento' : '❌ Mala jugada');
+  var h = '<div class="consecuencia ' + o.tono + '"><b>' + rotulo + '</b>' + o.fb + '</div>';
+  var esFin = CASOS[E.caso].nodos[o.next].tipo === 'fin';
+  h += '<button class="btn-main" onclick="mostrarNodo(\'' + o.next + '\')">' + (esFin ? 'Ver qué pasó →' : 'Seguir la historia →') + '</button>';
+  document.getElementById('resultado').innerHTML = h;
+  document.getElementById('resultado').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+/* ---------- Escena de marcar frases ---------- */
+function renderMarcar(n){
+  var h = progresoHTML(n.paso) + '<span class="tag ' + n.tagClase + '">' + n.tag + '</span>';
+  h += '<h2 style="margin-bottom:6px;">' + n.titulo + '</h2><p class="historia">' + n.texto + '</p>';
+  h += libretaHTML();
+  h += '<p class="pregunta">' + n.instruccion + '</p>';
+  h += '<div class="texto-analisis" id="discurso-box">';
+  n.partes.forEach(function(p){
+    if (typeof p === 'string') h += p;
+    else h += '<span class="word-btn" data-e="' + (p.e ? '1' : '0') + '" onclick="marcarFrase(this)">' + p.t + '</span>';
+  });
+  h += '</div><div id="resultado"></div>';
+  h += '<button class="btn-main" id="btn-revisar" disabled onclick="revisarMarcas()">Revisar mi selección</button>';
+  return h;
+}
+
+function marcarFrase(el){
+  if (document.getElementById('discurso-box').classList.contains('bloqueado')) return;
+  el.classList.toggle('marked');
+  var hay = document.querySelectorAll('#discurso-box .word-btn.marked').length;
+  document.getElementById('btn-revisar').disabled = hay < 1;
+}
+
+function revisarMarcas(){
+  var n = nodoActual(), todoBien = true, buenas = 0, malas = 0;
+  var box = document.getElementById('discurso-box');
+  box.classList.add('bloqueado');
+  box.querySelectorAll('.word-btn').forEach(function(w){
+    var esCorrecta = w.getAttribute('data-e') === '1', marcada = w.classList.contains('marked');
+    w.classList.remove('marked');
+    if (esCorrecta && marcada) { w.classList.add('ok'); buenas++; }
+    else if (!esCorrecta && marcada) { w.classList.add('bad'); todoBien = false; malas++; }
+    else if (esCorrecta && !marcada) { w.classList.add('miss'); todoBien = false; }
+  });
+  E.p.tono = todoBien ? 150 : ((malas === 0 && buenas >= 1) ? 75 : 0);
+  var tono = todoBien ? 'bien' : 'medio';
+  document.getElementById('resultado').innerHTML =
+    '<div class="consecuencia ' + tono + '"><b>' + (todoBien ? '✅ Lo captaste' : '⚠️ Casi') + '</b>' + (todoBien ? n.ok : n.mal) + '</div>';
+  var b = document.getElementById('btn-revisar');
+  b.disabled = false;
+  b.textContent = 'Seguir la historia →';
+  b.setAttribute('onclick', "mostrarNodo('" + n.next + "')");
+}
+
+/* ---------- Mesa de evidencias ---------- */
+function renderClasificar(n){
+  E.clas = {};
+  var h = progresoHTML(n.paso) + '<span class="tag ' + n.tagClase + '">' + n.tag + '</span>';
+  h += '<h2>' + n.titulo + '</h2><p class="historia">' + n.texto + '</p>';
+  h += libretaHTML();
+  h += '<div class="board-container"><div class="evidence-pool"><div class="pool-title">Tus hallazgos</div><div class="evidence-cards-container" id="pool-evidencias">';
+  n.evidencias.forEach(function(ev, i){
+    h += '<div class="evidence-item" id="ev-' + (i + 1) + '"><div class="evidence-meta ' + ev.clase + '">' + ev.meta + '</div><div>' + ev.t + '</div>' +
+         '<div class="ev-btns"><button class="b-sostiene" onclick="clasificar(' + (i + 1) + ',\'sostiene\')">Sostiene su versión</button>' +
+         '<button class="b-derrumba" onclick="clasificar(' + (i + 1) + ',\'derrumba\')">Derrumba su versión</button></div></div>';
+  });
+  h += '</div></div><div class="decision-columns">' +
+       '<div class="decision-col col-sostener"><h4>Sostiene su versión</h4><div class="col-box" id="box-sostener"></div></div>' +
+       '<div class="decision-col col-derrumbar"><h4>Derrumba su versión</h4><div class="col-box" id="box-derrumbar"></div></div></div></div>';
+  h += '<p style="font-size:12px; color:#888; line-height:1.5;">' + n.aviso + '<br>Clasifica las ' + n.evidencias.length + ' pruebas para poder escribir tu reportaje. Si te arrepientes, puedes cambiar una tarjeta de lado.</p>';
+  h += '<button class="btn-main" id="btn-expediente" disabled onclick="mostrarNodo(\'' + n.next + '\')">Escribir el reportaje →</button>';
+  return h;
+}
+
+function clasificar(id, col){
+  E.clas[id] = col;
+  var card = document.getElementById('ev-' + id);
+  document.getElementById(col === 'sostiene' ? 'box-sostener' : 'box-derrumbar').appendChild(card);
+  if (Object.keys(E.clas).length === nodoActual().evidencias.length) document.getElementById('btn-expediente').disabled = false;
+}
+
+/* ---------- Escena previa a publicar ---------- */
+function renderPublicar(n){
+  var h = progresoHTML(n.paso) + '<span class="tag ' + n.tagClase + '">' + n.tag + '</span>';
+  h += '<h2 style="margin-bottom:1rem;">' + n.titulo + '</h2><p class="historia">' + n.texto + '</p>';
+  h += libretaHTML();
+  h += '<button class="btn-main btn-verde" onclick="mostrarResultado()">' + n.boton + '</button>';
+  return h;
+}
+
+/* ---------- Final alternativo ---------- */
+function renderFin(n){
+  var h = '<div class="score-hero"><span class="tag ' + n.tagClase + '">' + n.tag + '</span><div class="final-titulo">' + n.titulo + '</div></div>';
+  h += '<div class="rev-card"><p>' + n.texto + '</p></div>';
+  h += '<button class="btn-main" onclick="iniciarCaso(' + E.caso + ')">🔄 Volver a intentarlo con otro camino</button>';
+  h += '<a class="btn-main btn-link" href="' + CASOS[E.caso].link + '" target="_blank" rel="noopener">📖 Leer la investigación real</a>';
+  h += '<button class="btn-main btn-outline" onclick="irEncuestaPost()">Ir a la encuesta final →</button>';
+  return h;
+}
+
+/* ---------- Paso obligatorio: primero la trazabilidad real ---------- */
+function mostrarResultado(){
+  var C = CASOS[E.caso];
+  var h = '<div class="score-hero"><span class="tag tag-red">Paso obligatorio</span><div class="final-titulo">Antes de tu puntaje: la trazabilidad real</div>' +
+          '<p style="margin:10px auto 0; color:#bbb; max-width:550px; font-size:14px; line-height:1.6;">En Clue Político la transparencia es la regla: primero ves qué encontró de verdad la investigación y con qué fuentes. Después, tu puntaje.</p></div>';
+  h += libretaHTML().replace('<details class="libreta">', '<details class="libreta" open>');
+  h += '<div class="rev-card"><h3 style="color:#A78BFA; margin-bottom:10px;">Qué pasó en la investigación real</h3>';
+  C.real.forEach(function(p){ h += '<p>' + p + '</p>'; });
+  h += '<a href="' + C.link + '" target="_blank" rel="noopener" class="btn-main btn-link">📖 Leer la investigación completa</a></div>';
+  h += '<div class="fuentes-card"><h3 style="color:#F0EDE6; font-size:15px; font-weight:700; border-bottom:1px solid #2E3868; padding-bottom:8px;">Fuentes que usó la investigación</h3><ul class="fuentes-list">';
+  C.fuentes.forEach(function(f){ h += '<li>' + f + '</li>'; });
+  h += '</ul></div>';
+  h += '<button class="btn-main btn-verde" onclick="mostrarPuntaje()">Ya revisé la trazabilidad: ver mi puntaje →</button>';
+  document.getElementById('juego').innerHTML = h;
+  window.scrollTo(0, 0);
+}
+
+/* ---------- Niveles, XP e insignias ---------- */
+var NIVELES = [
+  { n: 1, xp: 0,    nombre: 'Practicante',              ico: '🌱' },
+  { n: 2, xp: 500,  nombre: 'Cronista',                 ico: '✍️' },
+  { n: 3, xp: 1100, nombre: 'Corresponsal',             ico: '🎙️' },
+  { n: 4, xp: 1800, nombre: 'Sabueso',                  ico: '🔍' },
+  { n: 5, xp: 2600, nombre: 'Jefatura de investigación', ico: '🕵️' },
+  { n: 6, xp: 3400, nombre: 'Leyenda de la redacción',  ico: '🏆' }
+];
+var INSIGNIAS = [
+  { id: 'fuente',   ico: '🔍', nombre: 'Ojo de lince',      desc: 'Fuente verificada al máximo',      ok: function(r){ return r.p.fuente === 500; } },
+  { id: 'plata',    ico: '💰', nombre: 'Sigue la plata',    desc: 'Dinero del actor y del mensaje',   ok: function(r){ return r.p.dinero === 500 && r.p.pauta === 250; } },
+  { id: 'oido',     ico: '🎭', nombre: 'Oído fino',         desc: 'Detectaste todo el tono emocional', ok: function(r){ return r.p.tono === 150; } },
+  { id: 'papeles',  ico: '⚡', nombre: 'Papeles en mano',   desc: 'Contradicción documentada',        ok: function(r){ return r.p.contra === 250; } },
+  { id: 'tiempo',   ico: '⏱️', nombre: 'Sin perder tiempo', desc: 'Cero errores que cuesten tiempo',  ok: function(r){ return r.tiempo === 250; } },
+  { id: 'cero',     ico: '🎯', nombre: 'Cero errores',      desc: 'Todas las pruebas bien clasificadas', ok: function(r){ return r.coef === 1; } },
+  { id: 'blindado', ico: '🏅', nombre: 'Reportaje blindado', desc: 'Más de 1.600 puntos',             ok: function(r){ return r.total >= 1600; } }
+];
+
+function cargarProgreso(){
+  try { var p = JSON.parse(lsGet('cluepolitico_progreso')); if (p && p.best) return p; } catch (e) {}
+  return { best: {}, badges: [] };
+}
+function xpTotal(p){ return (p.best[1] || 0) + (p.best[2] || 0); }
+function nivelDe(xp){ var l = NIVELES[0]; NIVELES.forEach(function(x){ if (xp >= x.xp) l = x; }); return l; }
+function siguienteNivel(xp){ for (var i = 0; i < NIVELES.length; i++) if (NIVELES[i].xp > xp) return NIVELES[i]; return null; }
+function pctNivel(xp){
+  var c = nivelDe(xp), nx = siguienteNivel(xp);
+  return nx ? Math.round((xp - c.xp) / (nx.xp - c.xp) * 100) : 100;
+}
+
+function actualizarNivel(){
+  var p = cargarProgreso(), xp = xpTotal(p), l = nivelDe(xp);
+  var chip = document.getElementById('nivel-chip');
+  if (chip) chip.textContent = l.ico + ' Nv. ' + l.n + ' · ' + l.nombre + ' · ' + xp + ' XP';
+  [1, 2].forEach(function(c){
+    var el = document.getElementById('mejor-' + c);
+    if (el) el.textContent = '🏅 Tu mejor puntaje: ' + (p.best[c] ? p.best[c] + ' / 1.900' : '—');
+  });
+}
+
+function confeti(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var c = document.createElement('div'); c.className = 'confeti';
+  var cols = ['#8B5CF6', '#2F6FED', '#A78BFA', '#7DB3FF', '#F0EDE6', '#4F46E5'];
+  for (var i = 0; i < 70; i++) {
+    var d = document.createElement('i');
+    d.style.left = (Math.random() * 100) + '%';
+    d.style.background = cols[i % cols.length];
+    d.style.animationDelay = (Math.random() * 0.8) + 's';
+    d.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+    c.appendChild(d);
   }
+  document.body.appendChild(c);
+  setTimeout(function(){ if (c.parentNode) c.parentNode.removeChild(c); }, 4500);
+}
+
+/* ---------- Puntaje: 500 + 500 + 250 + 150 + 250 + 250 = 1.900 ---------- */
+function mostrarPuntaje(){
+  var C = CASOS[E.caso];
+  var evs = CASOS[E.caso].nodos.expediente.evidencias;
+  var aciertos = 0;
+  evs.forEach(function(ev, i){ if (E.clas[i + 1] === ev.ok) aciertos++; });
+  var coef = [0.2, 0.4, 0.6, 0.8, 1.0][aciertos];
+  var suma = E.p.fuente + E.p.dinero + E.p.pauta + E.p.tono + E.p.contra + E.tiempo;
+  var total = Math.round(suma * coef);
+
+  var ending = total >= 1600 ? ['alto', '🏆 Reportaje blindado', '#5DCAA5', 3] :
+               total >= 1000 ? ['medio', '📰 Reportaje con grietas', '#E8A855', 2] :
+                               ['bajo', '😬 Reportaje flojo', '#F09595', 1];
+  function col(v, max){ return v === max ? '#5DCAA5' : '#F09595'; }
+
+  /* progreso: el XP es la suma del mejor puntaje de cada caso */
+  var prog = cargarProgreso();
+  var xpAntes = xpTotal(prog), nivAntes = nivelDe(xpAntes), pctAntes = pctNivel(xpAntes);
+  var mejorAnterior = prog.best[E.caso] || 0;
+  if (total > mejorAnterior) prog.best[E.caso] = total;
+  var res = { p: E.p, tiempo: E.tiempo, coef: coef, total: total };
+  var nuevas = [];
+  INSIGNIAS.forEach(function(b){
+    if (b.ok(res) && prog.badges.indexOf(b.id) === -1) { prog.badges.push(b.id); nuevas.push(b.id); }
+  });
+  lsSet('cluepolitico_progreso', JSON.stringify(prog));
+  var xpDespues = xpTotal(prog), nivDespues = nivelDe(xpDespues), pctDespues = pctNivel(xpDespues);
+  var ganado = xpDespues - xpAntes, subio = nivDespues.n > nivAntes.n, sig = siguienteNivel(xpDespues);
+  actualizarNivel();
+
+  var h = '<div class="score-hero"><div style="font-size:12px;color:#8a93c4;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;">Tu resultado</div>' +
+          '<div class="estrellas">' + '⭐'.repeat(ending[3]) + '<span style="opacity:.3">' + '⭐'.repeat(3 - ending[3]) + '</span></div>' +
+          '<div class="score-big">' + total + ' / 1.900 pts</div>' +
+          '<div class="final-titulo" style="color:' + ending[2] + '">' + ending[1] + '</div>' +
+          '<p style="margin-top:10px; color:#aab; font-weight:bold;">Multiplicador de rigor: ' + Math.round(coef * 100) + '%</p>' +
+          '<p style="margin:10px auto 0; color:#bbb; max-width:550px; font-size:14px; line-height:1.6;">' + C.finales[ending[0]] + '</p></div>';
+
+  /* tarjeta de nivel */
+  h += '<div class="nivel-card"><div class="nivel-top"><div class="nivel-ico">' + nivDespues.ico + '</div><div><div class="nivel-label">Nivel ' + nivDespues.n + '</div><div class="nivel-nombre">' + nivDespues.nombre + '</div></div>' +
+       '<div class="xp-gain">' + (ganado > 0 ? '+' + ganado + ' XP' : '+0 XP') + '</div></div>' +
+       '<div class="xp-bar"><div class="xp-fill" id="xp-fill" style="width:' + pctAntes + '%"></div></div>' +
+       '<div class="xp-text">' + (sig ? xpDespues + ' XP · te faltan ' + (sig.xp - xpDespues) + ' XP para ser ' + sig.ico + ' ' + sig.nombre : xpDespues + ' XP · ¡llegaste al nivel máximo!') + '</div>';
+  if (subio) h += '<div class="levelup">🎉 ¡Subiste de nivel! Ahora eres ' + nivDespues.ico + ' ' + nivDespues.nombre + '.</div>';
+  if (ganado === 0) h += '<p class="xp-text" style="margin-top:10px">Tu mejor puntaje en este caso sigue siendo ' + prog.best[E.caso] + '. Supéralo para ganar más XP.</p>';
+  h += '</div>';
+
+  /* insignias */
+  h += '<div style="font-size:12px;color:#8a93c4;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Tus insignias</div><div class="insignias">';
+  INSIGNIAS.forEach(function(b){
+    var tiene = prog.badges.indexOf(b.id) !== -1, nueva = nuevas.indexOf(b.id) !== -1;
+    h += '<div class="insignia ' + (tiene ? '' : 'off') + (nueva ? ' nueva' : '') + '"><span class="i">' + b.ico + '</span><b>' + b.nombre + (nueva ? ' · ¡nueva!' : '') + '</b>' + b.desc + '</div>';
+  });
+  h += '</div>';
+
+  h += '<div style="font-size:12px;color:#8a93c4;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Así sumaste tus puntos</div>';
+  h += '<div class="score-row"><span>🔍 Fuente: ¿verificaste de dónde venía la información? (máx. 500)</span><span style="color:' + col(E.p.fuente, 500) + '">' + E.p.fuente + ' pts</span></div>';
+  h += '<div class="score-row"><span>💰 Dinero del actor: ' + C.pilares.dinero + ' (máx. 500)</span><span style="color:' + col(E.p.dinero, 500) + '">' + E.p.dinero + ' pts</span></div>';
+  h += '<div class="score-row"><span>💸 Dinero del mensaje: ¿quién paga para que circule? (máx. 250)</span><span style="color:' + col(E.p.pauta, 250) + '">' + E.p.pauta + ' pts</span></div>';
+  h += '<div class="score-row"><span>🎭 Tono: ¿detectaste la carga emocional? (máx. 150)</span><span style="color:' + col(E.p.tono, 150) + '">' + E.p.tono + ' pts</span></div>';
+  h += '<div class="score-row"><span>⚡ Contradicción documentada (máx. 250)</span><span style="color:' + col(E.p.contra, 250) + '">' + E.p.contra + ' pts</span></div>';
+  h += '<div class="score-row"><span>⏱️ Tiempo bien usado: cada error resta tiempo (máx. 250)</span><span style="color:' + col(E.tiempo, 250) + '">' + E.tiempo + ' pts</span></div>';
+  h += '<div class="score-row" style="background:#182042; padding:12px; font-weight:bold;"><span>🎯 Multiplicador de rigor (' + aciertos + ' de ' + evs.length + ' pruebas bien clasificadas)</span><span style="color:#A78BFA">x ' + coef + '</span></div>';
+
+  h += '<div class="rev-card" style="margin-top:1.5rem"><h3 style="color:#A78BFA; margin-bottom:10px;">Tu mesa de pruebas, revisada</h3>';
+  evs.forEach(function(ev, i){
+    var bien = E.clas[i + 1] === ev.ok;
+    h += '<p>' + (bien ? '✅ ' : '❌ ') + '<strong>' + ev.meta + ':</strong> ' + ev.t + '<br><span style="color:#8a93c4">' + (ev.ok === 'sostiene' ? 'Sostiene su versión. ' : 'Derrumba su versión. ') + ev.por + '</span></p>';
+  });
+  h += '</div>';
+
+  h += '<button class="btn-main" onclick="irEncuestaPost()" style="margin-top:1.5rem">Continuar a la encuesta final →</button>';
+  h += '<button class="btn-main btn-outline" onclick="iniciarCaso(' + E.caso + ')">🔄 Jugar este caso de nuevo con otro camino</button>';
+  document.getElementById('juego').innerHTML = h;
+  window.scrollTo(0, 0);
+
+  /* animación de la barra de XP */
+  var fill = document.getElementById('xp-fill');
+  setTimeout(function(){
+    if (!fill) return;
+    if (subio) {
+      fill.style.width = '100%';
+      setTimeout(function(){
+        fill.style.transition = 'none'; fill.style.width = '0%';
+        void fill.offsetWidth;
+        fill.style.transition = ''; fill.style.width = pctDespues + '%';
+      }, 1200);
+    } else {
+      fill.style.width = pctDespues + '%';
+    }
+  }, 350);
+  if (subio || ending[3] === 3) setTimeout(confeti, 500);
+}
+
+/* =====================================================================
+   NAVEGACIÓN GENERAL: onboarding → encuesta PRE → caso → encuesta POST
+   ===================================================================== */
+window.addEventListener('DOMContentLoaded', function(){
+  if (location.hash === '#repo') mostrarSeccionGlobal('repo');
+  actualizarNivel();
 });
 
-// Punto de entrada único al simulador: botón de landing y botones "Analizar en el simulador" de La Central Verificada
-function irAInvestigacion(caso) {
+function abrirAventura(){
+  if (E) mostrarSeccionGlobal('game');
+  else irAInvestigacion(casoDestino);
+}
+
+function irAInvestigacion(caso){
   casoDestino = caso;
   mostrarSeccionGlobal('game');
-  if (lsGet('cluepolitico_onboarded') !== 'true') {
-    ir('sc-onboarding');
-  } else if (lsGet('cluepolitico_pre_encuesta') !== 'true') {
-    ir('sc-encuesta-pre');
-  } else {
-    lanzarCasoDestino();
-  }
+  if (lsGet('cluepolitico_onboarded') !== 'true') ir('sc-onboarding');
+  else if (lsGet('cluepolitico_pre_encuesta') !== 'true') ir('sc-encuesta-pre');
+  else iniciarCaso(casoDestino);
 }
 
-function comenzarDesdeOnboarding() {
+function comenzarDesdeOnboarding(){
   lsSet('cluepolitico_onboarded', 'true');
-  if (lsGet('cluepolitico_pre_encuesta') !== 'true') {
-    ir('sc-encuesta-pre');
-  } else {
-    lanzarCasoDestino();
-  }
+  if (lsGet('cluepolitico_pre_encuesta') !== 'true') ir('sc-encuesta-pre');
+  else iniciarCaso(casoDestino);
 }
 
-function completarEncuestaPre() {
+function completarEncuestaPre(){
   lsSet('cluepolitico_pre_encuesta', 'true');
-  lanzarCasoDestino();
+  iniciarCaso(casoDestino);
 }
 
-function lanzarCasoDestino() {
-  if (casoDestino === 2) {
-    iniciarCaso2();
-  } else {
-    ir('sc-fuente');
-  }
+function irEncuestaPost(){
+  if (lsGet('cluepolitico_post_encuesta') === 'true') reiniciarInstanciaJuego();
+  else ir('sc-encuesta-post');
 }
 
-function irEncuestaPost() {
-  if (lsGet('cluepolitico_post_encuesta') === 'true') {
-    reiniciarInstanciaJuego();
-  } else {
-    ir('sc-encuesta-post');
-  }
-}
-
-function completarEncuestaPost() {
+function completarEncuestaPost(){
   lsSet('cluepolitico_post_encuesta', 'true');
   reiniciarInstanciaJuego();
 }
 
-// Prepara y lanza el Caso #002 (reinicia su estado por si ya se había jugado antes sin recargar)
-function iniciarCaso2() {
-  puntosBrutos2 = { fuente: 0, dinero: 0, tono: 0, tiempo: 250 };
-  clasificacionEvidencias2 = { 1: null, 2: null, 3: null };
-  totalEvidenciasClasificadas2 = 0;
-  document.querySelectorAll('#sc-fuente-2 .opcion-investigar, #sc-dinero-2 .opcion-investigar, #sc-contradicciones-2 .opcion-investigar').forEach(function (b) { b.classList.remove('selected'); });
-  document.querySelectorAll('#discurso-box-2 .word-btn').forEach(function (w) { w.classList.remove('marked'); });
-  ['btn-fuente-2', 'btn-dinero-2', 'btn-tono-2', 'btn-contra-2', 'btn-expediente-2'].forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) el.setAttribute('disabled', 'true');
-  });
-  var pool = document.getElementById('pool-evidencias-2');
-  if (pool) {
-    ['ev-1-2', 'ev-2-2', 'ev-3-2'].forEach(function (id) {
-      var card = document.getElementById(id);
-      if (card) pool.appendChild(card);
-    });
-  }
-  mostrarSeccionGlobal('game');
-  ir('sc-fuente-2');
-}
-
-// Navegación Global Solución Observación Repositorio
-function mostrarSeccionGlobal(seccion) {
-  document.getElementById('global-landing').style.display = 'none';
-  document.getElementById('global-repo').style.display = 'none';
-  document.getElementById('global-game').style.display = 'none';
-  
-  document.getElementById('nav-landing').classList.remove('active');
-  document.getElementById('nav-game').classList.remove('active');
-  document.getElementById('nav-repo').classList.remove('active');
-  
-  if(seccion === 'landing') {
-    document.getElementById('global-landing').style.display = 'block';
-    document.getElementById('nav-landing').classList.add('active');
-  } else if(seccion === 'repo') {
-    document.getElementById('global-repo').style.display = 'block';
-    document.getElementById('nav-repo').classList.add('active');
-    window.scrollTo(0,0);
-  } else if(seccion === 'game') {
-    document.getElementById('global-game').style.display = 'block';
-    document.getElementById('nav-game').classList.add('active');
-    window.scrollTo(0,0);
-  }
-}
-
-function ir(id) {
-  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-}
-
-function seleccionarOpcion(paso, opc, elemento, puntosAsignados) {
-  var btns = elemento.parentNode.querySelectorAll('.opcion-investigar');
-  btns.forEach(function(b){b.classList.remove('selected')});
-  elemento.classList.add('selected');
-  
-  respuestasUsuario[paso] = opc;
-  
-  // Guardamos los puntos correspondientes
-  if(paso === 'fuente') puntosBrutos.fuente = mapaPuntosFuente[opc];
-  if(paso === 'dinero') puntosBrutos.dinero = mapaPuntosDinero[opc];
-  if(paso === 'contra') puntosBrutos.tono = mapaPuntosContra[opc]; // Corresponde al pilar analítico documental final
-  
-  document.getElementById('btn-' + paso).removeAttribute('disabled');
-}
-
-function marcarPalabra(btn, esCorrecto) {
-  btn.classList.toggle('marked');
-  var marcadasCorrectas = document.querySelectorAll('#discurso-box .word-btn.marked');
-  
-  // Condicional de habilitación: Marcación del sesgo retórico
-  var totalMarcadas = marcadasCorrectas.length;
-  if (totalMarcadas >= 2) {
-    document.getElementById('btn-tono').removeAttribute('disabled');
-  } else {
-    document.getElementById('btn-tono').setAttribute('disabled', 'true');
-  }
-}
-
-// Lógica de Clasificación Interactiva de la Mesa de Evidencias (Mecánica Exigida)
-function clasificarEvidencia(idEvidencia, columnaDestino) {
-  clasificacionEvidencias[idEvidencia] = columnaDestino;
-  
-  // Mover visualmente el elemento dentro de la columna elegida por el alumno
-  var tarjetaNode = document.getElementById('ev-' + idEvidencia);
-  if(columnaDestino === 'sostiene') {
-    document.getElementById('box-sostener').appendChild(tarjetaNode);
-  } else {
-    document.getElementById('box-derrumbar').appendChild(tarjetaNode);
-  }
-  
-  // Validar conteo para apertura de fase final
-  var conteo = 0;
-  for(var k in clasificacionEvidencias) {
-    if(clasificacionEvidencias[k] !== null) conteo++;
-  }
-  totalEvidenciasClasificadas = conteo;
-  
-  if(totalEvidenciasClasificadas === 3) {
-    document.getElementById('btn-expediente').removeAttribute('disabled');
-  }
-}
-
-// Ejecución matemática exacta de la fórmula declarada en el marco conceptual
-function mostrarResultados() {
-  // 1. Calcular el Coeficiente de Evidencia (C_evidencia) basado en las decisiones de la mesa de control
-  // Lo correcto científicamente es que las 3 evidencias DERRUMBAN el discurso público de inocencia.
-  var aciertosMesa = 0;
-  if(clasificacionEvidencias[1] === 'derrumbar') aciertosMesa++;
-  if(clasificacionEvidencias[2] === 'derrumbar') aciertosMesa++;
-  if(clasificacionEvidencias[3] === 'derrumbar') aciertosMesa++;
-  
-  // Coeficiente varía matemáticamente de 0.2 a 1.0 según nivel de rigor en el cruce
-  var C_evidencia = 0.2;
-  if(aciertosMesa === 1) C_evidencia = 0.5;
-  if(aciertosMesa === 2) C_evidencia = 0.8;
-  if(aciertosMesa === 3) C_evidencia = 1.0;
-
-  // 2. Aplicación Formal de la Fórmula Explicada: V_total = (P_fuente + P_dinero + P_tono + P_tiempo) * C_evidencia
-  var sumatoriaPilaresBrutos = puntosBrutos.fuente + puntosBrutos.dinero + puntosBrutos.tono + puntosBrutos.tiempo;
-  var puntajeNetoFinal = Math.round(sumatoriaPilaresBrutos * C_evidencia);
-  
-  // Renderizar la pantalla de resultados integrados
-  ir('sc-puntaje');
-  document.getElementById('score-num').textContent = puntajeNetoFinal + ' / 1.900 pts';
-  document.getElementById('score-coef').textContent = 'Coeficiente de Evidencia Atribuido: ' + (C_evidencia * 100) + '%';
-  
-  // Construcción dinámica de la matriz de retroalimentación
-  var desgloseHTML = '<div style="font-size:12px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Balance e Indicadores Técnicos</div>';
-  desgloseHTML += '<div class="score-row"><span>🔍 Identificación de Fuente (Verificación de fuente primaria - Máx 500):</span><span style="color:' + (puntosBrutos.fuente === 500 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos.fuente + ' pts</span></div>';
-  desgloseHTML += '<div class="score-row"><span>💰 Rastreo de Financiación (Ley 160/UAF - Máx 750):</span><span style="color:' + (puntosBrutos.dinero === 750 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos.dinero + ' pts</span></div>';
-  desgloseHTML += '<div class="score-row"><span>⚡ Detección de Contradicción Documental (Máx 400):</span><span style="color:' + (puntosBrutos.tono === 400 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos.tono + ' pts</span></div>';
-  desgloseHTML += '<div class="score-row"><span>⏱️ Factor de Tiempo Invertido (Eficiencia - Máx 250):</span><span style="color:#5DCAA5">' + puntosBrutos.tiempo + ' pts</span></div>';
-  desgloseHTML += '<div class="score-row" style="background:#1a1a1a; padding:12px; font-weight:bold;"><span>🎯 Multiplicador por Rigor Metodológico (C_evidencia):</span><span style="color:#6B46C1">x ' + C_evidencia + '</span></div>';
-  
-  document.getElementById('desglose-puntos').innerHTML = desgloseHTML;
-
-  // Feedback contextualizado según rigor final alcanzado
-  var feedback = "";
-  if (puntajeNetoFinal >= 1600) {
-    feedback = "¡Rigor Periodístico Impecable! Lograste aislar la retórica de distracción y utilizaste las herramientas catastrales y normativas para demostrar la acumulación fraudulenta. Tu expediente se archiva con validez probatoria real.";
-  } else if (puntajeNetoFinal >= 1000) {
-    feedback = "Buen reportaje, pero con grietas en la validación. Aunque identificaste datos clave, permitiste fallas en la clasificación del expediente final, reduciendo la contundencia de la publicación frente al escrutinio público.";
-  } else {
-    feedback = "Alerta de Superficialidad: La investigación cedió ante el show y los argumentos emocionales del senador. Faltó solidez técnica en el cruce de folios de tierras y la estructuración metodológica fue ineficaz.";
-  }
-  document.getElementById('score-feedback').textContent = feedback;
-}
-
-// Al terminar, recarga el juego y deja al usuario en La Central Verificada
-function reiniciarInstanciaJuego() {
+function reiniciarInstanciaJuego(){
   location.hash = '#repo';
   location.reload();
 }
 
-// ===== FUNCIONES DEL CASO #002 (paralelas a las del Caso #001, estado independiente) =====
-
-function seleccionarOpcion2(paso, opc, elemento, puntosAsignados) {
-  var btns = elemento.parentNode.querySelectorAll('.opcion-investigar');
-  btns.forEach(function (b) { b.classList.remove('selected') });
-  elemento.classList.add('selected');
-
-  if (paso === 'fuente') puntosBrutos2.fuente = mapaPuntosFuente2[opc];
-  if (paso === 'dinero') puntosBrutos2.dinero = mapaPuntosDinero2[opc];
-  if (paso === 'contra') puntosBrutos2.tono = mapaPuntosContra2[opc];
-
-  document.getElementById('btn-' + paso + '-2').removeAttribute('disabled');
+function mostrarSeccionGlobal(seccion){
+  ['landing', 'repo', 'game'].forEach(function(s){
+    document.getElementById('global-' + s).style.display = 'none';
+    document.getElementById('nav-' + s).classList.remove('active');
+  });
+  document.getElementById('global-' + seccion).style.display = 'block';
+  document.getElementById('nav-' + seccion).classList.add('active');
+  window.scrollTo(0, 0);
 }
 
-function marcarPalabra2(btn, esCorrecto) {
-  btn.classList.toggle('marked');
-  var marcadasCorrectas = document.querySelectorAll('#discurso-box-2 .word-btn.marked');
-  if (marcadasCorrectas.length >= 2) {
-    document.getElementById('btn-tono-2').removeAttribute('disabled');
-  } else {
-    document.getElementById('btn-tono-2').setAttribute('disabled', 'true');
-  }
+function ir(id){
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
 }
-
-function clasificarEvidencia2(idEvidencia, columnaDestino) {
-  clasificacionEvidencias2[idEvidencia] = columnaDestino;
-
-  var tarjetaNode = document.getElementById('ev-' + idEvidencia + '-2');
-  if (columnaDestino === 'sostiene') {
-    document.getElementById('box-sostener-2').appendChild(tarjetaNode);
-  } else {
-    document.getElementById('box-derrumbar-2').appendChild(tarjetaNode);
-  }
-
-  var conteo = 0;
-  for (var k in clasificacionEvidencias2) {
-    if (clasificacionEvidencias2[k] !== null) conteo++;
-  }
-  totalEvidenciasClasificadas2 = conteo;
-
-  if (totalEvidenciasClasificadas2 === 3) {
-    document.getElementById('btn-expediente-2').removeAttribute('disabled');
-  }
-}
-
-function mostrarResultados2() {
-  var aciertosMesa = 0;
-  if (clasificacionEvidencias2[1] === 'derrumbar') aciertosMesa++;
-  if (clasificacionEvidencias2[2] === 'derrumbar') aciertosMesa++;
-  if (clasificacionEvidencias2[3] === 'derrumbar') aciertosMesa++;
-
-  var C_evidencia = 0.2;
-  if (aciertosMesa === 1) C_evidencia = 0.5;
-  if (aciertosMesa === 2) C_evidencia = 0.8;
-  if (aciertosMesa === 3) C_evidencia = 1.0;
-
-  var sumatoriaPilaresBrutos = puntosBrutos2.fuente + puntosBrutos2.dinero + puntosBrutos2.tono + puntosBrutos2.tiempo;
-  var puntajeNetoFinal = Math.round(sumatoriaPilaresBrutos * C_evidencia);
-
-  ir('sc-puntaje-2');
-  document.getElementById('score-num-2').textContent = puntajeNetoFinal + ' / 1.900 pts';
-  document.getElementById('score-coef-2').textContent = 'Coeficiente de Evidencia Atribuido: ' + (C_evidencia * 100) + '%';
-
-  var desgloseHTML = '<div style="font-size:12px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Balance e Indicadores Técnicos</div>';
-  desgloseHTML += '<div class="score-row"><span>🔍 Identificación de Fuente (Verificación de fuente primaria - Máx 500):</span><span style="color:' + (puntosBrutos2.fuente === 500 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos2.fuente + ' pts</span></div>';
-  desgloseHTML += '<div class="score-row"><span>💰 Rastreo de Financiación (Enriquecimiento Ilícito - Máx 750):</span><span style="color:' + (puntosBrutos2.dinero === 750 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos2.dinero + ' pts</span></div>';
-  desgloseHTML += '<div class="score-row"><span>⚡ Detección de Contradicción Documental (Máx 400):</span><span style="color:' + (puntosBrutos2.tono === 400 ? '#5DCAA5' : '#F09595') + '">' + puntosBrutos2.tono + ' pts</span></div>';
-  desgloseHTML += '<div class="score-row"><span>⏱️ Factor de Tiempo Invertido (Eficiencia - Máx 250):</span><span style="color:#5DCAA5">' + puntosBrutos2.tiempo + ' pts</span></div>';
-  desgloseHTML += '<div class="score-row" style="background:#1a1a1a; padding:12px; font-weight:bold;"><span>🎯 Multiplicador por Rigor Metodológico (C_evidencia):</span><span style="color:#6B46C1">x ' + C_evidencia + '</span></div>';
-
-  document.getElementById('desglose-puntos-2').innerHTML = desgloseHTML;
-
-  var feedback = "";
-  if (puntajeNetoFinal >= 1600) {
-    feedback = "¡Rigor Periodístico Impecable! Lograste distinguir los argumentos procedimentales de los que realmente abordan los hallazgos, y usaste el cruce de registros públicos para documentar la desproporción patrimonial. Tu expediente se archiva con validez probatoria real.";
-  } else if (puntajeNetoFinal >= 1000) {
-    feedback = "Buen reportaje, pero con grietas en la validación. Identificaste datos clave, pero permitiste fallas en la clasificación del expediente final, reduciendo la contundencia de la publicación.";
-  } else {
-    feedback = "Alerta de Superficialidad: La investigación aceptó la respuesta oficial sin distinguir qué partes abordaban realmente los hallazgos. Faltó solidez técnica en el cruce de registros públicos, y la estructuración metodológica fue ineficaz.";
-  }
-  document.getElementById('score-feedback-2').textContent = feedback;
-}
-
 </script>
 </body>
 </html>
